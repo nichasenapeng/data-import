@@ -161,7 +161,10 @@ body{
 .csv-btn{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:500;color:var(--blue);background:rgba(37,99,168,.07);border:1px solid rgba(37,99,168,.2);padding:5px 14px;border-radius:20px;font-family:'IBM Plex Sans Thai',sans-serif;cursor:pointer;transition:all .15s;user-select:none;white-space:nowrap}
 .csv-btn:hover{background:rgba(37,99,168,.13);border-color:rgba(37,99,168,.35)}
 .csv-btn input{display:none}
+.csv-btn[disabled]{opacity:.55;cursor:default}
 #csv-msg{font-size:11px;font-family:'IBM Plex Sans Thai',sans-serif;transition:opacity .3s;color:var(--muted)}
+@keyframes gs-spin{to{transform:rotate(360deg)}}
+.gs-spinning{animation:gs-spin .8s linear infinite;transform-origin:50% 50%}
 
 @media(max-width:860px){.kpi-row{grid-template-columns:repeat(2,1fr)}.g2{grid-template-columns:1fr}}
 
@@ -208,11 +211,10 @@ body{
   <div><div class="hdr-title">Japan Broiler Import Dashboard</div><div class="hdr-sub">RAW MEAT · BY ORIGIN · 2022–2026 · หน่วย MT</div></div>
   <div style="display:flex;align-items:center;gap:10px">
     <span id="csv-msg" style="color:var(--muted);opacity:0"></span>
-    <label class="csv-btn">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-      อัปเดต CSV
-      <input type="file" accept=".csv" onchange="loadCSV(this)">
-    </label>
+    <button type="button" class="csv-btn" id="gs-btn" onclick="gsLoad(true)">
+      <svg id="gs-ico" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg>
+      <span id="gs-label">ดึงจาก Google Sheet</span>
+    </button>
   </div>
 </div>
 
@@ -1005,6 +1007,143 @@ function parseCSV(text,fname){
   csvMsg('✓ Updated '+updated.join(', ')+' ('+ts+')','#00aa44');
 }
 
+// ── GOOGLE SHEET LOADER (real-time) ──
+// ดึงข้อมูลสดจาก Google Sheet "Data Import-Export 2025" แทนการอัปโหลด CSV เอง
+// ชีตต้องตั้งค่าแชร์เป็น "ทุกคนที่มีลิงก์ดูได้" (Anyone with the link · Viewer)
+var GS_ID='1l33IeG1TGbGDglXOWMnhOt23hefHb0KrQvyADgTweTk';
+var GS_GID_MAIN='0';            // แท็บ Import-Export (ข้อมูลหลัก Tab 1–5 + ราคา Tab 7)
+var GS_PRICE=null;              // {blk:[12],cook:[12]} ราคาปี 2026 — นำไป overlay ใน _iT7
+
+function _gsUrl(gid){return 'https://docs.google.com/spreadsheets/d/'+GS_ID+'/export?format=csv&gid='+gid+'&_cb='+Date.now();}
+
+// แปลงข้อความ CSV → ตาราง 2 มิติ (รองรับ field ที่มี comma อยู่ในเครื่องหมายคำพูด)
+function _csv2grid(text){
+  var rows=[],row=[],cur='',q=false,i,c;
+  for(i=0;i<text.length;i++){c=text.charAt(i);
+    if(q){ if(c==='"'){ if(text.charAt(i+1)==='"'){cur+='"';i++;} else q=false; } else cur+=c; }
+    else { if(c==='"')q=true; else if(c===','){row.push(cur);cur='';} else if(c==='\n'){row.push(cur);rows.push(row);row=[];cur='';} else if(c==='\r'){/*skip*/} else cur+=c; }
+  }
+  row.push(cur);rows.push(row);
+  return rows;
+}
+var _MOI={jan:0,feb:1,mar:2,apr:3,may:4,jun:5,jul:6,aug:7,sep:8,oct:9,nov:10,dec:11};
+function _gMi(s){var m=(s||'').trim().match(/^([A-Za-z]{3})/);return m?_MOI[m[1].toLowerCase()]:undefined;}
+function _gNum(s){s=(s||'').replace(/,/g,'').trim();if(s===''||s==='#DIV/0!')return null;var v=parseFloat(s);return isNaN(v)?null:v;}
+function _gCell(r,j){return (r&&j<r.length)?(r[j]||'').trim():'';}
+function _gFind(grid,txt,from){from=from||0;txt=txt.toLowerCase();for(var i=from;i<grid.length;i++){var rr=grid[i];for(var j=0;j<rr.length;j++){if((rr[j]||'').toLowerCase().indexOf(txt)!==-1)return i;}}return -1;}
+
+// ดึงตารางรายปีที่ขึ้นต้นด้วย title ที่กำหนด — คืน array ของ {mi, vals:[col1..ncols]}
+// janAnchor=true : เริ่มเก็บจากแถวเดือน JAN แถวแรก (กันแถวหัว/ปีก่อนหน้า/ป้ายเดือนผิดปี)
+function _gBlock(grid,title,ncols,janAnchor){
+  var ti=_gFind(grid,title);if(ti<0)return [];
+  var out=[],i=ti+1,started=false;
+  while(i<grid.length&&out.length<12){
+    var c0=_gCell(grid[i],0),mi=_gMi(c0),isMo=/^[A-Za-z]{3}(-\d\d)?$/.test(c0)&&mi!==undefined;
+    if(isMo){
+      if(janAnchor&&!started&&mi!==0){i++;continue;}
+      started=true;var vals=[];for(var k=1;k<=ncols;k++)vals.push(_gCell(grid[i],k));
+      out.push({mi:mi,vals:vals});
+    } else if(started&&c0.toUpperCase().indexOf('SUM')!==-1){break;}
+    i++;
+  }
+  return out;
+}
+
+function gsLoad(manual){
+  var btn=document.getElementById('gs-btn'),ico=document.getElementById('gs-ico');
+  if(btn)btn.disabled=true; if(ico)ico.classList.add('gs-spinning');
+  csvMsg('⏳ กำลังดึงข้อมูลจาก Google Sheet…','#2563a8');
+  return fetch(_gsUrl(GS_GID_MAIN),{cache:'no-store'})
+    .then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);return r.text();})
+    .then(function(text){ _gsApply(_csv2grid(text)); })
+    .catch(function(err){ csvMsg('❌ ดึง Google Sheet ไม่สำเร็จ: '+err.message+' — ตรวจสอบการแชร์ชีต/อินเทอร์เน็ต (ใช้ปุ่ม "อัปเดต CSV" แทนได้)','#dc2626'); })
+    .then(function(){ if(btn)btn.disabled=false; if(ico)ico.classList.remove('gs-spinning'); });
+}
+
+function _gsApply(g){
+  var YR=['2022','2023','2024','2025','2026'];
+  // เก็บค่ารายเดือน 12 แถว แล้วค่อย serialize เป็น CSV ป้อนให้ parseCSV() (ใช้ logic เดิมที่ทดสอบแล้ว)
+  var col={}; // key เช่น 'bra_2026' -> array[12]
+  function put(key,mi,v){ if(!col[key])col[key]=[null,null,null,null,null,null,null,null,null,null,null,null]; col[key][mi]=v; }
+
+  // ── FORMAT A : Import Japan (USA/Thai/BRA/OTHER × 2022–2026) ──
+  var hi=_gFind(g,'USA 2022');
+  if(hi>=0){
+    var hmap={},pfxMap={USA:'usa',THAI:'thai',BRA:'bra',OTHER:'oth'};
+    for(var j=0;j<g[hi].length;j++){var mm=_gCell(g[hi],j).match(/^(USA|Thai|BRA|OTHER)\s+(20\d\d)$/i);if(mm)hmap[j]={key:pfxMap[mm[1].toUpperCase()]+'_'+mm[2]};}
+    var seen=0;
+    for(var i=hi+1;i<g.length&&seen<12;i++){
+      var c0=_gCell(g[i],0),mi=_gMi(c0);
+      if(mi===undefined||!/^[A-Za-z]{3}$/.test(c0)){ if(c0.toUpperCase().indexOf('SUM')!==-1)break; continue; }
+      seen++;
+      for(var cj in hmap){ put(hmap[cj].key,mi,_gNum(_gCell(g[i],cj))); }
+    }
+  }
+
+  // ── FORMAT B : Port Brazil → Japan (mislabel-safe: anchor ที่ JAN) ──
+  ['2024','2025','2026'].forEach(function(y){
+    var blk=_gBlock(g,'Port Brazil to Japan '+y,1,true);
+    blk.forEach(function(o,k){ if(k<12) put('port_'+y,k,_gNum(o.vals[0])); });
+  });
+
+  // ── FORMAT C : Brazil Raw Meat (CHINA|JAPAN|UAE|Saudi|S.Korea) ──
+  var annRJ={},annRC={},annRU={},annRS={},annRK={};
+  ['2024','2025','2026'].forEach(function(y){
+    var sj=0,sc=0,su=0,ss=0,sk=0;
+    _gBlock(g,'RAW MEAT EXPORTS '+y,5).forEach(function(o){
+      var ch=_gNum(o.vals[0]),jp=_gNum(o.vals[1]),ua=_gNum(o.vals[2]),sa=_gNum(o.vals[3]),ko=_gNum(o.vals[4]);
+      put('china_'+y,o.mi,ch); put('japan_'+y,o.mi,jp); put('uae_'+y,o.mi,ua); put('saudi_'+y,o.mi,sa);
+      sc+=ch||0; sj+=jp||0; su+=ua||0; ss+=sa||0; sk+=ko||0;
+    });
+    annRJ[y]=sj;annRC[y]=sc;annRU[y]=su;annRS[y]=ss;annRK[y]=sk;
+  });
+
+  // ── FORMAT D : Total Quantity Brazil Export ──
+  ['2024','2025','2026'].forEach(function(y){
+    _gBlock(g,'Total Quantity Brazilian Export '+y,1).forEach(function(o){ put('qty_'+y,o.mi,_gNum(o.vals[0])); });
+  });
+
+  // ── FORMAT E : Total Stock Japan (Total|Import|Domestic) ──
+  ['2025','2026'].forEach(function(y){
+    _gBlock(g,'TOTAL STOCK JAPAN '+y,3).forEach(function(o){
+      put('tot_'+y,o.mi,_gNum(o.vals[0])); put('imp_'+y,o.mi,_gNum(o.vals[1])); put('dom_'+y,o.mi,_gNum(o.vals[2]));
+    });
+  });
+
+  // ── Tab 7 : ราคา Japan BLK (Normal) / Cooked (Souiku) ปี 2026 จากตาราง SUNFOOD price ──
+  var ph=_gFind(g,'Price (Souiku)');
+  if(ph>=0){
+    var blk=[],cook=[],x; for(x=0;x<12;x++){blk.push(null);cook.push(null);}
+    for(var pi=ph+1;pi<ph+50&&pi<g.length;pi++){
+      var pm=_gCell(g[pi],0).match(/^([A-Za-z]{3})-26$/);
+      if(pm){var mi2=_MOI[pm[1].toLowerCase()];blk[mi2]=_gNum(_gCell(g[pi],1));cook[mi2]=_gNum(_gCell(g[pi],2));}
+    }
+    GS_PRICE={blk:blk,cook:cook};
+  }
+
+  // อัปเดต annual ของ Tab 3 (ตัวแปร global) — ส่วน annual ของ Tab 2/4/5 เป็น literal คงเดิม (เหมือน CSV upload)
+  ['2024','2025','2026'].forEach(function(y){
+    if(annRJ[y])ANN_RJ[y]=annRJ[y]; if(annRC[y])ANN_RC[y]=annRC[y];
+    if(annRU[y])ANN_RU[y]=annRU[y]; if(annRS[y])ANN_RS[y]=annRS[y]; if(annRK[y])ANN_RK[y]=annRK[y];
+  });
+
+  // ── serialize → CSV แล้วป้อนให้ parseCSV() (อัปเดต Tab 1–5 + re-render กราฟอัตโนมัติ) ──
+  var keys=Object.keys(col);
+  if(keys.length===0){ csvMsg('❌ ไม่พบตารางข้อมูลในชีต (โครงสร้างชีตอาจเปลี่ยน)','#dc2626'); return; }
+  var header='month,'+keys.join(',');
+  var lines=[header];
+  for(var mo=0;mo<12;mo++){
+    var cells=[MO[mo]];
+    keys.forEach(function(k){var v=col[k][mo];cells.push(v==null?'':v);});
+    lines.push(cells.join(','));
+  }
+  parseCSV(lines.join('\n'),'GoogleSheet');   // จะ re-render เฉพาะแท็บที่เปิดแล้ว (รวม Tab 7 ที่อ่าน GS_PRICE)
+
+  var now=new Date();
+  var ts=now.getDate()+'/'+(now.getMonth()+1)+' '+now.getHours()+':'+String(now.getMinutes()).padStart(2,'0');
+  csvMsg('✓ ดึงจาก Google Sheet สำเร็จ • อัปเดต '+ts,'#00aa44');
+}
+
 // ── TAB 6 DATA ──
 var EX_TOP15_NAMES=['China','Japan','Saudi Arabia','UAE','South Africa','Philippines','Mexico','South Korea','Singapore','EU','Qatar','Ghana','Oman','Chile','Guinea'];
 var EX_APR26=[52275300,41757739,35872673,18962388,26336874,23984898,27154357,15499648,12633194,11760828,8041060,10301649,11036797,7212639,9039634];
@@ -1121,6 +1260,8 @@ function _iT6(){
 // ── BOOT ──
 _tabInited['t1']=true;
 _iT1();
+// ดึงข้อมูลสดจาก Google Sheet ทันทีเมื่อเปิดหน้า (real-time) — ถ้าล้มเหลวจะคงข้อมูลเดิมไว้
+gsLoad(false);
 
 function _iT7(){
   // ── DATA: ราคาจริงจาก Excel Import-Export (rows 310-338) + คาดการณ์ที่เหลือ ──
@@ -1136,6 +1277,8 @@ function _iT7(){
   var JP_KARA=[4950,5050,5050,5050,5050, 5100,5200,5250,5250,5200,5200,5250];
   // Japan Souiku/Cooked (Excel Price(Souiku)) · จริง ม.ค.–มี.ค. · เม.ย. interpolate 3,900 · พ.ค.+ คาดการณ์
   var JP_COOK=[3450,3550,3750,3900,null, 3950,4000,4050,4100,4050,4100,4200];
+  // overlay ราคาจริงจาก Google Sheet (เฉพาะเดือนที่ชีตมีค่า) — Karaage/SBB/forecast คงเดิม (ไม่อยู่ในชีต)
+  if(GS_PRICE){for(var _g=0;_g<12;_g++){if(GS_PRICE.blk[_g]!=null)JP_BLK[_g]=GS_PRICE.blk[_g];if(GS_PRICE.cook[_g]!=null)JP_COOK[_g]=GS_PRICE.cook[_g];}}
   // Japan BB Fresh (Packer 23 เม.ย. = 1,950–2,100 USD/ตัน) midpoint 2,025
   var JP_BB=[null,null,null,2025,null, 2050,2050,2100,2150,2100,2100,2150];
   // EU/UK SBB Salted · midpoint Packer ม.ค.–พ.ค. (บราซิลเสนอราคาตํ่ากดดัน Q1–Q2 → ฟื้น H2)
