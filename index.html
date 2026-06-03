@@ -1279,6 +1279,13 @@ function _iT7(){
   var JP_COOK=[3450,3550,3750,3900,null, 3950,4000,4050,4100,4050,4100,4200];
   // overlay ราคาจริงจาก Google Sheet (เฉพาะเดือนที่ชีตมีค่า) — Karaage/SBB/forecast คงเดิม (ไม่อยู่ในชีต)
   if(GS_PRICE){for(var _g=0;_g<12;_g++){if(GS_PRICE.blk[_g]!=null)JP_BLK[_g]=GS_PRICE.blk[_g];if(GS_PRICE.cook[_g]!=null)JP_COOK[_g]=GS_PRICE.cook[_g];}}
+  // ── มุมมองทางเลือก (AI Scenario) — Japan BLK ──
+  // อนุมานจากข้อมูลในชีต: ราคาขึ้นเร็วเกินไปต้นปี (+29% ใน 4 ด.) + ซัพพลายบราซิลฟื้น + เยนอ่อนกดดีมานด์
+  // → คาด "สูงแต่ออกข้าง" Q3 พักฐาน, Q4 ฟื้นตามฤดูกาล (ระมัดระวังกว่าค่าพยากรณ์เดิม)
+  // ตาราง: แสดงเฉพาะเดือนคาดการณ์ (มิ.ย.–ธ.ค.) · เดือนจริงโชว์ "—"
+  var AI_BLK=[null,null,null,null,null, 4100,4150,4150,4200,4200,4250,4300];
+  // กราฟ: ผูกจุดเริ่มที่ พ.ค. (ค่าจริงล่าสุด) ให้เส้นต่อเนื่อง
+  var AI_BLK_CHART=[null,null,null,null,(JP_BLK[4]!=null?JP_BLK[4]:4250), 4100,4150,4150,4200,4200,4250,4300];
   // Japan BB Fresh (Packer 23 เม.ย. = 1,950–2,100 USD/ตัน) midpoint 2,025
   var JP_BB=[null,null,null,2025,null, 2050,2050,2100,2150,2100,2100,2150];
   // EU/UK SBB Salted · midpoint Packer ม.ค.–พ.ค. (บราซิลเสนอราคาตํ่ากดดัน Q1–Q2 → ฟื้น H2)
@@ -1309,6 +1316,7 @@ function _iT7(){
         datasets:[
           {label:'Japan BLK (จริง)',data:jpS.act,borderColor:'#2563a8',backgroundColor:'transparent',borderWidth:2.5,pointRadius:5,pointBackgroundColor:'#2563a8',tension:0.3,spanGaps:false},
           {label:'Japan BLK (คาดการณ์)',data:jpS.fc,borderColor:'#2563a8',backgroundColor:'rgba(37,99,168,0.06)',borderWidth:2,borderDash:[5,4],pointRadius:3,pointBackgroundColor:'#fff',pointBorderColor:'#2563a8',tension:0.3,spanGaps:false,fill:false},
+          {label:'Japan BLK · มุมมอง AI (ทางเลือก)',data:AI_BLK_CHART,borderColor:'#475569',backgroundColor:'transparent',borderWidth:1.8,borderDash:[2,3],pointRadius:3,pointStyle:'rectRot',pointBackgroundColor:'#475569',tension:0.3,spanGaps:false},
           {label:'Japan Karaage (จริง)',data:jcS.act,borderColor:'#22c55e',backgroundColor:'transparent',borderWidth:2.5,pointRadius:5,pointBackgroundColor:'#22c55e',tension:0.3,spanGaps:false},
           {label:'Japan Karaage (คาดการณ์)',data:jcS.fc,borderColor:'#22c55e',backgroundColor:'transparent',borderWidth:2,borderDash:[5,4],pointRadius:3,pointBackgroundColor:'#fff',pointBorderColor:'#22c55e',tension:0.3,spanGaps:false},
           {label:'EU/UK SBB (จริง)',data:euS.act,borderColor:'#f59e0b',backgroundColor:'transparent',borderWidth:2.5,pointRadius:5,pointBackgroundColor:'#f59e0b',tension:0.3,spanGaps:false},
@@ -1363,6 +1371,7 @@ function _iT7(){
   var tbl=document.getElementById('tbl-forecast'); if(!tbl)return;
   var rows=[
     {label:'🇯🇵 Japan BLK (Fresh)',unit:'USD/ตัน',data:JP_BLK,color:'#2563a8',src:'Excel จริง ม.ค.–เม.ย. · พ.ค. Packer8'},
+    {label:'🤖 Japan BLK · มุมมอง AI',unit:'USD/ตัน',data:AI_BLK,color:'#475569',ai:true,src:'อนุมานจากข้อมูลในชีต — ไม่ใช่ราคาทางการ'},
     {label:'🇯🇵 Japan Karaage (ปรุงสุก)',unit:'USD/ตัน',data:JP_KARA,color:'#16a34a',src:'Packer ม.ค.–พ.ค. = 4,800–5,300'},
     {label:'🇯🇵 Japan Cooked (Souiku/Excel)',unit:'USD/ตัน',data:JP_COOK,color:'#22c55e',src:'Excel จริง ม.ค.–มี.ค. · เม.ย. interpolate'},
     {label:'🇯🇵 Japan BB Fresh',unit:'USD/ตัน',data:JP_BB,color:'#06b6d4',src:'Packer 23 เม.ย. = 1,950–2,100'},
@@ -1384,20 +1393,20 @@ function _iT7(){
   rows.forEach(function(row,ri){
     var bg=ri%2===0?'rgba(255,255,255,.6)':'rgba(37,99,168,.03)';
     tb+='<tr style="background:'+bg+';border-bottom:1px solid rgba(37,99,168,.08)">';
-    tb+='<td style="padding:8px 12px;font-size:12px;font-family:\'IBM Plex Sans Thai\',sans-serif;font-weight:600;color:'+row.color+';white-space:nowrap">'+row.label+'</td>';
+    tb+='<td style="padding:8px 12px;font-size:12px;font-family:\'IBM Plex Sans Thai\',sans-serif;font-weight:600;color:'+row.color+';white-space:nowrap'+(row.ai?';font-style:italic':'')+'">'+row.label+'</td>';
     tb+='<td style="text-align:center;padding:8px 8px;font-size:10px;font-family:\'IBM Plex Sans Thai\',sans-serif;color:var(--muted);white-space:nowrap">'+row.unit+'</td>';
     row.data.forEach(function(v,i){
-      var isReal=i<ACTUAL_UPTO;
-      var bg2=isReal?'rgba(37,99,168,.07)':'transparent';
-      var fc=isReal?'var(--navy)':'var(--text)';
+      var isReal=(!row.ai)&&i<ACTUAL_UPTO;
+      var bg2=isReal?'rgba(37,99,168,.07)':(row.ai?'rgba(71,85,105,.05)':'transparent');
+      var fc=row.ai?'#475569':(isReal?'var(--navy)':'var(--text)');
       var fw=isReal?'700':'400';
       var disp=v===null?'—':(typeof v==='number'?v.toLocaleString():v);
-      tb+='<td style="text-align:right;padding:7px 10px;font-size:12px;font-family:\'IBM Plex Sans\',sans-serif;letter-spacing:.3px;background:'+bg2+';color:'+fc+';font-weight:'+fw+'">'+disp+'</td>';
+      tb+='<td style="text-align:right;padding:7px 10px;font-size:12px;font-family:\'IBM Plex Sans\',sans-serif;letter-spacing:.3px;background:'+bg2+';color:'+fc+';font-weight:'+fw+(row.ai?';font-style:italic':'')+'">'+disp+'</td>';
     });
     tb+='</tr>';
   });
   // Source row
-  tb+='<tr><td colspan="14" style="padding:8px 12px;font-size:10px;font-family:\'IBM Plex Sans Thai\',sans-serif;color:var(--muted);background:rgba(37,99,168,.04);border-top:1px solid rgba(37,99,168,.15)">🔵 ข้อมูลจริง (ม.ค.–เม.ย. จาก Excel · พ.ค. จากราคาตลาด Packer Meeting 8/2569 — 13 พ.ค. 69) · 📊 คาดการณ์ มิ.ย.–ธ.ค. อ้างอิงแนวโน้มฤดูกาล + คำขอปรับราคา Q3 จากต้นทุนค่าระวาง/Packaging ที่สูงขึ้น · Karaage/SBB จากรายงานการประชุม Packer 1–8/2569</td></tr>';
+  tb+='<tr><td colspan="14" style="padding:8px 12px;font-size:10px;font-family:\'IBM Plex Sans Thai\',sans-serif;color:var(--muted);background:rgba(37,99,168,.04);border-top:1px solid rgba(37,99,168,.15)">🔵 ข้อมูลจริง (ม.ค.–เม.ย. จาก Excel · พ.ค. จากราคาตลาด Packer Meeting 8/2569 — 13 พ.ค. 69) · 📊 คาดการณ์ มิ.ย.–ธ.ค. อ้างอิงแนวโน้มฤดูกาล + คำขอปรับราคา Q3 จากต้นทุนค่าระวาง/Packaging ที่สูงขึ้น · Karaage/SBB จากรายงานการประชุม Packer 1–8/2569<br>🤖 <b>Japan BLK · มุมมอง AI</b> = ฉากทัศน์ทางเลือกที่อนุมานจากข้อมูลในชีต (ราคาขึ้นเร็วเกินไปต้นปี + ซัพพลายบราซิลฟื้น + เยนอ่อน → คาด Q3 พักฐาน, Q4 ฟื้นตามฤดูกาล) — เป็นการประมาณการ <u>ไม่ใช่ราคาทางการ</u> ควรให้ฝ่ายที่ดูแลราคายืนยันก่อนใช้อ้างอิง</td></tr>';
   tb+='</tbody>';
   tbl.innerHTML=th+tb;
 }
