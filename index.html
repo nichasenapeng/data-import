@@ -1039,7 +1039,7 @@ function _initTab(id){if(id==='t1')_iT1();else if(id==='t2')_iT2();else if(id===
 
 function _iT1(){
   var kd=[{n:'BRAZIL',a:ANN_BRA,c:'#3b82f6'},{n:'THAI',a:ANN_THAI,c:'#22c55e'},{n:'USA',a:ANN_USA,c:'#f59e0b'},{n:'OTHERS',a:ANN_OTH,c:'#ef4444'}];
-  var el=document.getElementById('kpi1');
+  var el=document.getElementById('kpi1'); if(el)el.innerHTML='';
   kd.forEach(function(k){
     var ay=YRS.filter(function(y){return k.a[y]>0;}),ly=ay[ay.length-1],py=ay[ay.length-2]||null;
     var pct=py?((k.a[ly]-k.a[py])/k.a[py]*100):null,mn=ly==='2026'?6:12,avg=Math.round(k.a[ly]/mn),up=pct!==null&&pct>=0;
