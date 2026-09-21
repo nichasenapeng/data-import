@@ -200,7 +200,7 @@ body{
     </div>
     <div class="login-ttl">Japan Broiler Dashboard</div>
     <div class="login-sub">กรุณากรอกรหัสผ่านเพื่อเข้าดูข้อมูล</div>
-    <input id="login-pw" class="login-inp" type="password" inputmode="numeric" placeholder="••••••" autocomplete="off" autofocus onkeydown="if(event.key==='Enter')tryLogin()">
+    <input id="login-pw" class="login-inp" type="password" inputmode="text" placeholder="รหัสผ่าน" autocomplete="off" autofocus onkeydown="if(event.key==='Enter')tryLogin()">
     <button class="login-btn" onclick="tryLogin()">เข้าสู่ระบบ</button>
     <div id="login-err" class="login-err">รหัสผ่านไม่ถูกต้อง</div>
     <div class="login-foot">ข้อมูลภายใน · สำหรับผู้ที่ได้รับอนุญาตเท่านั้น</div>
@@ -290,7 +290,7 @@ body{
   <div style="background:rgba(37,99,168,.07);border:1px solid rgba(37,99,168,.18);border-radius:10px;padding:10px 16px;margin-bottom:16px;display:flex;align-items:center;gap:10px;flex-wrap:wrap">
     <span style="font-size:16px">📋</span>
     <div style="font-family:'IBM Plex Sans Thai',sans-serif;font-size:12px;color:var(--navy)">
-      <strong>ที่มาข้อมูล:</strong> ราคา BLK จริงจาก Google Sheet <strong>ม.ค.–ก.ย. 2569</strong> + ราคา offer BL จริงจากลูกค้า (เม.ย.–ก.ย.) · <strong>ต.ค.–ธ.ค. คาดการณ์</strong> (naive + สัญญาณ offer/ต้นทุนอาหารสัตว์) · ประกอบรายงานการประชุม Packer 1–14/2569
+      <strong>ที่มาข้อมูล:</strong> ราคา BLK จริงจาก Google Sheet <strong>ม.ค.–ก.ย. 2569</strong> + ราคา offer BL จริงจากลูกค้า (เม.ย.–ก.ย.) · <strong>ต.ค.–ธ.ค. คาดการณ์</strong> (naive + สัญญาณ offer/ต้นทุนอาหารสัตว์) · ประกอบรายงานการประชุม Packer 1–15/2569
     </div>
   </div>
 
@@ -299,7 +299,7 @@ body{
     <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:4px">
       <div>
         <div class="card-ttl">คาดการณ์ราคาส่งออกรายเดือน ปี 2569 (ม.ค.–ธ.ค.)</div>
-        <div class="card-sub">USD / ตัน · เส้นทึบ = ราคาจริง (ม.ค.–พ.ค.) · เส้นประ = คาดการณ์ · อ้างอิง Packer Meeting 1–8/2569 (ม.ค.–พ.ค. 2569)</div>
+        <div class="card-sub">USD / ตัน · เส้นทึบ = ราคาจริง (ม.ค.–ก.ย.) · เส้นประ = คาดการณ์ · อ้างอิง Packer Meeting 1–15/2569 (ล่าสุด 9 ก.ย. 2569)</div>
       </div>
       <div style="display:flex;align-items:center;gap:6px;padding:5px 12px;background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2);border-radius:20px">
         <span style="font-size:11px;color:#b91c1c;font-family:'IBM Plex Sans Thai',sans-serif">⚠ คาดการณ์ ไม่ใช่ราคาจริง</span>
@@ -353,12 +353,12 @@ body{
     <div class="card" style="margin-bottom:0;border-top:3px solid #ef4444">
       <div style="font-family:'IBM Plex Sans',sans-serif;font-size:11px;letter-spacing:1px;color:#c0392b;margin-bottom:8px">Q3 · JUL–SEP 2026 · จริง</div>
       <div style="font-family:'IBM Plex Sans Thai',sans-serif;font-size:11px;color:var(--navy);font-weight:600;margin-bottom:4px">Japan BLK</div>
-      <div style="font-family:'IBM Plex Sans',sans-serif;font-size:22px;color:var(--text)">3,900–3,950</div>
+      <div style="font-family:'IBM Plex Sans',sans-serif;font-size:22px;color:var(--text)">3,850–3,950</div>
       <div style="font-family:'IBM Plex Sans Thai',sans-serif;font-size:10px;color:var(--muted);margin-bottom:8px">USD/ตัน</div>
       <div style="font-family:'IBM Plex Sans Thai',sans-serif;font-size:11px;color:var(--navy);font-weight:600;margin-bottom:2px">EU/UK SBB</div>
-      <div style="font-family:'IBM Plex Sans',sans-serif;font-size:18px;color:var(--text)">3,900–4,000</div>
+      <div style="font-family:'IBM Plex Sans',sans-serif;font-size:18px;color:var(--text)">3,500–3,650</div>
       <div style="font-family:'IBM Plex Sans Thai',sans-serif;font-size:10px;color:var(--muted);margin-bottom:8px">USD/ตัน</div>
-      <div style="font-family:'IBM Plex Sans Thai',sans-serif;font-size:10px;color:#c0392b;line-height:1.4">▼ <b>ผ่านพีคแล้วย่อ ทรงตัว ~3,900</b> · offer ลูกค้าร่วงแรง 3,500→2,000 · ต้นทุนอาหารสัตว์ลง</div>
+      <div style="font-family:'IBM Plex Sans Thai',sans-serif;font-size:10px;color:#c0392b;line-height:1.4">▼ <b>ผ่านพีคแล้วย่อ ~3,850–3,950</b> · offer ลูกค้าร่วงแรง 3,500→2,000 · SBB ขยับขึ้นเป็น 3,650 (Packer 15)</div>
     </div>
     <div class="card" style="margin-bottom:0;border-top:3px solid #a855f7">
       <div style="font-family:'IBM Plex Sans',sans-serif;font-size:11px;letter-spacing:1px;color:#7e22ce;margin-bottom:8px">Q4 · OCT–DEC 2026 · คาดการณ์</div>
@@ -366,7 +366,7 @@ body{
       <div style="font-family:'IBM Plex Sans',sans-serif;font-size:22px;color:var(--text)">3,800–3,900</div>
       <div style="font-family:'IBM Plex Sans Thai',sans-serif;font-size:10px;color:var(--muted);margin-bottom:8px">USD/ตัน</div>
       <div style="font-family:'IBM Plex Sans Thai',sans-serif;font-size:11px;color:var(--navy);font-weight:600;margin-bottom:2px">EU/UK SBB</div>
-      <div style="font-family:'IBM Plex Sans',sans-serif;font-size:18px;color:var(--text)">4,000–4,100</div>
+      <div style="font-family:'IBM Plex Sans',sans-serif;font-size:18px;color:var(--text)">~3,650</div>
       <div style="font-family:'IBM Plex Sans Thai',sans-serif;font-size:10px;color:var(--muted);margin-bottom:8px">USD/ตัน</div>
       <div style="font-family:'IBM Plex Sans Thai',sans-serif;font-size:10px;color:#7e22ce;line-height:1.4">→ <b>คาดทรงตัว–อ่อนตัวเล็กน้อย</b> · offer/ต้นทุนอาหารสัตว์กด upside · สต๊อกญี่ปุ่นตึง (&lt;130k) พยุง downside</div>
     </div>
@@ -375,7 +375,7 @@ body{
   <!-- Full Price Table -->
   <div class="card">
     <div class="card-ttl">ตารางคาดการณ์ราคาส่งออกรายเดือน ปี 2569</div>
-    <div class="card-sub">USD / ตัน · 🔵 ข้อมูลจริง ม.ค.–พ.ค. 2569 · ⬜ คาดการณ์ มิ.ย.–ธ.ค.</div>
+    <div class="card-sub">USD / ตัน · 🔵 ข้อมูลจริง ม.ค.–ก.ย. 2569 · ⬜ คาดการณ์ ต.ค.–ธ.ค.</div>
     <div style="overflow-x:auto">
       <table id="tbl-forecast" style="width:100%;border-collapse:collapse;font-family:'IBM Plex Sans Thai',sans-serif;font-size:12px"></table>
     </div>
@@ -617,37 +617,37 @@ body{
   <!-- KPI Row -->
   <div class="kpi-row">
     <div class="kpi">
-      <div class="kpi-lbl">JUL 2026 Total Export</div>
-      <div class="kpi-val" style="color:#3b82f6">477,215 <span class="kpi-unit">MT</span></div>
-      <div class="kpi-avg">US$ 881M FOB</div>
+      <div class="kpi-lbl">AUG 2026 Total Export</div>
+      <div class="kpi-val" style="color:#3b82f6">451,928 <span class="kpi-unit">MT</span></div>
+      <div class="kpi-avg">US$ 891M FOB</div>
       <div class="kpi-d nu">—</div>
     </div>
     <div class="kpi">
-      <div class="kpi-lbl">Y2026 Accum. (JAN–JUL)</div>
-      <div class="kpi-val" style="color:#22c55e">3,157,896 <span class="kpi-unit">MT</span></div>
-      <div class="kpi-avg">US$ 5,868M FOB</div>
-      <div class="kpi-d up">▲ Pace +14.6% vs 2025</div>
+      <div class="kpi-lbl">Y2026 Accum. (JAN–AUG)</div>
+      <div class="kpi-val" style="color:#22c55e">3,582,600 <span class="kpi-unit">MT</span></div>
+      <div class="kpi-avg">US$ 6,758M FOB</div>
+      <div class="kpi-d up">▲ Pace +14.8% vs 2025</div>
     </div>
     <div class="kpi">
-      <div class="kpi-lbl">Japan — JUL 2026</div>
-      <div class="kpi-val" style="color:#06b6d4">38,256 <span class="kpi-unit">MT</span></div>
-      <div class="kpi-avg">Rank #2 · US$ 103.4M</div>
-      <div class="kpi-d up">▼ −10.4% vs JUL 2025</div>
+      <div class="kpi-lbl">Japan — AUG 2026</div>
+      <div class="kpi-val" style="color:#06b6d4">41,182 <span class="kpi-unit">MT</span></div>
+      <div class="kpi-avg">Rank #2 · US$ 107.0M</div>
+      <div class="kpi-d up">▲ +36.7% vs AUG 2025</div>
     </div>
     <div class="kpi">
       <div class="kpi-lbl">Japan — Y2026 Accum.</div>
-      <div class="kpi-val" style="color:#f59e0b">278,243 <span class="kpi-unit">MT</span></div>
-      <div class="kpi-avg">Rank #2 · US$ 722.8M</div>
-      <div class="kpi-d up">▲ vs same period 2025</div>
+      <div class="kpi-val" style="color:#f59e0b">319,401 <span class="kpi-unit">MT</span></div>
+      <div class="kpi-avg">Rank #2 · US$ 829.7M</div>
+      <div class="kpi-d up">▲ +18.4% vs 2025</div>
     </div>
   </div>
 
   <!-- Top 15 Importers -->
   <div class="card">
-    <div class="card-ttl">Top 15 Importers — JUL 2026 vs Y2026 Accumulated</div>
+    <div class="card-ttl">Top 15 Importers — AUG 2026 vs Y2026 Accumulated</div>
     <div class="card-sub">NW (Tons) · Source: Ministry of Development, Industry &amp; Trade — Comex Stat</div>
     <div class="leg">
-      <div class="leg-i"><div class="leg-d" style="background:#93c5fd"></div>JUL 2026 (MT)</div>
+      <div class="leg-i"><div class="leg-d" style="background:#93c5fd"></div>AUG 2026 (MT)</div>
       <div class="leg-i"><div class="leg-d" style="background:#fde68a"></div>Y2026 Accum. (MT)</div>
     </div>
     <div class="h290"><canvas id="c-ex-top"></canvas></div>
@@ -655,14 +655,14 @@ body{
 
   <!-- Japan Product Breakdown -->
   <div class="card">
-    <div class="card-ttl">Japan — Product Breakdown (JUL 2026)</div>
+    <div class="card-ttl">Japan — Product Breakdown (AUG 2026)</div>
     <div class="card-sub">NW (KG) · Top products shipped to Japan</div>
     <div class="h290"><canvas id="c-ex-jprod"></canvas></div>
   </div>
 
   <!-- Japan by State heatmap style table -->
   <div class="card">
-    <div class="card-ttl">Shipping Volume to Japan by State (DEC 2025 – JUL 2026)</div>
+    <div class="card-ttl">Shipping Volume to Japan by State (JAN – AUG 2026)</div>
     <div class="card-sub">Volume (Tons) · Brazilian states contributing to Japan exports</div>
     <div style="overflow-x:auto">
       <table id="tbl-state" style="width:100%;border-collapse:collapse;font-family:'IBM Plex Sans Thai',sans-serif;font-size:12px"></table>
@@ -809,7 +809,7 @@ body{
 <script>
 // ── LOGIN GATE (client-side · กันการเข้าดูทั่วไป) ──
 function _h(s){var seed=7,h1=0xdeadbeef^seed,h2=0x41c6ce57^seed;for(var i=0,ch;i<s.length;i++){ch=s.charCodeAt(i);h1=Math.imul(h1^ch,2654435761);h2=Math.imul(h2^ch,1597334677);}h1=Math.imul(h1^(h1>>>16),2246822507);h1^=Math.imul(h2^(h2>>>13),3266489909);h2=Math.imul(h2^(h2>>>16),2246822507);h2^=Math.imul(h1^(h1>>>13),3266489909);return 4294967296*(2097151&h2)+(h1>>>0);}
-var _PWH=552165811300396;
+var _PWH=8506142273434222;
 function _unlock(){var g=document.getElementById('login-gate');if(g)g.classList.add('hide');try{sessionStorage.setItem('jbd_auth','1');}catch(e){}try{if(_tabInited&&_tabInited['t1'])_replayAnim('t1');}catch(e){}}
 function tryLogin(){var inp=document.getElementById('login-pw'),err=document.getElementById('login-err');if(_h(inp.value)===_PWH){_unlock();}else{err.classList.add('show');inp.value='';inp.focus();}}
 (function(){var authed=false;try{authed=sessionStorage.getItem('jbd_auth')==='1';}catch(e){}if(authed){var g=document.getElementById('login-gate');if(g)g.classList.add('hide');}else{var inp=document.getElementById('login-pw');if(inp)inp.focus();}})();
@@ -1373,30 +1373,30 @@ function _gsApply(g){
 }
 
 // ── TAB 6 DATA ──
-var EX_TOP15_NAMES=['China','Japan','Saudi Arabia','UAE','South Africa','Philippines','Mexico','South Korea','EU','Singapore','Ghana','Qatar','Angola','Oman','Chile'];
-var EX_APR26=[70549711,38255717,39717266,41211955,26106159,17399744,20093301,18629637,18116199,10161380,11118462,8373021,14344685,4490510,7878828];
-var EX_ACC26=[355824281,278243399,253484772,252245788,211367186,159602701,139569834,121950229,102723852,89253520,70162205,61991250,61176262,60496175,56081496];
+var EX_TOP15_NAMES=['China','Japan','UAE','Saudi Arabia','South Africa','Philippines','Mexico','South Korea','EU','Singapore','Ghana','Angola','Qatar','Oman','Kuwait'];
+var EX_APR26=[50988119,41182482,44132911,35194835,25589526,15739259,14381906,17328369,23949028,12943803,10734050,14171859,7015449,4193205,8889222];  // ยอดเดือน AUG'26 (kg)
+var EX_ACC26=[379756327,319401281,296324969,288679607,236956712,175341960,153924740,139278598,126553828,102221923,80896255,75348121,69006699,64689380,64104648];  // สะสม ม.ค.–ส.ค. 2026 (kg)
 
-// Japan Products JUL2026 (KG)
-var JPROD_LABELS=['Boneless Thighs/Drumsticks','WOG Frozen','Other Offal','Bone-in Wings','Bone-in Thighs','Gizzards','Other Bone-in','Other Boneless','Boneless Breasts','Chicken Feet/Paws'];
-var JPROD_KG=[34995956,1078073,749024,407511,336546,258063,257073,145292,24072,3010];
+// Japan Products AUG2026 (KG)
+var JPROD_LABELS=['Boneless Thighs/Drumsticks','WOG Frozen','Other Offal','Bone-in Wings','Gizzards','Other Bone-in','Boneless Breasts','Bone-in Thighs','Other Boneless','Chicken Livers'];
+var JPROD_KG=[37524159,1186442,812400,375996,375492,341285,230533,158390,124056,29625];
 
 // Japan by State
 var STATE_NAMES=['PR (Paraná)','SC (Santa Catarina)','RS (Rio Grande do Sul)','MS (Mato Grosso do Sul)','GO (Goiás)','SP (São Paulo)','MG (Minas Gerais)','MT (Mato Grosso)','DF (Distrito Federal)','Other States + PE'];
-var STATE_MONTHS=['DEC\'25','JAN\'26','FEB\'26','MAR\'26','APR\'26','MAY\'26','JUN\'26','JUL\'26'];
+var STATE_MONTHS=['JAN\'26','FEB\'26','MAR\'26','APR\'26','MAY\'26','JUN\'26','JUL\'26','AUG\'26'];
 var STATE_DATA=[
-  [10908.03,8148.99,16129.82,14433.19,15914.34,16424.53,17103.54,11436.07],
-  [10586.98,9063.63,9342.75,10815.93,11200.10,11972.71,11325.56,11738.98],
-  [4331.23,3118.77,3185.78,4899.56,3757.44,2793.92,5242.40,4079.31],
-  [2520.13,1628.23,3123.82,3211.87,3024.14,3074.48,2899.73,2429.20],
-  [2676.16,2714.48,1841.93,2616.46,2908.42,3149.52,3231.77,1843.52],
-  [1846.67,1857.36,1856.39,3112.01,2368.61,2588.85,3459.94,3708.69],
-  [1175.85,1125.69,960.07,1320.32,983.78,1175.48,1319.48,1021.44],
-  [692.64,752.12,552.13,398.80,742.82,704.04,814.16,916.04],
-  [460.09,724.61,893.11,1002.07,833.86,997.76,1001.11,1057.30],
-  [0.85,24.12,24.09,24.76,24.02,24.10,0.61,25.19]
+  [8148.99,16129.82,14433.19,15914.34,16424.53,17103.54,11436.07,12007.66],
+  [9063.63,9342.75,10815.93,11200.10,11972.71,11325.56,11738.98,13218.73],
+  [3118.77,3185.78,4899.56,3757.44,2793.92,5242.40,4079.31,5161.62],
+  [1628.23,3123.82,3211.87,3024.14,3074.48,2899.73,2429.20,2421.22],
+  [2714.48,1841.93,2616.46,2908.42,3149.52,3231.77,1843.52,2550.50],
+  [1857.36,1856.39,3112.01,2368.61,2588.85,3459.94,3708.69,2854.04],
+  [1125.69,960.07,1320.32,983.78,1175.48,1319.48,1021.44,960.00],
+  [752.12,552.13,398.80,742.82,704.04,814.16,916.04,1128.43],
+  [724.61,893.11,1002.07,833.86,997.76,1001.11,1057.30,856.06],
+  [24.12,24.09,24.76,24.02,24.10,0.61,25.19,24.23]
 ];
-var STATE_TOTALS=[35198.63,29158.01,37909.89,41834.96,41757.53,42905.40,46398.31,38255.72];
+var STATE_TOTALS=[29158.01,37909.89,41834.96,41757.53,42905.40,46398.31,38255.72,41182.48];
 
 function _iT6(){
   // Chart: Top 15 Importers — dual axis not needed, use grouped bar
@@ -1408,7 +1408,7 @@ function _iT6(){
     data:{
       labels:EX_TOP15_NAMES,
       datasets:[
-        {label:'JUL 2026 (MT)',data:EX_APR26.map(function(v){return Math.round(v/1000);}),backgroundColor:'#93c5fd',borderColor:'#3b82f6',borderWidth:0,borderRadius:3,yAxisID:'y'},
+        {label:'AUG 2026 (MT)',data:EX_APR26.map(function(v){return Math.round(v/1000);}),backgroundColor:'#93c5fd',borderColor:'#3b82f6',borderWidth:0,borderRadius:3,yAxisID:'y'},
         {label:'Y2026 Accum. (MT)',data:EX_ACC26.map(function(v){return Math.round(v/1000);}),backgroundColor:'#fde68a',borderColor:'#f59e0b',borderWidth:0,borderRadius:3,yAxisID:'y'}
       ]
     },
@@ -1500,7 +1500,7 @@ function _iT7(){
   var WOG_UPTO=4;    // Brazil WOG: จริง ม.ค.–เม.ย. (ไฟล์ Brazil Export)
 
   // Japan BLK (Fresh) · จริง ม.ค.–เม.ย. (Excel settled) + พ.ค. (Packer8 quote 4,000–4,100) | คาดการณ์ มิ.ย.–ธ.ค.
-  var JP_BLK=[3300,3400,3600,4250,4250, 4050,3900,3950,3900, 3880,3860,3840];
+  var JP_BLK=[3300,3400,3600,4250,4250, 4050,3900,3950,3850, 3880,3860,3840];  // ก.ย. = 3,850 (ชีต)
   // Japan Karaage (ปรุงสุก พรีเมียม) · midpoint Packer ม.ค.–พ.ค. (ม.ค. 4,700–5,200 · ก.พ.–พ.ค. 4,800–5,300)
   var JP_KARA=[4950,5050,5050,5050,5050, 5050,5050,5050,5050, 5050,5050,5050];
   // Japan Souiku/Cooked (Excel Price(Souiku)) · จริง ม.ค.–มี.ค. · เม.ย. interpolate 3,900 · พ.ค.+ คาดการณ์
@@ -1517,7 +1517,7 @@ function _iT7(){
   // Japan BB Fresh (Packer 23 เม.ย. = 1,950–2,100 USD/ตัน) midpoint 2,025
   var JP_BB=[null,null,null,2025,null, 2050,2050,2100,2150,2100,2100,2150];
   // EU/UK SBB Salted · midpoint Packer ม.ค.–พ.ค. (บราซิลเสนอราคาตํ่ากดดัน Q1–Q2 → ฟื้น H2)
-  var EU_SBB=[3950,3700,3750,3750,3800, 3700,3600,3500,3500, 3500,3500,3500];
+  var EU_SBB=[3950,3700,3750,3750,3800, 3700,3600,3500,3650, 3650,3650,3650];  // ก.ย. Packer15 = 3,500–3,800 (ขึ้น)
   // EU/UK SBB Steam Dice · midpoint Packer ม.ค.–พ.ค.
   var EU_DICE=[4375,3850,4050,4150,4450, 4750,4750,4750,4750, 4750,4750,4750];
   // Brazil BL 200g (Excel AVE.2026 = 3,575)
@@ -1632,10 +1632,10 @@ function _iT7(){
   var rows=[
     {label:'🇯🇵 Japan BLK (Fresh)',unit:'USD/ตัน',data:JP_BLK,color:'#2563a8',src:'Excel จริง ม.ค.–เม.ย. · พ.ค. Packer8'},
     {label:'🔻 Japan BLK · ฉากทัศน์อ่อนตัว',unit:'USD/ตัน',data:AI_BLK,color:'#c0392b',ai:true,src:'ถ้า BLK ตาม offer ที่ร่วงลง (ต.ค.–ธ.ค.)'},
-    {label:'🇯🇵 Japan Karaage (ปรุงสุก)',unit:'USD/ตัน',data:JP_KARA,color:'#16a34a',src:'Packer 1–14 = 4,800–5,300 (นิ่ง)'},
+    {label:'🇯🇵 Japan Karaage (ปรุงสุก)',unit:'USD/ตัน',data:JP_KARA,color:'#16a34a',src:'Packer 1–15 = 4,800–5,300 (นิ่ง)'},
     {label:'🇯🇵 Japan BB Fresh',unit:'USD/ตัน',data:JP_BB,color:'#06b6d4',src:'Packer 23 เม.ย. = 1,950–2,100'},
-    {label:'🇪🇺 EU/UK SBB Salted',unit:'USD/ตัน',data:EU_SBB,color:'#f59e0b',src:'Packer 14 (26 ส.ค.) = 3,400–3,600 (ลดจาก 3,700–3,900)'},
-    {label:'🇪🇺 EU/UK SBB Steam Dice',unit:'USD/ตัน',data:EU_DICE,color:'#a855f7',src:'Packer 14 (26 ส.ค.) = 4,500–5,000'}
+    {label:'🇪🇺 EU/UK SBB Salted',unit:'USD/ตัน',data:EU_SBB,color:'#f59e0b',src:'Packer 15 (9 ก.ย.) = 3,500–3,800 (ขึ้นจาก 3,400–3,600)'},
+    {label:'🇪🇺 EU/UK SBB Steam Dice',unit:'USD/ตัน',data:EU_DICE,color:'#a855f7',src:'Packer 15 (9 ก.ย.) = 4,500–5,000 (นิ่ง)'}
   ];
 
   var th='<thead><tr style="background:rgba(37,99,168,.07)">';
@@ -1664,7 +1664,7 @@ function _iT7(){
     tb+='</tr>';
   });
   // Source row
-  tb+='<tr><td colspan="14" style="padding:8px 12px;font-size:10px;font-family:\'IBM Plex Sans Thai\',sans-serif;color:var(--muted);background:rgba(37,99,168,.04);border-top:1px solid rgba(37,99,168,.15)">🔵 ข้อมูลจริง (ม.ค.–ก.ย. 2569 จาก Excel/Google Sheet) · 📊 คาดการณ์ ต.ค.–ธ.ค. อ้างอิงแนวโน้มฤดูกาล + คำขอปรับราคา Q3 จากต้นทุนค่าระวาง/Packaging ที่สูงขึ้น · Karaage/SBB จากรายงานการประชุม Packer 1–14/2569 (ล่าสุด 26 ส.ค. 2569)<br>🤖 <b>Japan BLK · มุมมอง AI</b> = ฉากทัศน์ทางเลือกที่อนุมานจากข้อมูลในชีต (ราคาขึ้นเร็วเกินไปต้นปี + ซัพพลายบราซิลฟื้น + เยนอ่อน → คาด Q3 พักฐาน, Q4 ฟื้นตามฤดูกาล) — เป็นการประมาณการ <u>ไม่ใช่ราคาทางการ</u> ควรให้ฝ่ายที่ดูแลราคายืนยันก่อนใช้อ้างอิง</td></tr>';
+  tb+='<tr><td colspan="14" style="padding:8px 12px;font-size:10px;font-family:\'IBM Plex Sans Thai\',sans-serif;color:var(--muted);background:rgba(37,99,168,.04);border-top:1px solid rgba(37,99,168,.15)">🔵 ข้อมูลจริง (ม.ค.–ก.ย. 2569 จาก Excel/Google Sheet) · 📊 คาดการณ์ ต.ค.–ธ.ค. อ้างอิงแนวโน้มฤดูกาล + คำขอปรับราคา Q3 จากต้นทุนค่าระวาง/Packaging ที่สูงขึ้น · Karaage/SBB จากรายงานการประชุม Packer 1–15/2569 (ล่าสุด 9 ก.ย. 2569)<br>🤖 <b>Japan BLK · มุมมอง AI</b> = ฉากทัศน์ทางเลือกที่อนุมานจากข้อมูลในชีต (ราคาขึ้นเร็วเกินไปต้นปี + ซัพพลายบราซิลฟื้น + เยนอ่อน → คาด Q3 พักฐาน, Q4 ฟื้นตามฤดูกาล) — เป็นการประมาณการ <u>ไม่ใช่ราคาทางการ</u> ควรให้ฝ่ายที่ดูแลราคายืนยันก่อนใช้อ้างอิง</td></tr>';
   tb+='</tbody>';
   tbl.innerHTML=th+tb;
 }
@@ -1687,7 +1687,8 @@ function _iT8(){
     {date:'2026-07-08',kron:11.5,bb:67,leg:78.5,live:40,jp:3850,thb:33.39},
     {date:'2026-08-05',kron:15,bb:73,leg:85,live:44,jp:3850,thb:33.20},
     {date:'2026-08-19',kron:15.5,bb:73,leg:85,live:44,jp:3800,thb:33.12},
-    {date:'2026-08-26',kron:15,bb:75,leg:84,live:45,jp:3750,thb:32.72}
+    {date:'2026-08-26',kron:15,bb:75,leg:84,live:45,jp:3750,thb:32.72},
+    {date:'2026-09-02',kron:14,bb:75,leg:83,live:45,jp:3750,thb:33.32}
   ];
   var lbl=DP.map(function(r){var p=r.date.split('-');return parseInt(p[2],10)+' '+_M8[parseInt(p[1],10)-1];});
   mkLine('c-dom-parts',lbl,[
