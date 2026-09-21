@@ -411,12 +411,12 @@ body{
   <div class="kpi-row">
     <div class="kpi"><div class="kpi-lbl">PORT 2024 รวม</div><div class="kpi-val" style="color:#06b6d4">601,975 <span class="kpi-unit">MT</span></div><div class="kpi-avg">(Ave. 50,165 MT/เดือน)</div><div class="kpi-d nu">—</div></div>
     <div class="kpi"><div class="kpi-lbl">PORT 2025 รวม</div><div class="kpi-val" style="color:#22c55e">400,655 <span class="kpi-unit">MT</span></div><div class="kpi-avg">(Ave. 33,388 MT/เดือน)</div><div class="kpi-d dn">▼ -33.4% vs 2024</div></div>
-    <div class="kpi"><div class="kpi-lbl">PORT 2026 JAN–JUL</div><div class="kpi-val" style="color:#f59e0b">278,219 <span class="kpi-unit">MT</span></div><div class="kpi-avg">(Ave. 39,746 MT/เดือน)</div><div class="kpi-d up">▲ pace vs 2025</div></div>
+    <div class="kpi"><div class="kpi-lbl">PORT 2026 JAN–AUG</div><div class="kpi-val" style="color:#f59e0b">319,401 <span class="kpi-unit">MT</span></div><div class="kpi-avg">(Ave. 39,925 MT/เดือน)</div><div class="kpi-d up">▲ pace vs 2025</div></div>
     <div class="kpi"><div class="kpi-lbl">เป้าหมาย Ave.</div><div class="kpi-val" style="color:var(--muted)">35–40k</div><div class="kpi-avg">MT / เดือน</div><div class="kpi-d nu">—</div></div>
   </div>
   <div class="card">
     <div class="card-ttl">ยอดรวมรายปี — Port Brazil → Japan</div>
-    <div class="card-sub">MT / ปี · *2026 = ถึงกลางปี (JAN–JUL)</div>
+    <div class="card-sub">MT / ปี · *2026 = ถึงเดือน ส.ค. (JAN–AUG)</div>
     <div class="leg"><div class="leg-i"><div class="leg-d" style="background:#7dd3fc"></div>Port Qty (MT)</div></div>
     <div class="h180"><canvas id="c-pt-ann"></canvas></div>
   </div>
@@ -458,7 +458,7 @@ body{
   </div>
   <div class="card">
     <div class="card-ttl">ยอดรวมรายปี — Brazil Raw Meat Exports แยกตลาด</div>
-    <div class="card-sub">MT / ปี · *2026 = ถึงกลางปี (JAN–JUL)</div>
+    <div class="card-sub">MT / ปี · *2026 = ถึงเดือน ส.ค. (JAN–AUG)</div>
     <div class="leg">
       <div class="leg-i"><div class="leg-d" style="background:#93c5fd"></div>Japan</div>
       <div class="leg-i"><div class="leg-d" style="background:#fca5a5"></div>China</div>
@@ -494,7 +494,7 @@ body{
       <div class="h240"><canvas id="c-rw-25"></canvas></div>
     </div>
     <div class="card" style="margin-bottom:0">
-      <div class="card-ttl">รายเดือน 2026* (JAN–JUL)</div><div class="card-sub">MT / เดือน</div>
+      <div class="card-ttl">รายเดือน 2026* (JAN–AUG)</div><div class="card-sub">MT / เดือน</div>
       <div class="leg">
         <div class="leg-i"><div class="leg-d" style="background:#93c5fd"></div>Japan</div>
         <div class="leg-i"><div class="leg-d" style="background:#fca5a5"></div>China</div>
@@ -914,17 +914,17 @@ var ANN_USA={'2022':11817,'2023':12274,'2024':9032,'2025':7120,'2026':2512};
 var ANN_OTH={'2022':2210,'2023':796,'2024':744,'2025':415,'2026':155};
 var PORT24=[38737,36009,31401,41731,31997,30209,46806,38509,36160,39395,34532,30896];
 var PORT25=[27880,27549,29600,37192,27972,46920,42705,30119,36227,29530,29762,35199];
-var PORT26=[29158,37910,41835,41758,42905,46398,38255,null,null,null,null,null];
+var PORT26=[29158,37910,41835,41758,42905,46398,38255,41182,null,null,null,null];  // ส.ค.=41,182 จากไฟล์ AUGUST'26 (ชีตยังไม่ได้กรอก — ค่าในชีตจะทับให้เองเมื่อกรอกแล้ว)
 var PORT_SRC={'2024':PORT24,'2025':PORT25,'2026':PORT26};
-var RAW_JAPAN={'2024':[39548,36008,31441,41731,31997,31188,46806,39056,36160,39395,34532,30896],'2025':[27880,27549,29600,37192,27972,46920,42705,30119,36227,29530,29762,35200],'2026':[29158,37910,41835,41758,42905,46398,38255,null,null,null,null,null]};
-var RAW_CHINA={'2024':[38425,42053,38937,57726,49806,49225,61087,16386,55191,53524,46382,53460],'2025':[44325,49651,46439,51968,35852,405,83,83,51,28,137,21224],'2026':[33428,49450,51836,47758,48298,null,70549,null,null,null,null,null]};
-var RAW_UAE={'2024':[38687,39332,40716,40921,39571,49526,38606,39056,41410,30950,34024,30148],'2025':[38859,38699,32163,40387,31841,48614,51516,32511,37145,40840,39945,46022],'2026':[44265,43983,25703,18963,32265,null,41211,null,null,null,null,null]};
-var RAW_SAUDI={'2024':[34953,32671,34998,37284,37512,28659,26284,26933,29960,22054,29813,29673],'2025':[31811,31509,40487,34081,30646,33389,31467,27091,35719,36639,29754,34574],'2026':[33556,33825,38376,35873,39086,null,38717,null,null,null,null,null]};
-var ANN_RJ={'2024':438758,'2025':400656,'2026':278219};
-var ANN_RC={'2024':562202,'2025':250246,'2026':301319};
-var ANN_RU={'2024':462947,'2025':478542,'2026':206390};
-var ANN_RS={'2024':370794,'2025':397167,'2026':219433};
-var ANN_RK={'2024':155813,'2025':187375,'2026':103439};
+var RAW_JAPAN={'2024':[39548,36008,31441,41731,31997,31188,46806,39056,36160,39395,34532,30896],'2025':[27880,27549,29600,37192,27972,46920,42705,30119,36227,29530,29762,35200],'2026':[29158,37910,41835,41758,42905,46398,38255,41182,null,null,null,null]};
+var RAW_CHINA={'2024':[38425,42053,38937,57726,49806,49225,61087,16386,55191,53524,46382,53460],'2025':[44325,49651,46439,51968,35852,405,83,83,51,28,137,21224],'2026':[33428,49450,51836,47758,48298,50120,70549,50988,null,null,null,null]};
+var RAW_UAE={'2024':[38687,39332,40716,40921,39571,49526,38606,39056,41410,30950,34024,30148],'2025':[38859,38699,32163,40387,31841,48614,51516,32511,37145,40840,39945,46022],'2026':[44265,43983,25703,18963,32265,46022,41211,44133,null,null,null,null]};
+var RAW_SAUDI={'2024':[34953,32671,34998,37284,37512,28659,26284,26933,29960,22054,29813,29673],'2025':[31811,31509,40487,34081,30646,33389,31467,27091,35719,36639,29754,34574],'2026':[33556,33825,38376,35873,39086,33051,38717,35195,null,null,null,null]};
+var ANN_RJ={'2024':438758,'2025':400656,'2026':319401};
+var ANN_RC={'2024':562202,'2025':250246,'2026':402427};
+var ANN_RU={'2024':462947,'2025':478542,'2026':296545};
+var ANN_RS={'2024':370794,'2025':397167,'2026':287679};
+var ANN_RK={'2024':155813,'2025':187375,'2026':139253};  // +มิ.ย. 18,486 +ส.ค. 17,328 จากไฟล์ Excel
 var TQ24=[372400,364859,385673,445590,419821,403884,432044,352191,446199,427529,429894,408130];
 var TQ25=[411441,432026,434556,435997,359755,311034,369719,368473,450997,466907,393755,463207];
 var TQ26=[424920,455377,461931,436869,455864,null,477214,null,null,null,null,null];
@@ -1062,7 +1062,7 @@ function _iT1(){
   setOvY('2026');
 }
 function _iT2(){
-  mkBar('c-pt-ann',['2024','2025','2026*'],[bds('Port Qty',[601975,400655,278219],'#7dd3fc','#06b6d4')]);
+  mkBar('c-pt-ann',['2024','2025','2026*'],[bds('Port Qty',[601975,400655,(function(){var t=0;for(var i=0;i<12;i++)t+=PORT26[i]||0;return t;})()],'#7dd3fc','#06b6d4')]);  // 2026 = ผลรวมเดือนที่มีข้อมูลจริง
   buildHM('hm2-grid',PORT_SRC,['2024','2025','2026']);
   setPtY('all');
 }
@@ -1361,10 +1361,9 @@ function _gsApply(g){
   }
 
   // อัปเดต annual ของ Tab 3 (ตัวแปร global) — ส่วน annual ของ Tab 2/4/5 เป็น literal คงเดิม (เหมือน CSV upload)
-  ['2024','2025','2026'].forEach(function(y){
-    if(annRJ[y])ANN_RJ[y]=annRJ[y]; if(annRC[y])ANN_RC[y]=annRC[y];
-    if(annRU[y])ANN_RU[y]=annRU[y]; if(annRS[y])ANN_RS[y]=annRS[y]; if(annRK[y])ANN_RK[y]=annRK[y];
-  });
+  // ⚠ ใช้ผลรวมของอาร์เรย์รายเดือน "หลัง" merge (ค่าจากชีต + เดือนที่เติมจากไฟล์ Excel) ไม่ใช่ผลรวมเฉพาะที่ชีตมี
+  // ไม่งั้นเดือนที่ชีตยังไม่ได้กรอก (เช่น มิ.ย./ส.ค. 2569) จะหายไปจากบาร์รายปี ทั้งที่กราฟรายเดือนมีอยู่
+  function _sumMo(o,y){var a=o&&o[y];return a?a.reduce(function(x,v){return x+(v||0);},0):0;}
 
   // ── serialize → CSV แล้วป้อนให้ parseCSV() (อัปเดต Tab 1–5 + re-render กราฟอัตโนมัติ) ──
   var keys=Object.keys(col);
@@ -1377,6 +1376,14 @@ function _gsApply(g){
     lines.push(cells.join(','));
   }
   parseCSV(lines.join('\n'),'GoogleSheet');   // จะ re-render เฉพาะแท็บที่เปิดแล้ว (รวม Tab 7 ที่อ่าน GS_PRICE)
+
+  // หลัง merge เสร็จ ค่อยคิดยอดรายปีจากอาร์เรย์รายเดือนจริง (เกาหลีใต้ไม่มีอาร์เรย์รายเดือน → ใช้ค่าที่มากกว่า)
+  ['2024','2025','2026'].forEach(function(y){
+    var j=_sumMo(RAW_JAPAN,y), c=_sumMo(RAW_CHINA,y), u=_sumMo(RAW_UAE,y), sa=_sumMo(RAW_SAUDI,y);
+    if(j)ANN_RJ[y]=j; if(c)ANN_RC[y]=c; if(u)ANN_RU[y]=u; if(sa)ANN_RS[y]=sa;
+    if(annRK[y])ANN_RK[y]=Math.max(annRK[y],ANN_RK[y]||0);
+  });
+  if(_tabInited&&_tabInited['t3'])_iT3();   // วาดบาร์รายปีใหม่ด้วยยอดที่รวมเดือนเติมแล้ว
 
   var now=new Date();
   var ts=now.getDate()+'/'+(now.getMonth()+1)+' '+now.getHours()+':'+String(now.getMinutes()).padStart(2,'0');
