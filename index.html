@@ -83,6 +83,7 @@ body{
 
 /* ── KPI ── */
 .kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
+.kpi-row.k5{grid-template-columns:repeat(5,1fr)}
 .kpi{
   background:rgba(255,255,255,.82);
   border:1px solid var(--border);
@@ -166,7 +167,7 @@ body{
 @keyframes gs-spin{to{transform:rotate(360deg)}}
 .gs-spinning{animation:gs-spin .8s linear infinite;transform-origin:50% 50%}
 
-@media(max-width:860px){.kpi-row{grid-template-columns:repeat(2,1fr)}.g2{grid-template-columns:1fr}}
+@media(max-width:860px){.kpi-row,.kpi-row.k5{grid-template-columns:repeat(2,1fr)}.g2{grid-template-columns:1fr}}
 
 /* ── LOGIN GATE · รูปดอกไม้ขาวลอยน้ำสีฟ้า ── */
 #login-gate{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;overflow:hidden;
@@ -761,7 +762,7 @@ body{
     </div>
   </div>
 
-  <div class="kpi-row" id="kpi10"></div>
+  <div class="kpi-row k5" id="kpi10"></div>
 
   <div class="g2">
     <div class="card" style="margin-bottom:0">
@@ -802,7 +803,17 @@ body{
     </div>
   </div>
 
-  <div style="margin-top:16px;background:rgba(37,99,168,.06);border-left:4px solid var(--blue);border-radius:0 8px 8px 0;padding:14px 18px;font-family:'IBM Plex Sans Thai',sans-serif;font-size:12.5px;color:var(--text);line-height:1.55"><b>ภาพรวม:</b> ทุกตลาดหลัก (ญี่ปุ่น/EU/UK) ไทย<b>เน้นไก่ปรุงสุก (มูลค่าสูง) มากขึ้น · ไก่สดหดตัว −18 ถึง −20% YoY</b> เพราะแข่งราคาไก่สดกับบราซิลยาก · <b>UK เกือบ 95% เป็นไก่ปรุงสุก</b> (ตลาดพรีเมียม) · <b>มาเลเซียเป็นตลาดไก่สดล้วน</b> (BB/น่อง) ทรงตัว ~เท่าปีก่อน · ยอดรวม 4 ตลาด ม.ค.–ก.ค.: ญี่ปุ่น 294k · UK 120k · EU 100k · มาเลเซีย 62k ตัน</div>
+  <div class="card" style="margin-top:16px;margin-bottom:0">
+    <div class="card-ttl">🇭🇰 ฮ่องกง</div>
+    <div class="card-sub">ตัน/เดือน · ไก่สด vs ปรุงสุก · <b>ตลาดเดียวที่ไก่สดโต</b> (+13.7% YoY) ส่วนปรุงสุกหด (−9.7%)</div>
+    <div class="leg">
+      <div class="leg-i"><div class="leg-d" style="background:#93c5fd"></div>ไก่สด</div>
+      <div class="leg-i"><div class="leg-d" style="background:#86efac"></div>ไก่ปรุงสุก</div>
+    </div>
+    <div class="h240"><canvas id="c-ex-hk"></canvas></div>
+  </div>
+
+  <div style="margin-top:16px;background:rgba(37,99,168,.06);border-left:4px solid var(--blue);border-radius:0 8px 8px 0;padding:14px 18px;font-family:'IBM Plex Sans Thai',sans-serif;font-size:12.5px;color:var(--text);line-height:1.55"><b>ภาพรวม:</b> ทุกตลาดหลัก (ญี่ปุ่น/EU/UK) ไทย<b>เน้นไก่ปรุงสุก (มูลค่าสูง) มากขึ้น · ไก่สดหดตัว −18 ถึง −20% YoY</b> เพราะแข่งราคาไก่สดกับบราซิลยาก · <b>UK เกือบ 95% เป็นไก่ปรุงสุก</b> (ตลาดพรีเมียม) · <b>มาเลเซียเป็นตลาดไก่สดล้วน</b> (BB/น่อง) ทรงตัว ~เท่าปีก่อน · ยอดรวม ม.ค.–ส.ค.: ญี่ปุ่น 329k · UK 132k · EU 116k · มาเลเซีย 67k · <b>ฮ่องกง 12k ตัน</b> · <b style="color:#be185d">ฮ่องกงสวนทาง</b> — ไก่สดโต +13.7% แต่ปรุงสุกหด −9.7% (ตลาดเล็กแต่เป็นทางออกของไก่สดที่แข่งราคาไม่ได้ในตลาดอื่น)</div>
 
 </div></div>
 
@@ -1774,16 +1785,21 @@ function _iT10(){
   var UKF=[683,876,968,1533,758,775,970,510,null,null,null,null];
   var UKC=[14750,16061,14348,18537,16086,11588,22198,11641,null,null,null,null];
   var MYF=[11850,9553,7923,8328,8214,5784,9912,5822,null,null,null,null];
+  // ฮ่องกง — หักลบจากยอดสะสม Table 2 (Packer 4,6,7,9,11,12,14,15) · รวม ม.ค.-ส.ค. = สด 7,444 / ปรุงสุก 4,701
+  var HKF=[975,806,905,948,915,769,1228,898,null,null,null,null];
+  var HKC=[541,423,456,715,592,439,833,702,null,null,null,null];
   function grp(id,fr,co){mkBar(id,MO,[bds('ไก่สด',fr,'#93c5fd','#3b82f6'),bds('ไก่ปรุงสุก',co,'#86efac','#22c55e')]);}
   grp('c-ex-jp',JPF,JPC); grp('c-ex-eu',EUF,EUC); grp('c-ex-uk',UKF,UKC);
   mkBar('c-ex-my',MO,[bds('ไก่สด',MYF,'#93c5fd','#3b82f6')]);
+  grp('c-ex-hk',HKF,HKC);
   function K(flag,nm,val,color,note){return '<div class="kpi"><div class="kpi-lbl">'+flag+' '+nm+' (YTD ส.ค.)</div><div class="kpi-val" style="color:'+color+'">'+val+' <span class="kpi-unit">ตัน</span></div><div class="kpi-avg">'+note+'</div></div>';}
   var k=document.getElementById('kpi10');
   if(k)k.innerHTML=''
     +K('🇯🇵','ญี่ปุ่น','329,264','#3b82f6','ปรุงสุก 60% · <span class="kpi-d dn" style="display:inline">▼ −0.1%</span>')
     +K('🇬🇧','UK','132,282','#8b5cf6','ปรุงสุก 95% · <span class="kpi-d dn" style="display:inline">▼ −5.6%</span>')
     +K('🇪🇺','EU','115,782','#22c55e','ปรุงสุก 63% · <span class="kpi-d dn" style="display:inline">▼ −2.3%</span>')
-    +K('🇲🇾','มาเลเซีย','67,386','#f59e0b','ไก่สดล้วน · <span class="kpi-d dn" style="display:inline">▼ −7.6%</span>');
+    +K('🇲🇾','มาเลเซีย','67,386','#f59e0b','ไก่สดล้วน · <span class="kpi-d dn" style="display:inline">▼ −7.6%</span>')
+    +K('🇭🇰','ฮ่องกง','12,145','#ec4899','ปรุงสุก 39% · <span class="kpi-d up" style="display:inline">▲ +3.3%</span>');
 }
 
 </script>
