@@ -1,0 +1,1110 @@
+{
+ "_source": "Table 2 รายงานประชุมสมาคมฯ (ยอดสะสม YTD → หักลบเป็นรายเดือน)",
+ "_generated": "2026-09-22T17:47:37",
+ "markets": [
+  "jp",
+  "eu",
+  "uk",
+  "my",
+  "hk",
+  "kr",
+  "cn"
+ ],
+ "data": {
+  "2022": {
+   "jp": {
+    "fresh": [
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "cooked": [
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "ytd_last": 11
+   },
+   "eu": {
+    "fresh": [
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "cooked": [
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "ytd_last": 11
+   },
+   "uk": {
+    "fresh": [
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "cooked": [
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "ytd_last": 11
+   },
+   "my": {
+    "fresh": [
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "cooked": [
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "ytd_last": null
+   },
+   "hk": {
+    "fresh": [
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "cooked": [
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "ytd_last": 11
+   },
+   "kr": {
+    "fresh": [
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "cooked": [
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "ytd_last": 11
+   },
+   "cn": {
+    "fresh": [
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "cooked": [
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "ytd_last": 11
+   }
+  },
+  "2023": {
+   "jp": {
+    "fresh": [
+     null,
+     null,
+     null,
+     11412,
+     null,
+     null,
+     12446,
+     16706,
+     null,
+     null,
+     17529,
+     13956
+    ],
+    "cooked": [
+     null,
+     null,
+     null,
+     19469,
+     null,
+     null,
+     23358,
+     23255,
+     null,
+     null,
+     25456,
+     17728
+    ],
+    "ytd_last": 12
+   },
+   "eu": {
+    "fresh": [
+     null,
+     null,
+     null,
+     6501,
+     null,
+     null,
+     2732,
+     2401,
+     null,
+     null,
+     5501,
+     6133
+    ],
+    "cooked": [
+     null,
+     null,
+     null,
+     5585,
+     null,
+     null,
+     6882,
+     6641,
+     null,
+     null,
+     6657,
+     7728
+    ],
+    "ytd_last": 12
+   },
+   "uk": {
+    "fresh": [
+     null,
+     null,
+     null,
+     1301,
+     null,
+     null,
+     829,
+     746,
+     null,
+     null,
+     1586,
+     726
+    ],
+    "cooked": [
+     null,
+     null,
+     null,
+     12099,
+     null,
+     null,
+     12740,
+     13518,
+     null,
+     null,
+     12513,
+     13289
+    ],
+    "ytd_last": 12
+   },
+   "my": {
+    "fresh": [
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "cooked": [
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "ytd_last": null
+   },
+   "hk": {
+    "fresh": [
+     null,
+     null,
+     null,
+     702,
+     null,
+     null,
+     821,
+     852,
+     null,
+     null,
+     1039,
+     836
+    ],
+    "cooked": [
+     null,
+     null,
+     null,
+     397,
+     null,
+     null,
+     545,
+     581,
+     null,
+     null,
+     701,
+     636
+    ],
+    "ytd_last": 12
+   },
+   "kr": {
+    "fresh": [
+     null,
+     null,
+     null,
+     3180,
+     null,
+     null,
+     2679,
+     2817,
+     null,
+     null,
+     2565,
+     2662
+    ],
+    "cooked": [
+     null,
+     null,
+     null,
+     1725,
+     null,
+     null,
+     2458,
+     2570,
+     null,
+     null,
+     1774,
+     1751
+    ],
+    "ytd_last": 12
+   },
+   "cn": {
+    "fresh": [
+     null,
+     null,
+     null,
+     8548,
+     null,
+     null,
+     8132,
+     10868,
+     null,
+     null,
+     9412,
+     9088
+    ],
+    "cooked": [
+     null,
+     null,
+     null,
+     0,
+     null,
+     null,
+     0,
+     0,
+     null,
+     null,
+     0,
+     0
+    ],
+    "ytd_last": 12
+   }
+  },
+  "2024": {
+   "jp": {
+    "fresh": [
+     16505,
+     17702,
+     17630,
+     13083,
+     18390,
+     15567,
+     15749,
+     19631,
+     15900,
+     19421,
+     20065,
+     13082
+    ],
+    "cooked": [
+     21989,
+     20901,
+     25347,
+     23358,
+     28395,
+     23088,
+     22845,
+     24819,
+     21649,
+     27247,
+     27119,
+     19542
+    ],
+    "ytd_last": 12
+   },
+   "eu": {
+    "fresh": [
+     6165,
+     5841,
+     6537,
+     5367,
+     4884,
+     4766,
+     5471,
+     5614,
+     6717,
+     4682,
+     5988,
+     6220
+    ],
+    "cooked": [
+     7172,
+     7791,
+     7520,
+     7774,
+     8598,
+     7430,
+     8819,
+     8782,
+     7743,
+     7796,
+     7868,
+     9526
+    ],
+    "ytd_last": 12
+   },
+   "uk": {
+    "fresh": [
+     983,
+     1190,
+     1329,
+     515,
+     629,
+     685,
+     737,
+     982,
+     1053,
+     1191,
+     1112,
+     889
+    ],
+    "cooked": [
+     14593,
+     14283,
+     15131,
+     15863,
+     14776,
+     15019,
+     18925,
+     18171,
+     17338,
+     17825,
+     16760,
+     16283
+    ],
+    "ytd_last": 12
+   },
+   "my": {
+    "fresh": [
+     8966,
+     9335,
+     8599,
+     6379,
+     7859,
+     7432,
+     7277,
+     7824,
+     6037,
+     8337,
+     7996,
+     null
+    ],
+    "cooked": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     null
+    ],
+    "ytd_last": 11
+   },
+   "hk": {
+    "fresh": [
+     856,
+     958,
+     824,
+     724,
+     993,
+     738,
+     1010,
+     949,
+     924,
+     1008,
+     815,
+     790
+    ],
+    "cooked": [
+     437,
+     426,
+     571,
+     543,
+     559,
+     651,
+     598,
+     734,
+     489,
+     698,
+     713,
+     768
+    ],
+    "ytd_last": 12
+   },
+   "kr": {
+    "fresh": [
+     3448,
+     2722,
+     2420,
+     2294,
+     2503,
+     1675,
+     1744,
+     2091,
+     1659,
+     1928,
+     2385,
+     1801
+    ],
+    "cooked": [
+     1669,
+     2140,
+     1862,
+     2062,
+     1955,
+     1888,
+     2385,
+     2168,
+     2011,
+     1958,
+     2055,
+     1794
+    ],
+    "ytd_last": 12
+   },
+   "cn": {
+    "fresh": [
+     9306,
+     10078,
+     10139,
+     7103,
+     9068,
+     8657,
+     8865,
+     10455,
+     8812,
+     11423,
+     10861,
+     10120
+    ],
+    "cooked": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "ytd_last": 12
+   }
+  },
+  "2025": {
+   "jp": {
+    "fresh": [
+     19266,
+     16278,
+     17415,
+     14325,
+     22144,
+     16142,
+     13178,
+     15394,
+     11885,
+     24008,
+     15763,
+     null
+    ],
+    "cooked": [
+     23108,
+     24134,
+     22615,
+     23563,
+     26373,
+     24339,
+     24944,
+     26308,
+     18890,
+     36629,
+     23913,
+     null
+    ],
+    "ytd_last": 11
+   },
+   "eu": {
+    "fresh": [
+     5625,
+     4936,
+     6441,
+     5861,
+     6937,
+     6800,
+     8259,
+     7440,
+     6483,
+     7293,
+     8405,
+     null
+    ],
+    "cooked": [
+     8525,
+     9302,
+     7919,
+     7051,
+     8792,
+     7635,
+     8412,
+     8577,
+     7785,
+     7871,
+     7103,
+     null
+    ],
+    "ytd_last": 11
+   },
+   "uk": {
+    "fresh": [
+     1428,
+     1404,
+     1099,
+     1494,
+     1245,
+     729,
+     784,
+     650,
+     672,
+     840,
+     878,
+     null
+    ],
+    "cooked": [
+     16925,
+     15400,
+     16101,
+     16312,
+     17366,
+     15429,
+     17561,
+     16200,
+     14020,
+     21323,
+     15267,
+     null
+    ],
+    "ytd_last": 11
+   },
+   "my": {
+    "fresh": [
+     7449,
+     8132,
+     8179,
+     8198,
+     9491,
+     10038,
+     10044,
+     11393,
+     8089,
+     13015,
+     7709,
+     null
+    ],
+    "cooked": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     null
+    ],
+    "ytd_last": 11
+   },
+   "hk": {
+    "fresh": [
+     842,
+     689,
+     858,
+     654,
+     927,
+     830,
+     859,
+     890,
+     976,
+     1304,
+     1084,
+     null
+    ],
+    "cooked": [
+     486,
+     735,
+     558,
+     434,
+     772,
+     790,
+     659,
+     771,
+     481,
+     1147,
+     599,
+     null
+    ],
+    "ytd_last": 11
+   },
+   "kr": {
+    "fresh": [
+     2106,
+     2467,
+     2090,
+     1871,
+     2970,
+     3683,
+     6857,
+     6318,
+     1607,
+     4743,
+     2783,
+     null
+    ],
+    "cooked": [
+     1692,
+     1191,
+     1439,
+     1583,
+     1930,
+     1698,
+     1576,
+     1372,
+     1501,
+     2053,
+     1426,
+     null
+    ],
+    "ytd_last": 11
+   },
+   "cn": {
+    "fresh": [
+     9763,
+     12563,
+     8889,
+     9168,
+     12007,
+     8701,
+     10854,
+     4192,
+     3491,
+     7264,
+     4344,
+     null
+    ],
+    "cooked": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     null
+    ],
+    "ytd_last": 11
+   }
+  },
+  "2026": {
+   "jp": {
+    "fresh": [
+     18797,
+     16938,
+     12066,
+     15998,
+     18226,
+     14378,
+     19834,
+     16361,
+     null,
+     null,
+     null,
+     null
+    ],
+    "cooked": [
+     23644,
+     24794,
+     22714,
+     28642,
+     25289,
+     21180,
+     31600,
+     18803,
+     null,
+     null,
+     null,
+     null
+    ],
+    "ytd_last": 8
+   },
+   "eu": {
+    "fresh": [
+     6182,
+     6160,
+     3616,
+     4836,
+     4629,
+     4566,
+     6607,
+     5787,
+     null,
+     null,
+     null,
+     null
+    ],
+    "cooked": [
+     9376,
+     9210,
+     8388,
+     8707,
+     10263,
+     7653,
+     10235,
+     9567,
+     null,
+     null,
+     null,
+     null
+    ],
+    "ytd_last": 8
+   },
+   "uk": {
+    "fresh": [
+     683,
+     876,
+     968,
+     1533,
+     758,
+     775,
+     970,
+     510,
+     null,
+     null,
+     null,
+     null
+    ],
+    "cooked": [
+     14750,
+     16061,
+     14348,
+     18537,
+     16086,
+     11588,
+     22198,
+     11641,
+     null,
+     null,
+     null,
+     null
+    ],
+    "ytd_last": 8
+   },
+   "my": {
+    "fresh": [
+     11850,
+     9553,
+     7923,
+     8328,
+     8214,
+     5784,
+     9912,
+     5822,
+     null,
+     null,
+     null,
+     null
+    ],
+    "cooked": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     null,
+     null,
+     null,
+     null
+    ],
+    "ytd_last": 8
+   },
+   "hk": {
+    "fresh": [
+     975,
+     806,
+     905,
+     948,
+     915,
+     769,
+     1228,
+     898,
+     null,
+     null,
+     null,
+     null
+    ],
+    "cooked": [
+     541,
+     423,
+     456,
+     715,
+     592,
+     439,
+     833,
+     702,
+     null,
+     null,
+     null,
+     null
+    ],
+    "ytd_last": 8
+   },
+   "kr": {
+    "fresh": [
+     2570,
+     2192,
+     1782,
+     2778,
+     2794,
+     1550,
+     3553,
+     1455,
+     null,
+     null,
+     null,
+     null
+    ],
+    "cooked": [
+     1508,
+     1885,
+     1968,
+     1730,
+     1757,
+     1182,
+     1782,
+     1088,
+     null,
+     null,
+     null,
+     null
+    ],
+    "ytd_last": 8
+   },
+   "cn": {
+    "fresh": [
+     5310,
+     3826,
+     3054,
+     3445,
+     4152,
+     3794,
+     4688,
+     4591,
+     null,
+     null,
+     null,
+     null
+    ],
+    "cooked": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     null,
+     null,
+     null,
+     null
+    ],
+    "ytd_last": 8
+   }
+  }
+ }
+}

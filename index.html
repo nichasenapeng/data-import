@@ -84,6 +84,7 @@ body{
 /* ── KPI ── */
 .kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
 .kpi-row.k5{grid-template-columns:repeat(5,1fr)}
+.kpi-row.kauto{grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}
 .kpi{
   background:rgba(255,255,255,.82);
   border:1px solid var(--border);
@@ -758,64 +759,73 @@ body{
   <div style="background:rgba(37,99,168,.07);border:1px solid rgba(37,99,168,.18);border-radius:10px;padding:10px 16px;margin-bottom:16px;display:flex;align-items:center;gap:10px;flex-wrap:wrap">
     <span style="font-size:16px">🇹🇭</span>
     <div style="font-family:'IBM Plex Sans Thai',sans-serif;font-size:12px;color:var(--navy)">
-      <strong>ที่มาข้อมูล:</strong> ปริมาณส่งออกไก่ไทยไปแต่ละตลาด แยกไก่สด/ไก่ปรุงสุก · จากรายงานการประชุม Packer 1–15/2569 (ยอดสะสม YTD → แปลงเป็นรายเดือน) · ม.ค.–ส.ค. 2569 · หน่วยตัน
+      <strong>ที่มาข้อมูล:</strong> ปริมาณส่งออกไก่ไทยไปแต่ละตลาด แยกไก่สด/ไก่ปรุงสุก · จากตาราง Table 2 ของรายงานการประชุม Packer (ยอดสะสม YTD → หักลบเป็นรายเดือน · ใช้ฉบับล่าสุดของแต่ละงวด) · หน่วยตัน
     </div>
   </div>
 
-  <div class="kpi-row k5" id="kpi10"></div>
+  <div class="yr-row" style="margin-bottom:14px">
+    <span class="yr-lbl">ปี:</span>
+    <button class="yr-btn" id="exy-2024" onclick="setExY('2024')">2567</button>
+    <button class="yr-btn" id="exy-2025" onclick="setExY('2025')">2568</button>
+    <button class="yr-btn on" id="exy-2026" onclick="setExY('2026')">2569*</button>
+    <button class="yr-btn" id="exy-all" onclick="setExY('all')">เทียบ 3 ปี</button>
+    <span class="small" id="ex-note" style="margin-left:8px;color:var(--muted);font-family:'IBM Plex Sans Thai',sans-serif"></span>
+  </div>
 
-  <div class="g2">
+  <div class="kpi-row kauto" id="kpi10"></div>
+
+  <div class="g2" style="margin-top:16px">
     <div class="card" style="margin-bottom:0">
       <div class="card-ttl">🇯🇵 ญี่ปุ่น</div>
-      <div class="card-sub">ตัน/เดือน · ไก่สด vs ปรุงสุก · ปรุงสุกครอง ~60%</div>
-      <div class="leg">
-        <div class="leg-i"><div class="leg-d" style="background:#93c5fd"></div>ไก่สด</div>
-        <div class="leg-i"><div class="leg-d" style="background:#86efac"></div>ไก่ปรุงสุก</div>
-      </div>
+      <div class="card-sub">ตัน/เดือน · ตลาดหลัก ปรุงสุกครอง ~60%</div>
+      <div class="leg" id="leg-ex-jp"></div>
       <div class="h240"><canvas id="c-ex-jp"></canvas></div>
     </div>
     <div class="card" style="margin-bottom:0">
       <div class="card-ttl">🇪🇺 EU (สหภาพยุโรป)</div>
-      <div class="card-sub">ตัน/เดือน · ไก่สด vs ปรุงสุก · ปรุงสุกครอง ~64%</div>
-      <div class="leg">
-        <div class="leg-i"><div class="leg-d" style="background:#93c5fd"></div>ไก่สด</div>
-        <div class="leg-i"><div class="leg-d" style="background:#86efac"></div>ไก่ปรุงสุก</div>
-      </div>
+      <div class="card-sub">ตัน/เดือน · ปรุงสุกครอง ~64%</div>
+      <div class="leg" id="leg-ex-eu"></div>
       <div class="h240"><canvas id="c-ex-eu"></canvas></div>
     </div>
   </div>
-
   <div class="g2" style="margin-top:16px">
     <div class="card" style="margin-bottom:0">
       <div class="card-ttl">🇬🇧 UK</div>
-      <div class="card-sub">ตัน/เดือน · ไก่สด vs ปรุงสุก · ปรุงสุกครอง ~95%</div>
-      <div class="leg">
-        <div class="leg-i"><div class="leg-d" style="background:#93c5fd"></div>ไก่สด</div>
-        <div class="leg-i"><div class="leg-d" style="background:#86efac"></div>ไก่ปรุงสุก</div>
-      </div>
+      <div class="card-sub">ตัน/เดือน · ปรุงสุกเกือบ 95% (ตลาดพรีเมียม)</div>
+      <div class="leg" id="leg-ex-uk"></div>
       <div class="h240"><canvas id="c-ex-uk"></canvas></div>
     </div>
     <div class="card" style="margin-bottom:0">
       <div class="card-ttl">🇲🇾 มาเลเซีย (+ซาบาห์)</div>
       <div class="card-sub">ตัน/เดือน · ไก่สดล้วน (BB / น่องติดสะโพก) — ไม่มีปรุงสุก</div>
-      <div class="leg"><div class="leg-i"><div class="leg-d" style="background:#93c5fd"></div>ไก่สด</div></div>
+      <div class="leg" id="leg-ex-my"></div>
       <div class="h240"><canvas id="c-ex-my"></canvas></div>
     </div>
   </div>
-
-  <div class="card" style="margin-top:16px;margin-bottom:0">
-    <div class="card-ttl">🇭🇰 ฮ่องกง</div>
-    <div class="card-sub">ตัน/เดือน · เทียบ 2568 vs 2569 · <b>ตลาดเดียวที่ไก่สดโต</b> (+13.7% YoY) ส่วนปรุงสุกหด (−9.7%) · ธ.ค. 2568 ไม่มีข้อมูล (รายงานสรุปให้ถึง พ.ย.)</div>
-    <div class="leg">
-      <div class="leg-i"><div class="leg-d" style="background:#dbeafe"></div>ไก่สด 2568</div>
-      <div class="leg-i"><div class="leg-d" style="background:#93c5fd"></div>ไก่สด 2569</div>
-      <div class="leg-i"><div class="leg-d" style="background:#dcfce7"></div>ปรุงสุก 2568</div>
-      <div class="leg-i"><div class="leg-d" style="background:#86efac"></div>ปรุงสุก 2569</div>
+  <div class="g2" style="margin-top:16px">
+    <div class="card" style="margin-bottom:0">
+      <div class="card-ttl">🇭🇰 ฮ่องกง</div>
+      <div class="card-sub">ตัน/เดือน · ตลาดเล็กแต่ไก่สดโตสวนทางตลาดอื่น</div>
+      <div class="leg" id="leg-ex-hk"></div>
+      <div class="h240"><canvas id="c-ex-hk"></canvas></div>
     </div>
-    <div class="h240"><canvas id="c-ex-hk"></canvas></div>
+    <div class="card" style="margin-bottom:0">
+      <div class="card-ttl">🇰🇷 เกาหลีใต้</div>
+      <div class="card-sub">ตัน/เดือน · ไก่สดหดแรงปี 2569 (−34% YoY)</div>
+      <div class="leg" id="leg-ex-kr"></div>
+      <div class="h240"><canvas id="c-ex-kr"></canvas></div>
+    </div>
+  </div>
+  <div class="g2" style="margin-top:16px">
+    <div class="card" style="margin-bottom:0">
+      <div class="card-ttl">🇨🇳 จีน</div>
+      <div class="card-sub">ตัน/เดือน · ไก่สดล้วน — หดแรงสุด (−57% YoY)</div>
+      <div class="leg" id="leg-ex-cn"></div>
+      <div class="h240"><canvas id="c-ex-cn"></canvas></div>
+    </div>
   </div>
 
-  <div style="margin-top:16px;background:rgba(37,99,168,.06);border-left:4px solid var(--blue);border-radius:0 8px 8px 0;padding:14px 18px;font-family:'IBM Plex Sans Thai',sans-serif;font-size:12.5px;color:var(--text);line-height:1.55"><b>ภาพรวม:</b> ทุกตลาดหลัก (ญี่ปุ่น/EU/UK) ไทย<b>เน้นไก่ปรุงสุก (มูลค่าสูง) มากขึ้น · ไก่สดหดตัว −18 ถึง −20% YoY</b> เพราะแข่งราคาไก่สดกับบราซิลยาก · <b>UK เกือบ 95% เป็นไก่ปรุงสุก</b> (ตลาดพรีเมียม) · <b>มาเลเซียเป็นตลาดไก่สดล้วน</b> (BB/น่อง) ทรงตัว ~เท่าปีก่อน · ยอดรวม ม.ค.–ส.ค.: ญี่ปุ่น 329k · UK 132k · EU 116k · มาเลเซีย 67k · <b>ฮ่องกง 12k ตัน</b> · <b style="color:#be185d">ฮ่องกงสวนทาง</b> — ไก่สดโต +13.7% แต่ปรุงสุกหด −9.7% (ตลาดเล็กแต่เป็นทางออกของไก่สดที่แข่งราคาไม่ได้ในตลาดอื่น)</div>
+  <div style="margin-top:16px;background:rgba(37,99,168,.06);border-left:4px solid var(--blue);border-radius:0 8px 8px 0;padding:14px 18px;font-family:'IBM Plex Sans Thai',sans-serif;font-size:12.5px;color:var(--text);line-height:1.55"><b>ภาพรวม:</b> ตลาดหลัก (ญี่ปุ่น/EU/UK) ไทย<b>เน้นไก่ปรุงสุก (มูลค่าสูง) มากขึ้น · ไก่สดหดตัว</b> เพราะแข่งราคาไก่สดกับบราซิลยาก · <b>UK เกือบ 95% เป็นไก่ปรุงสุก</b> · <b>มาเลเซีย/จีน เป็นตลาดไก่สดล้วน</b> — จีนหดแรงที่สุด · <b style="color:#be185d">ฮ่องกงสวนทาง</b> ไก่สดโตขณะที่ปรุงสุกหด · กด "เทียบ 3 ปี" เพื่อดูยอดรวมรายเดือนของ 2567/2568/2569 ซ้อนกัน</div>
 
 </div></div>
 
@@ -1786,36 +1796,78 @@ function _iT9(){
     +'<div class="kpi"><div class="kpi-lbl">ไก่พันธุ์ปลด (เมีย/ผู้)</div><div class="kpi-val" style="color:#16a34a">'+mSf[7]+' / '+mSm[7]+' <span class="kpi-unit">บาท/กก.</span></div><div class="kpi-avg">แม่ไก่ปลดระวาง</div></div>';
 }
 
-function _iT10(){
-  var JPF=[18797,16938,12066,15998,18226,14378,19834,16361,null,null,null,null];
-  var JPC=[23644,24794,22714,28642,25289,21180,31600,18803,null,null,null,null];
-  var EUF=[6182,6160,3616,4836,4629,4566,6607,5787,null,null,null,null];
-  var EUC=[9376,9210,8388,8707,10263,7653,10235,9567,null,null,null,null];
-  var UKF=[683,876,968,1533,758,775,970,510,null,null,null,null];
-  var UKC=[14750,16061,14348,18537,16086,11588,22198,11641,null,null,null,null];
-  var MYF=[11850,9553,7923,8328,8214,5784,9912,5822,null,null,null,null];
-  // ฮ่องกง — หักลบจากยอดสะสม Table 2 (Packer 4,6,7,9,11,12,14,15) · รวม ม.ค.-ส.ค. = สด 7,444 / ปรุงสุก 4,701
-  var HKF=[975,806,905,948,915,769,1228,898,null,null,null,null];
-  var HKC=[541,423,456,715,592,439,833,702,null,null,null,null];
-  // ปี 2568 เทียบ — ม.ค.-ส.ค. จากคอลัมน์เปรียบเทียบในรายงานปี 2569 (ฉบับล่าสุด) · ก.ย.-พ.ย. จากรายงานปี 2568
-  // ธ.ค. 2568 ไม่มี เพราะไม่มีรายงานสรุป Jan-Dec (รายงานฉบับ ม.ค.2569 ให้แค่ถึง พ.ย.)
-  var HK25F=[842,689,858,654,927,830,859,890,1036,1304,1084,null];
-  var HK25C=[486,735,558,434,772,790,659,771,579,1147,599,null];
-  function grp(id,fr,co){mkBar(id,MO,[bds('ไก่สด',fr,'#93c5fd','#3b82f6'),bds('ไก่ปรุงสุก',co,'#86efac','#22c55e')]);}
-  grp('c-ex-jp',JPF,JPC); grp('c-ex-eu',EUF,EUC); grp('c-ex-uk',UKF,UKC);
-  mkBar('c-ex-my',MO,[bds('ไก่สด',MYF,'#93c5fd','#3b82f6')]);
-  mkBar('c-ex-hk',MO,[
-    bds('ไก่สด 2568',HK25F,'#dbeafe','#bfdbfe'), bds('ไก่สด 2569',HKF,'#93c5fd','#3b82f6'),
-    bds('ปรุงสุก 2568',HK25C,'#dcfce7','#bbf7d0'), bds('ปรุงสุก 2569',HKC,'#86efac','#22c55e')]);
-  function K(flag,nm,val,color,note){return '<div class="kpi"><div class="kpi-lbl">'+flag+' '+nm+' (YTD ส.ค.)</div><div class="kpi-val" style="color:'+color+'">'+val+' <span class="kpi-unit">ตัน</span></div><div class="kpi-avg">'+note+'</div></div>';}
-  var k=document.getElementById('kpi10');
-  if(k)k.innerHTML=''
-    +K('🇯🇵','ญี่ปุ่น','329,264','#3b82f6','ปรุงสุก 60% · <span class="kpi-d dn" style="display:inline">▼ −0.1%</span>')
-    +K('🇬🇧','UK','132,282','#8b5cf6','ปรุงสุก 95% · <span class="kpi-d dn" style="display:inline">▼ −5.6%</span>')
-    +K('🇪🇺','EU','115,782','#22c55e','ปรุงสุก 63% · <span class="kpi-d dn" style="display:inline">▼ −2.3%</span>')
-    +K('🇲🇾','มาเลเซีย','67,386','#f59e0b','ไก่สดล้วน · <span class="kpi-d dn" style="display:inline">▼ −7.6%</span>')
-    +K('🇭🇰','ฮ่องกง','12,145','#ec4899','ปรุงสุก 39% · <span class="kpi-d up" style="display:inline">▲ +3.3%</span>');
+// ── TAB 10 : ปริมาณส่งออกไก่ไทยแยกตลาด (สกัดจาก Table 2 ของรายงาน Packer ด้วย extract_export_markets.py) ──
+// ยอดสะสม YTD ของแต่ละงวด → หักลบเป็นรายเดือน · ใช้ฉบับที่ออกทีหลังสุดเสมอ (ตัวเลขที่ revise แล้ว)
+var EXM={'2024':{jp:{f:[16505,17702,17630,13083,18390,15567,15749,19631,15900,19421,20065,13082],c:[21989,20901,25347,23358,28395,23088,22845,24819,21649,27247,27119,19542]},eu:{f:[6165,5841,6537,5367,4884,4766,5471,5614,6717,4682,5988,6220],c:[7172,7791,7520,7774,8598,7430,8819,8782,7743,7796,7868,9526]},uk:{f:[983,1190,1329,515,629,685,737,982,1053,1191,1112,889],c:[14593,14283,15131,15863,14776,15019,18925,18171,17338,17825,16760,16283]},my:{f:[8966,9335,8599,6379,7859,7432,7277,7824,6037,8337,7996,null],c:[0,0,0,0,0,0,0,0,0,0,0,null]},hk:{f:[856,958,824,724,993,738,1010,949,924,1008,815,790],c:[437,426,571,543,559,651,598,734,489,698,713,768]},kr:{f:[3448,2722,2420,2294,2503,1675,1744,2091,1659,1928,2385,1801],c:[1669,2140,1862,2062,1955,1888,2385,2168,2011,1958,2055,1794]},cn:{f:[9306,10078,10139,7103,9068,8657,8865,10455,8812,11423,10861,10120],c:[0,0,0,0,0,0,0,0,0,0,0,0]}},'2025':{jp:{f:[19266,16278,17415,14325,22144,16142,13178,15394,11885,24008,15763,null],c:[23108,24134,22615,23563,26373,24339,24944,26308,18890,36629,23913,null]},eu:{f:[5625,4936,6441,5861,6937,6800,8259,7440,6483,7293,8405,null],c:[8525,9302,7919,7051,8792,7635,8412,8577,7785,7871,7103,null]},uk:{f:[1428,1404,1099,1494,1245,729,784,650,672,840,878,null],c:[16925,15400,16101,16312,17366,15429,17561,16200,14020,21323,15267,null]},my:{f:[7449,8132,8179,8198,9491,10038,10044,11393,8089,13015,7709,null],c:[0,0,0,0,0,0,0,0,0,0,0,null]},hk:{f:[842,689,858,654,927,830,859,890,976,1304,1084,null],c:[486,735,558,434,772,790,659,771,481,1147,599,null]},kr:{f:[2106,2467,2090,1871,2970,3683,6857,6318,1607,4743,2783,null],c:[1692,1191,1439,1583,1930,1698,1576,1372,1501,2053,1426,null]},cn:{f:[9763,12563,8889,9168,12007,8701,10854,4192,3491,7264,4344,null],c:[0,0,0,0,0,0,0,0,0,0,0,null]}},'2026':{jp:{f:[18797,16938,12066,15998,18226,14378,19834,16361,null,null,null,null],c:[23644,24794,22714,28642,25289,21180,31600,18803,null,null,null,null]},eu:{f:[6182,6160,3616,4836,4629,4566,6607,5787,null,null,null,null],c:[9376,9210,8388,8707,10263,7653,10235,9567,null,null,null,null]},uk:{f:[683,876,968,1533,758,775,970,510,null,null,null,null],c:[14750,16061,14348,18537,16086,11588,22198,11641,null,null,null,null]},my:{f:[11850,9553,7923,8328,8214,5784,9912,5822,null,null,null,null],c:[0,0,0,0,0,0,0,0,null,null,null,null]},hk:{f:[975,806,905,948,915,769,1228,898,null,null,null,null],c:[541,423,456,715,592,439,833,702,null,null,null,null]},kr:{f:[2570,2192,1782,2778,2794,1550,3553,1455,null,null,null,null],c:[1508,1885,1968,1730,1757,1182,1782,1088,null,null,null,null]},cn:{f:[5310,3826,3054,3445,4152,3794,4688,4591,null,null,null,null],c:[0,0,0,0,0,0,0,0,null,null,null,null]}}};
+var EXM_MK=[['jp','🇯🇵','ญี่ปุ่น','#3b82f6'],['eu','🇪🇺','EU (สหภาพยุโรป)','#22c55e'],['uk','🇬🇧','UK','#8b5cf6'],
+            ['my','🇲🇾','มาเลเซีย (+ซาบาห์)','#f59e0b'],['hk','🇭🇰','ฮ่องกง','#ec4899'],
+            ['kr','🇰🇷','เกาหลีใต้','#0ea5e9'],['cn','🇨🇳','จีน','#ef4444']];
+var EXM_YRS=['2024','2025','2026'];
+var EXM_COL={'2024':['#bfdbfe','#bbf7d0'],'2025':['#93c5fd','#86efac'],'2026':['#3b82f6','#22c55e']};
+var _exY='2026';
+
+function _exSum(a){var t=0,n=0;for(var i=0;i<12;i++){if(a&&a[i]!=null){t+=a[i];n++;}}return [t,n];}
+
+function setExY(y){
+  _exY=y;
+  ['all'].concat(EXM_YRS).forEach(function(v){var e=document.getElementById('exy-'+v);if(e)e.classList.remove('on');});
+  var b=document.getElementById('exy-'+y);if(b)b.classList.add('on');
+  EXM_MK.forEach(function(mk){
+    var id='c-ex-'+mk[0], ds=[];
+    if(y==='all'){                                   // เทียบ 3 ปี = ยอดรวม (สด+ปรุงสุก) ปีละเส้น
+      EXM_YRS.forEach(function(yy){
+        var d=EXM[yy][mk[0]], tot=[];
+        for(var i=0;i<12;i++){var f=d.f[i],c=d.c[i];tot.push(f==null&&c==null?null:(f||0)+(c||0));}
+        var sh={'2024':['#bfdbfe','#93c5fd'],'2025':['#93c5fd','#3b82f6'],'2026':['#1d4ed8','#1d4ed8']}[yy];
+        ds.push(bds(_thY(yy),tot,sh[0],sh[1]));
+      });
+    }else{
+      var d=EXM[y][mk[0]], col=EXM_COL[y];
+      ds.push(bds('ไก่สด',d.f,col[0],col[0]));
+      if(_exSum(d.c)[0]>0) ds.push(bds('ไก่ปรุงสุก',d.c,col[1],col[1]));
+    }
+    mkBar(id,MO,ds);
+    var lg=document.getElementById('leg-ex-'+mk[0]);
+    if(lg) lg.innerHTML=ds.map(function(x){return '<div class="leg-i"><div class="leg-d" style="background:'+x.backgroundColor+'"></div>'+x.label+'</div>';}).join('');
+  });
+  _exKpi(y);
+  var note=document.getElementById('ex-note');
+  if(note) note.textContent = (y==='all')
+    ? 'เทียบ 3 ปี = ยอดรวมไก่สด+ปรุงสุกของแต่ละปี · ปี 2569 มีถึงเดือน ส.ค. · ธ.ค. 2568 ไม่มีข้อมูล (รายงานสรุปให้ถึง พ.ย.)'
+    : 'แท่งฟ้า = ไก่สด · แท่งเขียว = ไก่ปรุงสุก · ' + (y==='2026' ? 'ปี 2569 มีข้อมูลถึงเดือน ส.ค.' : y==='2025' ? 'ธ.ค. 2568 ไม่มีข้อมูล (รายงานสรุปให้ถึง พ.ย.)' : 'ปี 2567 ครบทั้ง 12 เดือน');
 }
+
+function _thY(y){return 'พ.ศ. '+(parseInt(y,10)+543);}
+
+function _exKpi(y){
+  var k=document.getElementById('kpi10'); if(!k)return;
+  var yy = (y==='all') ? '2026' : y;
+  var html='';
+  EXM_MK.forEach(function(mk){
+    var d=EXM[yy][mk[0]], sf=_exSum(d.f), sc=_exSum(d.c);
+    var tot=sf[0]+sc[0], n=Math.max(sf[1],sc[1]);
+    var prev=EXM[String(parseInt(yy,10)-1)];
+    var chg='';
+    if(prev&&prev[mk[0]]){                            // เทียบปีก่อนเฉพาะ "เดือนเดียวกัน" เท่านั้น
+      var p=0,ok=true;
+      for(var i=0;i<n;i++){
+        var pf=prev[mk[0]].f[i],pc=prev[mk[0]].c[i];
+        if(pf==null&&pc==null){ok=false;break;}
+        p+=(pf||0)+(pc||0);
+      }
+      if(ok&&p>0){var g=(tot-p)/p*100;
+        chg=' · <span class="kpi-d '+(g>=0?'up':'dn')+'" style="display:inline">'+(g>=0?'▲ +':'▼ ')+g.toFixed(1)+'%</span>';}
+    }
+    var share=tot>0?Math.round(sc[0]/tot*100):0;
+    var lastMo=n>0?MO[n-1]:'-';
+    html+='<div class="kpi"><div class="kpi-lbl">'+mk[1]+' '+mk[2].split(' ')[0]+' (ถึง '+lastMo+' '+_thY(yy).replace('พ.ศ. ','')+')</div>'
+        + '<div class="kpi-val" style="color:'+mk[3]+'">'+Math.round(tot).toLocaleString()+' <span class="kpi-unit">ตัน</span></div>'
+        + '<div class="kpi-avg">'+(sc[0]>0?'ปรุงสุก '+share+'%':'ไก่สดล้วน')+chg+'</div></div>';
+  });
+  k.innerHTML=html;
+}
+
+function _iT10(){ setExY(_exY); }
 
 </script>
 </body>
