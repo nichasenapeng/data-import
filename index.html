@@ -759,31 +759,42 @@ body{
   <div style="background:rgba(37,99,168,.07);border:1px solid rgba(37,99,168,.18);border-radius:10px;padding:10px 16px;margin-bottom:16px;display:flex;align-items:center;gap:10px;flex-wrap:wrap">
     <span style="font-size:16px">🇹🇭</span>
     <div style="font-family:'IBM Plex Sans Thai',sans-serif;font-size:12px;color:var(--navy)">
-      <strong>ที่มาข้อมูล:</strong> ปริมาณส่งออกไก่ไทยไปแต่ละตลาด แยกไก่สด/ไก่ปรุงสุก · จากตาราง Table 2 ของรายงานการประชุม Packer (ยอดสะสม YTD → หักลบเป็นรายเดือน · ใช้ฉบับล่าสุดของแต่ละงวด) · หน่วยตัน
+      <strong>ที่มาข้อมูล:</strong> ปริมาณส่งออกไก่ไทยไปแต่ละตลาด แยกไก่สด/ไก่ปรุงสุก · จากตาราง Table 2 ของรายงานการประชุม Packer (ยอดสะสม YTD → หักลบเป็นรายเดือน · ใช้ฉบับล่าสุดของแต่ละงวด) · หน่วยตัน · <b>เลือกปีได้ทีละตลาด</b> ที่ปุ่มในการ์ด — การ์ด KPI ด้านบนจะเปลี่ยนตามปีที่เลือกของตลาดนั้น
     </div>
   </div>
 
-  <div class="yr-row" style="margin-bottom:14px">
-    <span class="yr-lbl">ปี:</span>
-    <button class="yr-btn" id="exy-2024" onclick="setExY('2024')">2567</button>
-    <button class="yr-btn" id="exy-2025" onclick="setExY('2025')">2568</button>
-    <button class="yr-btn on" id="exy-2026" onclick="setExY('2026')">2569*</button>
-    <button class="yr-btn" id="exy-all" onclick="setExY('all')">เทียบ 3 ปี</button>
-    <span class="small" id="ex-note" style="margin-left:8px;color:var(--muted);font-family:'IBM Plex Sans Thai',sans-serif"></span>
+  <div class="kpi-row kauto" id="kpi10">
+    <div class="kpi" id="kpi-ex-jp"></div>
+    <div class="kpi" id="kpi-ex-eu"></div>
+    <div class="kpi" id="kpi-ex-uk"></div>
+    <div class="kpi" id="kpi-ex-my"></div>
+    <div class="kpi" id="kpi-ex-hk"></div>
+    <div class="kpi" id="kpi-ex-kr"></div>
+    <div class="kpi" id="kpi-ex-cn"></div>
   </div>
-
-  <div class="kpi-row kauto" id="kpi10"></div>
 
   <div class="g2" style="margin-top:16px">
     <div class="card" style="margin-bottom:0">
       <div class="card-ttl">🇯🇵 ญี่ปุ่น</div>
-      <div class="card-sub">ตัน/เดือน · ตลาดหลัก ปรุงสุกครอง ~60%</div>
+      <div class="card-sub">ตัน/เดือน · ตลาดหลัก ปรุงสุกครอง ~60% · <span id="sub-ex-jp"></span></div>
+      <div class="yr-row" style="margin:8px 0 2px">
+        <button class="yr-btn" id="exy-jp-2024" onclick="setExY('jp','2024')">2567</button>
+        <button class="yr-btn" id="exy-jp-2025" onclick="setExY('jp','2025')">2568</button>
+        <button class="yr-btn on" id="exy-jp-2026" onclick="setExY('jp','2026')">2569*</button>
+        <button class="yr-btn" id="exy-jp-all" onclick="setExY('jp','all')">เทียบ 3 ปี</button>
+      </div>
       <div class="leg" id="leg-ex-jp"></div>
       <div class="h240"><canvas id="c-ex-jp"></canvas></div>
     </div>
     <div class="card" style="margin-bottom:0">
       <div class="card-ttl">🇪🇺 EU (สหภาพยุโรป)</div>
-      <div class="card-sub">ตัน/เดือน · ปรุงสุกครอง ~64%</div>
+      <div class="card-sub">ตัน/เดือน · ปรุงสุกครอง ~64% · <span id="sub-ex-eu"></span></div>
+      <div class="yr-row" style="margin:8px 0 2px">
+        <button class="yr-btn" id="exy-eu-2024" onclick="setExY('eu','2024')">2567</button>
+        <button class="yr-btn" id="exy-eu-2025" onclick="setExY('eu','2025')">2568</button>
+        <button class="yr-btn on" id="exy-eu-2026" onclick="setExY('eu','2026')">2569*</button>
+        <button class="yr-btn" id="exy-eu-all" onclick="setExY('eu','all')">เทียบ 3 ปี</button>
+      </div>
       <div class="leg" id="leg-ex-eu"></div>
       <div class="h240"><canvas id="c-ex-eu"></canvas></div>
     </div>
@@ -791,13 +802,25 @@ body{
   <div class="g2" style="margin-top:16px">
     <div class="card" style="margin-bottom:0">
       <div class="card-ttl">🇬🇧 UK</div>
-      <div class="card-sub">ตัน/เดือน · ปรุงสุกเกือบ 95% (ตลาดพรีเมียม)</div>
+      <div class="card-sub">ตัน/เดือน · ปรุงสุกเกือบ 95% (ตลาดพรีเมียม) · <span id="sub-ex-uk"></span></div>
+      <div class="yr-row" style="margin:8px 0 2px">
+        <button class="yr-btn" id="exy-uk-2024" onclick="setExY('uk','2024')">2567</button>
+        <button class="yr-btn" id="exy-uk-2025" onclick="setExY('uk','2025')">2568</button>
+        <button class="yr-btn on" id="exy-uk-2026" onclick="setExY('uk','2026')">2569*</button>
+        <button class="yr-btn" id="exy-uk-all" onclick="setExY('uk','all')">เทียบ 3 ปี</button>
+      </div>
       <div class="leg" id="leg-ex-uk"></div>
       <div class="h240"><canvas id="c-ex-uk"></canvas></div>
     </div>
     <div class="card" style="margin-bottom:0">
       <div class="card-ttl">🇲🇾 มาเลเซีย (+ซาบาห์)</div>
-      <div class="card-sub">ตัน/เดือน · ไก่สดล้วน (BB / น่องติดสะโพก) — ไม่มีปรุงสุก</div>
+      <div class="card-sub">ตัน/เดือน · ไก่สดล้วน (BB / น่องติดสะโพก) · <span id="sub-ex-my"></span></div>
+      <div class="yr-row" style="margin:8px 0 2px">
+        <button class="yr-btn" id="exy-my-2024" onclick="setExY('my','2024')">2567</button>
+        <button class="yr-btn" id="exy-my-2025" onclick="setExY('my','2025')">2568</button>
+        <button class="yr-btn on" id="exy-my-2026" onclick="setExY('my','2026')">2569*</button>
+        <button class="yr-btn" id="exy-my-all" onclick="setExY('my','all')">เทียบ 3 ปี</button>
+      </div>
       <div class="leg" id="leg-ex-my"></div>
       <div class="h240"><canvas id="c-ex-my"></canvas></div>
     </div>
@@ -805,13 +828,25 @@ body{
   <div class="g2" style="margin-top:16px">
     <div class="card" style="margin-bottom:0">
       <div class="card-ttl">🇭🇰 ฮ่องกง</div>
-      <div class="card-sub">ตัน/เดือน · ตลาดเล็กแต่ไก่สดโตสวนทางตลาดอื่น</div>
+      <div class="card-sub">ตัน/เดือน · ตลาดเล็กแต่ไก่สดโตสวนทางตลาดอื่น · <span id="sub-ex-hk"></span></div>
+      <div class="yr-row" style="margin:8px 0 2px">
+        <button class="yr-btn" id="exy-hk-2024" onclick="setExY('hk','2024')">2567</button>
+        <button class="yr-btn" id="exy-hk-2025" onclick="setExY('hk','2025')">2568</button>
+        <button class="yr-btn on" id="exy-hk-2026" onclick="setExY('hk','2026')">2569*</button>
+        <button class="yr-btn" id="exy-hk-all" onclick="setExY('hk','all')">เทียบ 3 ปี</button>
+      </div>
       <div class="leg" id="leg-ex-hk"></div>
       <div class="h240"><canvas id="c-ex-hk"></canvas></div>
     </div>
     <div class="card" style="margin-bottom:0">
       <div class="card-ttl">🇰🇷 เกาหลีใต้</div>
-      <div class="card-sub">ตัน/เดือน · ไก่สดหดแรงปี 2569 (−34% YoY)</div>
+      <div class="card-sub">ตัน/เดือน · ไก่สดหดแรงปี 2569 · <span id="sub-ex-kr"></span></div>
+      <div class="yr-row" style="margin:8px 0 2px">
+        <button class="yr-btn" id="exy-kr-2024" onclick="setExY('kr','2024')">2567</button>
+        <button class="yr-btn" id="exy-kr-2025" onclick="setExY('kr','2025')">2568</button>
+        <button class="yr-btn on" id="exy-kr-2026" onclick="setExY('kr','2026')">2569*</button>
+        <button class="yr-btn" id="exy-kr-all" onclick="setExY('kr','all')">เทียบ 3 ปี</button>
+      </div>
       <div class="leg" id="leg-ex-kr"></div>
       <div class="h240"><canvas id="c-ex-kr"></canvas></div>
     </div>
@@ -819,13 +854,19 @@ body{
   <div class="g2" style="margin-top:16px">
     <div class="card" style="margin-bottom:0">
       <div class="card-ttl">🇨🇳 จีน</div>
-      <div class="card-sub">ตัน/เดือน · ไก่สดล้วน — หดแรงสุด (−57% YoY)</div>
+      <div class="card-sub">ตัน/เดือน · ไก่สดล้วน — หดแรงสุด · <span id="sub-ex-cn"></span></div>
+      <div class="yr-row" style="margin:8px 0 2px">
+        <button class="yr-btn" id="exy-cn-2024" onclick="setExY('cn','2024')">2567</button>
+        <button class="yr-btn" id="exy-cn-2025" onclick="setExY('cn','2025')">2568</button>
+        <button class="yr-btn on" id="exy-cn-2026" onclick="setExY('cn','2026')">2569*</button>
+        <button class="yr-btn" id="exy-cn-all" onclick="setExY('cn','all')">เทียบ 3 ปี</button>
+      </div>
       <div class="leg" id="leg-ex-cn"></div>
       <div class="h240"><canvas id="c-ex-cn"></canvas></div>
     </div>
   </div>
 
-  <div style="margin-top:16px;background:rgba(37,99,168,.06);border-left:4px solid var(--blue);border-radius:0 8px 8px 0;padding:14px 18px;font-family:'IBM Plex Sans Thai',sans-serif;font-size:12.5px;color:var(--text);line-height:1.55"><b>ภาพรวม:</b> ตลาดหลัก (ญี่ปุ่น/EU/UK) ไทย<b>เน้นไก่ปรุงสุก (มูลค่าสูง) มากขึ้น · ไก่สดหดตัว</b> เพราะแข่งราคาไก่สดกับบราซิลยาก · <b>UK เกือบ 95% เป็นไก่ปรุงสุก</b> · <b>มาเลเซีย/จีน เป็นตลาดไก่สดล้วน</b> — จีนหดแรงที่สุด · <b style="color:#be185d">ฮ่องกงสวนทาง</b> ไก่สดโตขณะที่ปรุงสุกหด · กด "เทียบ 3 ปี" เพื่อดูยอดรวมรายเดือนของ 2567/2568/2569 ซ้อนกัน</div>
+  <div style="margin-top:16px;background:rgba(37,99,168,.06);border-left:4px solid var(--blue);border-radius:0 8px 8px 0;padding:14px 18px;font-family:'IBM Plex Sans Thai',sans-serif;font-size:12.5px;color:var(--text);line-height:1.55"><b>ภาพรวม:</b> ตลาดหลัก (ญี่ปุ่น/EU/UK) ไทย<b>เน้นไก่ปรุงสุก (มูลค่าสูง) มากขึ้น · ไก่สดหดตัว</b> เพราะแข่งราคาไก่สดกับบราซิลยาก · <b>UK เกือบ 95% เป็นไก่ปรุงสุก</b> · <b>มาเลเซีย/จีน เป็นตลาดไก่สดล้วน</b> — จีนหดแรงที่สุด · <b style="color:#be185d">ฮ่องกงสวนทาง</b> ไก่สดโตขณะที่ปรุงสุกหด · ปุ่ม "เทียบ 3 ปี" ในแต่ละการ์ด = ยอดรวมรายเดือนของ 2567/2568/2569 ซ้อนกัน</div>
 
 </div></div>
 
@@ -1804,70 +1845,73 @@ var EXM_MK=[['jp','🇯🇵','ญี่ปุ่น','#3b82f6'],['eu','🇪🇺'
             ['kr','🇰🇷','เกาหลีใต้','#0ea5e9'],['cn','🇨🇳','จีน','#ef4444']];
 var EXM_YRS=['2024','2025','2026'];
 var EXM_COL={'2024':['#bfdbfe','#bbf7d0'],'2025':['#93c5fd','#86efac'],'2026':['#3b82f6','#22c55e']};
-var _exY='2026';
-
-function _exSum(a){var t=0,n=0;for(var i=0;i<12;i++){if(a&&a[i]!=null){t+=a[i];n++;}}return [t,n];}
-
-function setExY(y){
-  _exY=y;
-  ['all'].concat(EXM_YRS).forEach(function(v){var e=document.getElementById('exy-'+v);if(e)e.classList.remove('on');});
-  var b=document.getElementById('exy-'+y);if(b)b.classList.add('on');
-  EXM_MK.forEach(function(mk){
-    var id='c-ex-'+mk[0], ds=[];
-    if(y==='all'){                                   // เทียบ 3 ปี = ยอดรวม (สด+ปรุงสุก) ปีละเส้น
-      EXM_YRS.forEach(function(yy){
-        var d=EXM[yy][mk[0]], tot=[];
-        for(var i=0;i<12;i++){var f=d.f[i],c=d.c[i];tot.push(f==null&&c==null?null:(f||0)+(c||0));}
-        var sh={'2024':['#bfdbfe','#93c5fd'],'2025':['#93c5fd','#3b82f6'],'2026':['#1d4ed8','#1d4ed8']}[yy];
-        ds.push(bds(_thY(yy),tot,sh[0],sh[1]));
-      });
-    }else{
-      var d=EXM[y][mk[0]], col=EXM_COL[y];
-      ds.push(bds('ไก่สด',d.f,col[0],col[0]));
-      if(_exSum(d.c)[0]>0) ds.push(bds('ไก่ปรุงสุก',d.c,col[1],col[1]));
-    }
-    mkBar(id,MO,ds);
-    var lg=document.getElementById('leg-ex-'+mk[0]);
-    if(lg) lg.innerHTML=ds.map(function(x){return '<div class="leg-i"><div class="leg-d" style="background:'+x.backgroundColor+'"></div>'+x.label+'</div>';}).join('');
-  });
-  _exKpi(y);
-  var note=document.getElementById('ex-note');
-  if(note) note.textContent = (y==='all')
-    ? 'เทียบ 3 ปี = ยอดรวมไก่สด+ปรุงสุกของแต่ละปี · ปี 2569 มีถึงเดือน ส.ค. · ธ.ค. 2568 ไม่มีข้อมูล (รายงานสรุปให้ถึง พ.ย.)'
-    : 'แท่งฟ้า = ไก่สด · แท่งเขียว = ไก่ปรุงสุก · ' + (y==='2026' ? 'ปี 2569 มีข้อมูลถึงเดือน ส.ค.' : y==='2025' ? 'ธ.ค. 2568 ไม่มีข้อมูล (รายงานสรุปให้ถึง พ.ย.)' : 'ปี 2567 ครบทั้ง 12 เดือน');
-}
+var EXM_Y={};                                     // ปีที่เลือกของแต่ละตลาด (แยกกันคนละการ์ด)
+EXM_MK.forEach(function(m){EXM_Y[m[0]]='2026';});
 
 function _thY(y){return 'พ.ศ. '+(parseInt(y,10)+543);}
 
-function _exKpi(y){
-  var k=document.getElementById('kpi10'); if(!k)return;
-  var yy = (y==='all') ? '2026' : y;
-  var html='';
-  EXM_MK.forEach(function(mk){
-    var d=EXM[yy][mk[0]], sf=_exSum(d.f), sc=_exSum(d.c);
-    var tot=sf[0]+sc[0], n=Math.max(sf[1],sc[1]);
-    var prev=EXM[String(parseInt(yy,10)-1)];
-    var chg='';
-    if(prev&&prev[mk[0]]){                            // เทียบปีก่อนเฉพาะ "เดือนเดียวกัน" เท่านั้น
-      var p=0,ok=true;
-      for(var i=0;i<n;i++){
-        var pf=prev[mk[0]].f[i],pc=prev[mk[0]].c[i];
-        if(pf==null&&pc==null){ok=false;break;}
-        p+=(pf||0)+(pc||0);
-      }
-      if(ok&&p>0){var g=(tot-p)/p*100;
-        chg=' · <span class="kpi-d '+(g>=0?'up':'dn')+'" style="display:inline">'+(g>=0?'▲ +':'▼ ')+g.toFixed(1)+'%</span>';}
-    }
-    var share=tot>0?Math.round(sc[0]/tot*100):0;
-    var lastMo=n>0?MO[n-1]:'-';
-    html+='<div class="kpi"><div class="kpi-lbl">'+mk[1]+' '+mk[2].split(' ')[0]+' (ถึง '+lastMo+' '+_thY(yy).replace('พ.ศ. ','')+')</div>'
-        + '<div class="kpi-val" style="color:'+mk[3]+'">'+Math.round(tot).toLocaleString()+' <span class="kpi-unit">ตัน</span></div>'
-        + '<div class="kpi-avg">'+(sc[0]>0?'ปรุงสุก '+share+'%':'ไก่สดล้วน')+chg+'</div></div>';
+function _exSum(a){var t=0,n=0;for(var i=0;i<12;i++){if(a&&a[i]!=null){t+=a[i];n++;}}return [t,n];}
+
+// ปีของตลาดเดียว — เรียกจากปุ่มในการ์ดนั้น
+function setExY(mk,y){
+  EXM_Y[mk]=y;
+  ['all'].concat(EXM_YRS).forEach(function(v){
+    var e=document.getElementById('exy-'+mk+'-'+v); if(e)e.classList.remove('on');
   });
-  k.innerHTML=html;
+  var b=document.getElementById('exy-'+mk+'-'+y); if(b)b.classList.add('on');
+
+  var ds=[];
+  if(y==='all'){                                   // เทียบ 3 ปี = ยอดรวม (สด+ปรุงสุก) ปีละแท่ง
+    EXM_YRS.forEach(function(yy){
+      var d=EXM[yy][mk], tot=[];
+      for(var i=0;i<12;i++){var f=d.f[i],c=d.c[i];tot.push(f==null&&c==null?null:(f||0)+(c||0));}
+      var sh={'2024':['#bfdbfe','#93c5fd'],'2025':['#93c5fd','#3b82f6'],'2026':['#1d4ed8','#1d4ed8']}[yy];
+      ds.push(bds(_thY(yy),tot,sh[0],sh[1]));
+    });
+  }else{
+    var d=EXM[y][mk], col=EXM_COL[y];
+    ds.push(bds('ไก่สด',d.f,col[0],col[0]));
+    if(_exSum(d.c)[0]>0) ds.push(bds('ไก่ปรุงสุก',d.c,col[1],col[1]));
+  }
+  mkBar('c-ex-'+mk,MO,ds);
+
+  var lg=document.getElementById('leg-ex-'+mk);
+  if(lg) lg.innerHTML=ds.map(function(x){return '<div class="leg-i"><div class="leg-d" style="background:'+x.backgroundColor+'"></div>'+x.label+'</div>';}).join('');
+  var sub=document.getElementById('sub-ex-'+mk);
+  if(sub) sub.textContent = (y==='all') ? 'เทียบ 3 ปี (ยอดรวมไก่สด+ปรุงสุก)'
+      : y==='2026' ? 'ปี 2569 — มีข้อมูลถึงเดือน ส.ค.'
+      : y==='2025' ? 'ปี 2568 — ธ.ค. ไม่มีข้อมูล (รายงานสรุปให้ถึง พ.ย.)' : 'ปี 2567 — ครบทั้ง 12 เดือน';
+  _exKpi(mk);
 }
 
-function _iT10(){ setExY(_exY); }
+// การ์ด KPI ของตลาดเดียว (ตามปีที่การ์ดนั้นเลือกอยู่)
+function _exKpi(mk){
+  var el=document.getElementById('kpi-ex-'+mk); if(!el)return;
+  var info=null;
+  EXM_MK.forEach(function(m){if(m[0]===mk)info=m;});
+  if(!info)return;
+  var y=EXM_Y[mk], yy=(y==='all')?'2026':y;
+  var d=EXM[yy][mk], sf=_exSum(d.f), sc=_exSum(d.c);
+  var tot=sf[0]+sc[0], n=Math.max(sf[1],sc[1]);
+  var chg='', prev=EXM[String(parseInt(yy,10)-1)];
+  if(prev&&prev[mk]){                               // %YoY เทียบเฉพาะเดือนที่มีข้อมูลทั้งสองปี
+    var pv=0,ok=true;
+    for(var i=0;i<n;i++){
+      var pf=prev[mk].f[i],pc=prev[mk].c[i];
+      if(pf==null&&pc==null){ok=false;break;}
+      pv+=(pf||0)+(pc||0);
+    }
+    if(ok&&pv>0){var g=(tot-pv)/pv*100;
+      chg=' · <span class="kpi-d '+(g>=0?'up':'dn')+'" style="display:inline">'+(g>=0?'▲ +':'▼ ')+g.toFixed(1)+'%</span>';}
+  }
+  var share=tot>0?Math.round(sc[0]/tot*100):0;
+  var lastMo=n>0?MO[n-1]:'-';
+  el.innerHTML='<div class="kpi-lbl">'+info[1]+' '+info[2].split(' ')[0]+' (ถึง '+lastMo+' '+(parseInt(yy,10)+543-2500)+')</div>'
+    + '<div class="kpi-val" style="color:'+info[3]+'">'+Math.round(tot).toLocaleString()+' <span class="kpi-unit">ตัน</span></div>'
+    + '<div class="kpi-avg">'+(sc[0]>0?'ปรุงสุก '+share+'%':'ไก่สดล้วน')+chg+'</div>';
+}
+
+function _iT10(){ EXM_MK.forEach(function(m){ setExY(m[0], EXM_Y[m[0]]); }); }
 
 </script>
 </body>
