@@ -805,10 +805,12 @@ body{
 
   <div class="card" style="margin-top:16px;margin-bottom:0">
     <div class="card-ttl">🇭🇰 ฮ่องกง</div>
-    <div class="card-sub">ตัน/เดือน · ไก่สด vs ปรุงสุก · <b>ตลาดเดียวที่ไก่สดโต</b> (+13.7% YoY) ส่วนปรุงสุกหด (−9.7%)</div>
+    <div class="card-sub">ตัน/เดือน · เทียบ 2568 vs 2569 · <b>ตลาดเดียวที่ไก่สดโต</b> (+13.7% YoY) ส่วนปรุงสุกหด (−9.7%) · ธ.ค. 2568 ไม่มีข้อมูล (รายงานสรุปให้ถึง พ.ย.)</div>
     <div class="leg">
-      <div class="leg-i"><div class="leg-d" style="background:#93c5fd"></div>ไก่สด</div>
-      <div class="leg-i"><div class="leg-d" style="background:#86efac"></div>ไก่ปรุงสุก</div>
+      <div class="leg-i"><div class="leg-d" style="background:#dbeafe"></div>ไก่สด 2568</div>
+      <div class="leg-i"><div class="leg-d" style="background:#93c5fd"></div>ไก่สด 2569</div>
+      <div class="leg-i"><div class="leg-d" style="background:#dcfce7"></div>ปรุงสุก 2568</div>
+      <div class="leg-i"><div class="leg-d" style="background:#86efac"></div>ปรุงสุก 2569</div>
     </div>
     <div class="h240"><canvas id="c-ex-hk"></canvas></div>
   </div>
@@ -939,7 +941,7 @@ var ST_SRC={'Total':{'2025':ST_TOT25,'2026':ST_TOT26},'Import':{'2025':ST_IMP25,
 
 // ── CHART HELPERS ──
 var GC='#f0f0f0',TC='#999';
-function fmtK(v){if(v==null)return'';if(v>=1e6)return(v/1e6).toFixed(1)+'M';if(v>=1e3)return Math.round(v/1e3)+'k';return Math.round(v)+'';}
+function fmtK(v){if(v==null)return'';if(v>=1e6)return(v/1e6).toFixed(1)+'M';if(v>=1e4)return Math.round(v/1e3)+'k';return Math.round(v).toLocaleString();}  // <10,000 โชว์เลขเต็ม (ตลาดเล็กอย่างฮ่องกง/UK จะได้ไม่กลายเป็น 1k หมด)
 function bds(label,data,bg,stroke){return{label:label,data:data,backgroundColor:bg,borderColor:stroke||bg,borderWidth:0,borderRadius:3};}
 function lds(label,data,color,dash){return{label:label,data:data,borderColor:color,backgroundColor:'transparent',pointRadius:3,pointBackgroundColor:color,borderWidth:2,borderDash:dash?[5,3]:[],tension:0.2};}
 
@@ -958,7 +960,7 @@ function mkOpts(){
     },
     scales:{
       x:{ticks:{color:TC,font:{family:'IBM Plex Sans',size:11},autoSkip:false},grid:{color:GC},border:{display:false}},
-      y:{ticks:{color:TC,font:{family:'IBM Plex Sans',size:11},callback:function(v){return v>=1e6?(v/1e6).toFixed(1)+'M':v>=1e3?(v/1e3).toFixed(0)+'k':v;}},grid:{color:GC},border:{display:false}}
+      y:{ticks:{color:TC,font:{family:'IBM Plex Sans',size:11},callback:function(v){return v>=1e6?(v/1e6).toFixed(1)+'M':v>=1e4?(v/1e3).toFixed(0)+'k':v.toLocaleString();}},grid:{color:GC},border:{display:false}}
     }
   };
 }
@@ -1795,10 +1797,16 @@ function _iT10(){
   // ฮ่องกง — หักลบจากยอดสะสม Table 2 (Packer 4,6,7,9,11,12,14,15) · รวม ม.ค.-ส.ค. = สด 7,444 / ปรุงสุก 4,701
   var HKF=[975,806,905,948,915,769,1228,898,null,null,null,null];
   var HKC=[541,423,456,715,592,439,833,702,null,null,null,null];
+  // ปี 2568 เทียบ — ม.ค.-ส.ค. จากคอลัมน์เปรียบเทียบในรายงานปี 2569 (ฉบับล่าสุด) · ก.ย.-พ.ย. จากรายงานปี 2568
+  // ธ.ค. 2568 ไม่มี เพราะไม่มีรายงานสรุป Jan-Dec (รายงานฉบับ ม.ค.2569 ให้แค่ถึง พ.ย.)
+  var HK25F=[842,689,858,654,927,830,859,890,1036,1304,1084,null];
+  var HK25C=[486,735,558,434,772,790,659,771,579,1147,599,null];
   function grp(id,fr,co){mkBar(id,MO,[bds('ไก่สด',fr,'#93c5fd','#3b82f6'),bds('ไก่ปรุงสุก',co,'#86efac','#22c55e')]);}
   grp('c-ex-jp',JPF,JPC); grp('c-ex-eu',EUF,EUC); grp('c-ex-uk',UKF,UKC);
   mkBar('c-ex-my',MO,[bds('ไก่สด',MYF,'#93c5fd','#3b82f6')]);
-  grp('c-ex-hk',HKF,HKC);
+  mkBar('c-ex-hk',MO,[
+    bds('ไก่สด 2568',HK25F,'#dbeafe','#bfdbfe'), bds('ไก่สด 2569',HKF,'#93c5fd','#3b82f6'),
+    bds('ปรุงสุก 2568',HK25C,'#dcfce7','#bbf7d0'), bds('ปรุงสุก 2569',HKC,'#86efac','#22c55e')]);
   function K(flag,nm,val,color,note){return '<div class="kpi"><div class="kpi-lbl">'+flag+' '+nm+' (YTD ส.ค.)</div><div class="kpi-val" style="color:'+color+'">'+val+' <span class="kpi-unit">ตัน</span></div><div class="kpi-avg">'+note+'</div></div>';}
   var k=document.getElementById('kpi10');
   if(k)k.innerHTML=''
