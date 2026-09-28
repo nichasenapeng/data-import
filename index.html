@@ -797,6 +797,19 @@ body{
   </div>
 
   <div class="card" style="margin-top:16px">
+    <div class="card-ttl">📊 กราฟแยกราย — กดเลือกดูทีละบริษัท หรือทีละตลาด</div>
+    <div class="card-sub">ตัน · เดือนเดียวกับที่เลือกด้านล่าง · <b>คลิกชื่อบริษัทหรือหัวคอลัมน์ตลาดในตารางข้างล่างก็เลือกได้เหมือนกัน</b></div>
+    <div class="yr-row" style="margin:10px 0 2px">
+      <span class="yr-lbl">ดูแบบ:</span>
+      <button class="yr-btn on" id="pkv-co" onclick="setPkView('co')">รายบริษัท</button>
+      <button class="yr-btn" id="pkv-mk" onclick="setPkView('mk')">รายตลาด</button>
+    </div>
+    <div class="yr-row" style="margin:4px 0 2px;flex-wrap:wrap" id="pk-pick-btns"></div>
+    <div class="h290"><canvas id="c-pk-pick"></canvas></div>
+    <div style="font-size:11.5px;color:var(--text);font-family:'IBM Plex Sans Thai',sans-serif;margin-top:8px;line-height:1.55" id="pk-pick-note"></div>
+  </div>
+
+  <div class="card" style="margin-top:16px">
     <div class="card-ttl">🔀 ใครส่งไปตลาดไหน — บริษัท × ตลาด</div>
     <div class="card-sub">ตัน (ตัวเลขเล็ก = ส่วนแบ่งในตลาดนั้น) · เลือกเดือนที่มีรายงานแยกบริษัท · <b>แถวสีชมพู = เรา</b> · ช่องยิ่งเข้ม = ยิ่งเยอะเมื่อเทียบในคอลัมน์เดียวกัน</div>
     <div class="yr-row" style="margin:10px 0 4px" id="pkm-btns"></div>
@@ -1999,7 +2012,7 @@ function setPkmMon(m){
   var th='<thead><tr style="background:rgba(190,24,93,.07)">'
        + '<th style="text-align:left;padding:7px 10px;font-size:11px;color:var(--navy);border-bottom:2px solid rgba(190,24,93,.2);position:sticky;left:0;background:#fdf2f8">บริษัท</th>';
   cols.forEach(function(c){
-    th+='<th style="text-align:right;padding:7px 10px;font-size:11px;color:var(--navy);border-bottom:2px solid rgba(190,24,93,.2);white-space:nowrap">'+c[1]
+    th+='<th onclick="pkPickMarket(\''+c[0]+'\')" title="ดูกราฟของตลาดนี้" style="cursor:pointer;text-align:right;padding:7px 10px;font-size:11px;color:var(--navy);border-bottom:2px solid rgba(190,24,93,.2);white-space:nowrap">'+c[1]
       +'<br><span style="font-weight:400;color:var(--muted);font-size:10px">'+Math.round(colTot[c[0]]).toLocaleString()+' ตัน</span></th>';
   });
   th+='<th style="text-align:right;padding:7px 10px;font-size:11px;color:var(--navy);border-bottom:2px solid rgba(190,24,93,.2)">รวมทุกตลาด</th></tr></thead><tbody>';
@@ -2008,7 +2021,8 @@ function setPkmMon(m){
     var mine=(n==='SUN');
     th+='<tr style="border-bottom:1px solid rgba(37,99,168,.08)'+(mine?';background:rgba(236,72,153,.10)':'')+'">'
       + '<td style="padding:6px 10px;white-space:nowrap;position:sticky;left:0;background:'+(mine?'#fce7f3':'#fff')+';font-weight:'+(mine?'700':'500')+'">'
-      + (mine?'🏭 SUN (เรา)':n)+'</td>';
+      + '<span onclick="pkPickCompany(\''+n.replace(/'/g,"")+'\')" style="cursor:pointer;border-bottom:1px dashed rgba(37,99,168,.45)" title="ดูกราฟของบริษัทนี้">'
+      + (mine?'🏭 SUN (เรา)':n)+'</span></td>';
     cols.forEach(function(c){
       var v=(cell[c[0]]||{})[n]||0, t=colTot[c[0]]||0, pct=t?v/t*100:0;
       var a=t?Math.min(v/t*1.6,0.55):0;                    // ความเข้มตามสัดส่วนในคอลัมน์
@@ -2026,10 +2040,107 @@ function setPkmMon(m){
     var v=(cell[c[0]]||{})['SUN']||0, t=colTot[c[0]]||0;
     if(v && t && (!best || v/t > best.p)) best={n:c[1], p:v/t, v:v};
   });
+  _pkPickBtns();          // เปลี่ยนเดือนแล้ววาดกราฟที่เลือกอยู่ใหม่
+
   var el=document.getElementById('pkm-note');
   if(el) el.innerHTML='เดือน '+PK_MONO[_pkmMon-1]+' 69 · คอลัมน์ "รวมทุกตลาด" คือยอดทั้งเดือนของบริษัทนั้น (รวมตลาดที่ไม่ได้แยกคอลัมน์ไว้ด้วย) · '
     + (best? 'ตลาดที่เรามีส่วนแบ่งสูงสุดเดือนนี้: <b>'+best.n+' '+(best.p*100).toFixed(1)+'%</b> ('+Math.round(best.v).toLocaleString()+' ตัน)' : '')
     + ' · <b>NON-MEMBERS</b> เป็นก้อนรวมของผู้ส่งออกนอกกลุ่มหลายราย ไม่ใช่บริษัทเดียว';
+}
+
+
+// ── กราฟแบบกดเลือก: ดูทีละบริษัท (กระจายไปตลาดไหนบ้าง) หรือทีละตลาด (ใครส่งบ้าง) ──
+var _pkView='co', _pkPick=null;
+
+function _pkmCell(){ return PKM[_pkmMon] || {}; }
+function _pkmColTotal(key){
+  var by=_pkmCell()[key]||{}, s=0;
+  Object.keys(by).forEach(function(n){ s+=by[n]; });
+  return s;
+}
+function _pkThName(key){
+  for(var i=0;i<PKM_COLS.length;i++){ if(PKM_COLS[i][0]===key) return PKM_COLS[i][1]; }
+  return key;
+}
+
+function setPkView(v){
+  _pkView=v; _pkPick=null;
+  var a=document.getElementById('pkv-co'), b=document.getElementById('pkv-mk');
+  if(a) a.classList.toggle('on', v==='co');
+  if(b) b.classList.toggle('on', v==='mk');
+  _pkPickBtns();
+}
+
+// ปุ่มรายการตามโหมด (บริษัททั้งหมด หรือ ตลาดทั้งหมด)
+function _pkPickBtns(){
+  var box=document.getElementById('pk-pick-btns'); if(!box) return;
+  var items;
+  if(_pkView==='co'){
+    var tot=_pkmCell()['_TOTAL']||{};
+    items=Object.keys(tot).sort(function(x,y){return tot[y]-tot[x];})
+      .map(function(n){ return [n, n==='SUN'?'🏭 SUN (เรา)':n]; });
+  }else{
+    items=PKM_COLS.filter(function(c){ return _pkmCell()[c[0]]; });
+  }
+  if(!_pkPick || !items.some(function(it){return it[0]===_pkPick;})) _pkPick=items.length?items[0][0]:null;
+  box.innerHTML=items.map(function(it){
+    return '<button class="yr-btn'+(it[0]===_pkPick?' on':'')+'" id="pkp-'+it[0].replace(/[^A-Za-z]/g,'')+'" onclick="pkPick(\''+it[0].replace(/'/g,"")+'\')">'+it[1]+'</button>';
+  }).join('');
+  _pkDraw();
+}
+
+function pkPick(key){ _pkPick=key; _pkPickBtns(); }
+
+// คลิกจากตาราง: ชื่อบริษัท → โหมดรายบริษัท · หัวคอลัมน์ → โหมดรายตลาด
+function pkPickCompany(n){ _pkView='co'; var a=document.getElementById('pkv-co'),b=document.getElementById('pkv-mk');
+  if(a)a.classList.add('on'); if(b)b.classList.remove('on'); _pkPick=n; _pkPickBtns(); _pkScroll(); }
+function pkPickMarket(k){ _pkView='mk'; var a=document.getElementById('pkv-co'),b=document.getElementById('pkv-mk');
+  if(b)b.classList.add('on'); if(a)a.classList.remove('on'); _pkPick=k; _pkPickBtns(); _pkScroll(); }
+function _pkScroll(){ var c=document.getElementById('c-pk-pick');
+  if(c&&c.scrollIntoView) c.scrollIntoView({behavior:'smooth',block:'center'}); }
+
+function _pkDraw(){
+  var cell=_pkmCell(); if(!_pkPick||!cell) return;
+  var note=document.getElementById('pk-pick-note'), mo=PK_MONO[_pkmMon-1]+' 69';
+
+  if(_pkView==='co'){
+    // บริษัทเดียว → กระจายไปตลาดไหนบ้าง
+    var cols=PKM_COLS.filter(function(c){ return cell[c[0]]; });
+    var labels=[], vals=[], pcts=[], listed=0;
+    cols.forEach(function(c){
+      var v=(cell[c[0]]||{})[_pkPick]||0;
+      if(v>0){ labels.push(c[1]); vals.push(Math.round(v)); pcts.push(_pkmColTotal(c[0])? v/_pkmColTotal(c[0])*100 : 0); listed+=v; }
+    });
+    var tot=(cell['_TOTAL']||{})[_pkPick]||0;
+    if(tot-listed > 0.5){ labels.push('ตลาดอื่นๆ'); vals.push(Math.round(tot-listed)); pcts.push(null); }
+    var mine=(_pkPick==='SUN');
+    mkBar('c-pk-pick', labels, [{label:_pkPick+' — '+mo+' (ตัน)', data:vals,
+      backgroundColor:labels.map(function(_,i){return i===labels.length-1&&labels[labels.length-1]==='ตลาดอื่นๆ'?'#e2e8f0':(mine?'#ec4899':'#93c5fd');}),
+      borderColor:mine?'#be185d':'#3b82f6', borderWidth:0, borderRadius:3}]);
+    if(note){
+      var top=labels.map(function(l,i){return {l:l,v:vals[i],p:pcts[i]};})
+        .filter(function(x){return x.p!=null;}).sort(function(x,y){return y.p-x.p;}).slice(0,3);
+      note.innerHTML='<b>'+(mine?'SUN (เรา)':_pkPick)+'</b> เดือน '+mo+' ส่งออกรวม <b>'+Math.round(tot).toLocaleString()+' ตัน</b>'
+        + (top.length? ' · ส่วนแบ่งสูงสุด: '+top.map(function(x){return x.l+' <b>'+x.p.toFixed(1)+'%</b>';}).join(' · ') : '')
+        + ' <span style="color:var(--muted)">(% = สัดส่วนในยอดที่ไทยส่งไปตลาดนั้น)</span>';
+    }
+  }else{
+    // ตลาดเดียว → ใครส่งบ้าง
+    var by=cell[_pkPick]||{}, t=_pkmColTotal(_pkPick);
+    var names=Object.keys(by).sort(function(x,y){return by[y]-by[x];});
+    mkBar('c-pk-pick', names.map(function(n){return n==='SUN'?'SUN (เรา)':n;}), [{
+      label:_pkThName(_pkPick)+' — '+mo+' (ตัน)', data:names.map(function(n){return Math.round(by[n]);}),
+      backgroundColor:names.map(function(n){return n==='SUN'?'#ec4899':(n==='NON-MEMBERS'?'#cbd5e1':'#93c5fd');}),
+      borderColor:names.map(function(n){return n==='SUN'?'#be185d':(n==='NON-MEMBERS'?'#94a3b8':'#3b82f6');}),
+      borderWidth:0, borderRadius:3}]);
+    if(note){
+      var us=by['SUN']||0, rank=names.indexOf('SUN')+1;
+      note.innerHTML='ไทยส่งไป <b>'+_pkThName(_pkPick)+'</b> เดือน '+mo+' รวม <b>'+Math.round(t).toLocaleString()+' ตัน</b>'
+        + (us? ' · เราส่ง <b>'+Math.round(us).toLocaleString()+' ตัน = '+(us/t*100).toFixed(1)+'%</b> (อันดับ '+rank+' จาก '+names.length+' กลุ่ม)'
+             : ' · <span style="color:#b91c1c">เดือนนี้เราไม่ได้ส่งไปตลาดนี้</span>')
+        + ' <span style="color:var(--muted)">· NON-MEMBERS = ก้อนรวมผู้ส่งออกนอกกลุ่มหลายราย</span>';
+    }
+  }
 }
 
 function _iT11(){
