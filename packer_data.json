@@ -1,6 +1,6 @@
 {
  "_source": "รายงานสมาคมฯ ตารางแยกบริษัท (Table 4 / 5.1) โฟลเดอร์ 'ราคาแยก packer'",
- "_generated": "2026-09-28T11:12:17",
+ "_generated": "2026-09-28T16:18:18",
  "_note": "% ทุกตัวคิดจากตารางเดียวกัน · Table 5 ไม่เท่ากับ Table 2 ของแท็บตลาดส่งออกไทย",
  "monthly": {
   "all": {
@@ -420,473 +420,1409 @@
   "2": {
    "ASIA": {
     "total": 64263.0,
-    "sun": 955.0
+    "sun": 955.0,
+    "by": {
+     "CP": 4540,
+     "Betagro": 3023,
+     "CPP": 1778,
+     "GFPT": 1640,
+     "GFN": 383,
+     "TYSON": 1775,
+     "LT": 1589,
+     "PN": 4484,
+     "SUN": 955,
+     "CMT": 7667,
+     "TFG": 1359,
+     "F&F": 935,
+     "NON-MEMBERS": 34135
+    }
    },
    "JAPAN": {
     "total": 41637.0,
-    "sun": 376.0
+    "sun": 376.0,
+    "by": {
+     "CP": 3510,
+     "Betagro": 1759,
+     "CPP": 1059,
+     "GFPT": 764,
+     "GFN": 360,
+     "TYSON": 437,
+     "LT": 938,
+     "PN": 212,
+     "SUN": 376,
+     "CMT": 6677,
+     "TFG": 1124,
+     "F&F": 541,
+     "NON-MEMBERS": 23880
+    }
    },
    "SINGAPORE": {
     "total": 2524.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "CP": 532,
+     "Betagro": 143,
+     "GFPT": 162,
+     "TYSON": 280,
+     "LT": 8,
+     "PN": 146,
+     "CMT": 75,
+     "NON-MEMBERS": 1178
+    }
    },
    "MALAYSIA KL": {
     "total": 6271.0,
-    "sun": 540.0
+    "sun": 540.0,
+    "by": {
+     "CP": 136,
+     "CPP": 300,
+     "GFPT": 150,
+     "TYSON": 630,
+     "LT": 127,
+     "PN": 2451,
+     "SUN": 540,
+     "TFG": 96,
+     "F&F": 25,
+     "NON-MEMBERS": 1816
+    }
    },
    "MALAYSIA SABAH": {
     "total": 3281.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "CPP": 175,
+     "GFPT": 360,
+     "LT": 24,
+     "PN": 1000,
+     "F&F": 323,
+     "NON-MEMBERS": 1399
+    }
    },
    "HONG KONG": {
     "total": 1229.0,
-    "sun": 16.0
+    "sun": 16.0,
+    "by": {
+     "CP": 55,
+     "Betagro": 258,
+     "CPP": 57,
+     "GFPT": 20,
+     "TYSON": 39,
+     "LT": 24,
+     "SUN": 16,
+     "CMT": 247,
+     "NON-MEMBERS": 513
+    }
    },
    "S.KOREA": {
     "total": 4083.0,
-    "sun": 23.0
+    "sun": 23.0,
+    "by": {
+     "CP": 59,
+     "Betagro": 149,
+     "CPP": 187,
+     "GFPT": 184,
+     "GFN": 23,
+     "TYSON": 41,
+     "LT": 468,
+     "SUN": 23,
+     "CMT": 237,
+     "TFG": 139,
+     "F&F": 46,
+     "NON-MEMBERS": 2527
+    }
    },
    "BRUNEI": {
     "total": 180.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "NON-MEMBERS": 180
+    }
    },
    "CAMBODIA": {
     "total": 36.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "Betagro": 8,
+     "NON-MEMBERS": 28
+    }
    },
    "PHILIPPINES": {
     "total": 1195.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "CP": 13,
+     "Betagro": 44,
+     "TYSON": 348,
+     "PN": 25,
+     "CMT": 431,
+     "NON-MEMBERS": 334
+    }
    },
    "CHINA": {
     "total": 3827.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "CP": 235,
+     "Betagro": 662,
+     "PN": 650,
+     "NON-MEMBERS": 2280
+    }
    },
    "EUROPE": {
     "total": 33072.0,
-    "sun": 48.0
+    "sun": 48.0,
+    "by": {
+     "CP": 3991,
+     "Betagro": 2144,
+     "CPP": 298,
+     "GFPT": 823,
+     "TYSON": 1686,
+     "LT": 1341,
+     "PN": 712,
+     "SUN": 48,
+     "CMT": 2271,
+     "TFG": 1117,
+     "NON-MEMBERS": 18641
+    }
    },
    "THE EUROPEAN UNION": {
     "total": 15353.0,
-    "sun": 48.0
+    "sun": 48.0,
+    "by": {
+     "CP": 979,
+     "Betagro": 680,
+     "CPP": 274,
+     "GFPT": 161,
+     "TYSON": 856,
+     "LT": 967,
+     "PN": 185,
+     "SUN": 48,
+     "CMT": 548,
+     "TFG": 901,
+     "NON-MEMBERS": 9754
+    }
    },
    "BELGIUM": {
     "total": 197.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "CP": 22,
+     "Betagro": 48,
+     "NON-MEMBERS": 127
+    }
    },
    "GERMANY": {
     "total": 1294.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "CP": 168,
+     "Betagro": 91,
+     "LT": 64,
+     "NON-MEMBERS": 971
+    }
    },
    "FRANCE": {
     "total": 572.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "Betagro": 9,
+     "NON-MEMBERS": 563
+    }
    },
    "DENMARK": {
     "total": 649.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "NON-MEMBERS": 649
+    }
    },
    "SWEDEN": {
     "total": 13.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "NON-MEMBERS": 13
+    }
    },
    "IRELAND": {
     "total": 1772.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "CP": 638,
+     "Betagro": 23,
+     "GFPT": 144,
+     "LT": 19,
+     "PN": 153,
+     "CMT": 45,
+     "NON-MEMBERS": 750
+    }
    },
    "OTHER EUROPE": {
     "total": 17719.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "CP": 3012,
+     "Betagro": 1464,
+     "CPP": 24,
+     "GFPT": 662,
+     "TYSON": 830,
+     "LT": 374,
+     "PN": 527,
+     "CMT": 1723,
+     "TFG": 216,
+     "NON-MEMBERS": 8887
+    }
    },
    "UNITED KINGDOM": {
     "total": 16900.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "CP": 3012,
+     "Betagro": 1464,
+     "CPP": 24,
+     "GFPT": 662,
+     "TYSON": 830,
+     "LT": 374,
+     "PN": 527,
+     "CMT": 1723,
+     "TFG": 168,
+     "NON-MEMBERS": 8116
+    }
    },
    "SWITZERLAND": {
     "total": 76.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "NON-MEMBERS": 76
+    }
    },
    "MACEDONIA": {
     "total": 421.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "TFG": 48,
+     "NON-MEMBERS": 373
+    }
    },
    "KOSOVO": {
     "total": 295.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "NON-MEMBERS": 295
+    }
    },
    "MIDDLE EAST": {
     "total": 1770.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "CPP": 22,
+     "CMT": 51,
+     "TFG": 48,
+     "NON-MEMBERS": 1649
+    }
    },
    "UAE": {
     "total": 1660.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "CPP": 22,
+     "CMT": 51,
+     "TFG": 48,
+     "NON-MEMBERS": 1539
+    }
    },
    "QATAR": {
     "total": 105.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "NON-MEMBERS": 105
+    }
    },
    "AFRICA": {
     "total": 291.0,
-    "sun": 53.0
+    "sun": 53.0,
+    "by": {
+     "Betagro": 19,
+     "GFPT": 17,
+     "SUN": 53,
+     "NON-MEMBERS": 202
+    }
    },
    "S.AFRICA": {
     "total": 249.0,
-    "sun": 53.0
+    "sun": 53.0,
+    "by": {
+     "SUN": 53,
+     "NON-MEMBERS": 196
+    }
    },
    "CANADA": {
     "total": 1285.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "CP": 44,
+     "Betagro": 195,
+     "CMT": 644,
+     "NON-MEMBERS": 402
+    }
    },
    "TOTAL": {
     "total": 100681.0,
-    "sun": 1056.0
+    "sun": 1056.0,
+    "by": {
+     "CP": 8575,
+     "Betagro": 5381,
+     "CPP": 2098,
+     "GFPT": 2480,
+     "GFN": 383,
+     "TYSON": 3461,
+     "LT": 2930,
+     "PN": 5196,
+     "SUN": 1056,
+     "CMT": 10633,
+     "TFG": 2524,
+     "F&F": 935,
+     "NON-MEMBERS": 55029
+    }
    }
   },
   "4": {
    "ASIA": {
     "total": 62696.0,
-    "sun": 1516.0
+    "sun": 1516.0,
+    "by": {
+     "CP": 5171,
+     "Betagro": 3010,
+     "CPP": 1691,
+     "GFPT": 1914,
+     "GFN": 570,
+     "TYSON": 1600,
+     "LT": 1615,
+     "PN": 2795,
+     "SUN": 1516,
+     "CMT": 8070,
+     "TFG": 1266,
+     "F&F": 823,
+     "NON-MEMBERS": 32655
+    }
    },
    "JAPAN": {
     "total": 41646.0,
-    "sun": 1093.0
+    "sun": 1093.0,
+    "by": {
+     "CP": 3850,
+     "Betagro": 1656,
+     "CPP": 772,
+     "GFPT": 946,
+     "GFN": 570,
+     "TYSON": 462,
+     "LT": 1010,
+     "PN": 401,
+     "SUN": 1093,
+     "CMT": 6950,
+     "TFG": 933,
+     "F&F": 381,
+     "NON-MEMBERS": 22622
+    }
    },
    "SINGAPORE": {
     "total": 2828.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "CP": 550,
+     "Betagro": 134,
+     "GFPT": 183,
+     "TYSON": 289,
+     "PN": 194,
+     "CMT": 85,
+     "NON-MEMBERS": 1393
+    }
    },
    "MALAYSIA KL": {
     "total": 5524.0,
-    "sun": 324.0
+    "sun": 324.0,
+    "by": {
+     "CP": 74,
+     "CPP": 605,
+     "GFPT": 369,
+     "TYSON": 550,
+     "LT": 150,
+     "PN": 1250,
+     "SUN": 324,
+     "TFG": 72,
+     "F&F": 125,
+     "NON-MEMBERS": 2005
+    }
    },
    "MALAYSIA SABAH": {
     "total": 2236.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "CPP": 100,
+     "GFPT": 96,
+     "LT": 71,
+     "PN": 275,
+     "F&F": 248,
+     "NON-MEMBERS": 1446
+    }
    },
    "HONG KONG": {
     "total": 1562.0,
-    "sun": 52.0
+    "sun": 52.0,
+    "by": {
+     "CP": 60,
+     "Betagro": 237,
+     "CPP": 50,
+     "GFPT": 20,
+     "TYSON": 52,
+     "SUN": 52,
+     "CMT": 384,
+     "NON-MEMBERS": 707
+    }
    },
    "S.KOREA": {
     "total": 4347.0,
-    "sun": 47.0
+    "sun": 47.0,
+    "by": {
+     "CP": 234,
+     "Betagro": 172,
+     "CPP": 164,
+     "GFPT": 300,
+     "TYSON": 41,
+     "LT": 384,
+     "SUN": 47,
+     "CMT": 193,
+     "TFG": 261,
+     "F&F": 69,
+     "NON-MEMBERS": 2482
+    }
    },
    "CAMBODIA": {
     "total": 30.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "Betagro": 26,
+     "NON-MEMBERS": 4
+    }
    },
    "PHILIPPINES": {
     "total": 1178.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "Betagro": 78,
+     "TYSON": 206,
+     "CMT": 458,
+     "NON-MEMBERS": 436
+    }
    },
    "CHINA": {
     "total": 3345.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "CP": 403,
+     "Betagro": 707,
+     "PN": 675,
+     "NON-MEMBERS": 1560
+    }
    },
    "EUROPE": {
     "total": 32288.0,
-    "sun": 78.0
+    "sun": 78.0,
+    "by": {
+     "CP": 3828,
+     "Betagro": 1999,
+     "CPP": 457,
+     "GFPT": 1049,
+     "TYSON": 1821,
+     "LT": 1233,
+     "PN": 818,
+     "SUN": 78,
+     "CMT": 2177,
+     "TFG": 974,
+     "NON-MEMBERS": 17854
+    }
    },
    "THE EUROPEAN UNION": {
     "total": 13017.0,
-    "sun": 51.0
+    "sun": 51.0,
+    "by": {
+     "CP": 958,
+     "Betagro": 612,
+     "CPP": 324,
+     "GFPT": 244,
+     "TYSON": 607,
+     "LT": 698,
+     "PN": 262,
+     "SUN": 51,
+     "CMT": 508,
+     "TFG": 251,
+     "NON-MEMBERS": 8502
+    }
    },
    "BELGIUM": {
     "total": 197.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "CP": 34,
+     "Betagro": 73,
+     "NON-MEMBERS": 90
+    }
    },
    "GERMANY": {
     "total": 1311.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "CP": 121,
+     "Betagro": 68,
+     "GFPT": 17,
+     "LT": 21,
+     "NON-MEMBERS": 1084
+    }
    },
    "FRANCE": {
     "total": 447.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "Betagro": 14,
+     "NON-MEMBERS": 433
+    }
    },
    "DENMARK": {
     "total": 533.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "NON-MEMBERS": 533
+    }
    },
    "IRELAND": {
     "total": 1778.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "CP": 658,
+     "Betagro": 43,
+     "GFPT": 175,
+     "TYSON": 90,
+     "LT": 22,
+     "PN": 246,
+     "CMT": 23,
+     "NON-MEMBERS": 521
+    }
    },
    "OTHER EUROPE": {
     "total": 19271.0,
-    "sun": 27.0
+    "sun": 27.0,
+    "by": {
+     "CP": 2870,
+     "Betagro": 1387,
+     "CPP": 133,
+     "GFPT": 805,
+     "TYSON": 1214,
+     "LT": 535,
+     "PN": 556,
+     "SUN": 27,
+     "CMT": 1669,
+     "TFG": 723,
+     "NON-MEMBERS": 9352
+    }
    },
    "UNITED KINGDOM": {
     "total": 18581.0,
-    "sun": 27.0
+    "sun": 27.0,
+    "by": {
+     "CP": 2870,
+     "Betagro": 1375,
+     "CPP": 133,
+     "GFPT": 805,
+     "TYSON": 1214,
+     "LT": 535,
+     "PN": 556,
+     "SUN": 27,
+     "CMT": 1669,
+     "TFG": 699,
+     "NON-MEMBERS": 8698
+    }
    },
    "SWITZERLAND": {
     "total": 75.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "NON-MEMBERS": 75
+    }
    },
    "MACEDONIA": {
     "total": 603.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "TFG": 24,
+     "NON-MEMBERS": 579
+    }
    },
    "MIDDLE EAST": {
     "total": 741.0,
-    "sun": 300.0
+    "sun": 300.0,
+    "by": {
+     "SUN": 300,
+     "TFG": 48,
+     "NON-MEMBERS": 393
+    }
    },
    "UAE": {
     "total": 741.0,
-    "sun": 300.0
+    "sun": 300.0,
+    "by": {
+     "SUN": 300,
+     "TFG": 48,
+     "NON-MEMBERS": 393
+    }
    },
    "AFRICA": {
     "total": 374.0,
-    "sun": 211.0
+    "sun": 211.0,
+    "by": {
+     "Betagro": 7,
+     "GFPT": 17,
+     "SUN": 211,
+     "NON-MEMBERS": 139
+    }
    },
    "S.AFRICA": {
     "total": 309.0,
-    "sun": 211.0
+    "sun": 211.0,
+    "by": {
+     "SUN": 211,
+     "NON-MEMBERS": 98
+    }
    },
    "CANADA": {
     "total": 1012.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "CP": 132,
+     "Betagro": 154,
+     "TYSON": 18,
+     "CMT": 441,
+     "NON-MEMBERS": 267
+    }
    },
    "TOTAL": {
     "total": 97111.0,
-    "sun": 2105.0
+    "sun": 2105.0,
+    "by": {
+     "CP": 9131,
+     "Betagro": 5170,
+     "CPP": 2148,
+     "GFPT": 2980,
+     "GFN": 570,
+     "TYSON": 3439,
+     "LT": 2848,
+     "PN": 3613,
+     "SUN": 2105,
+     "CMT": 10688,
+     "TFG": 2288,
+     "F&F": 823,
+     "NON-MEMBERS": 51308
+    }
    }
   },
   "5": {
    "ASIA": {
     "total": 67165.0,
-    "sun": 2017.0
+    "sun": 2017.0,
+    "by": {
+     "CP": 4125,
+     "Betagro": 3782,
+     "CPP": 2246,
+     "GFPT": 1707,
+     "GFN": 408,
+     "TYSON": 2601,
+     "LT": 1668,
+     "PN": 3410,
+     "SUN": 2017,
+     "CMT": 7977,
+     "TFG": 1527,
+     "F&F": 1032,
+     "NON-MEMBERS": 34665
+    }
    },
    "JAPAN": {
     "total": 43575.0,
-    "sun": 1393.0
+    "sun": 1393.0,
+    "by": {
+     "CP": 3000,
+     "Betagro": 2051,
+     "CPP": 1293,
+     "GFPT": 1083,
+     "GFN": 408,
+     "TYSON": 477,
+     "LT": 1203,
+     "PN": 524,
+     "SUN": 1393,
+     "CMT": 6613,
+     "TFG": 1216,
+     "F&F": 536,
+     "NON-MEMBERS": 23778
+    }
    },
    "SINGAPORE": {
     "total": 2780.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "CP": 517,
+     "Betagro": 112,
+     "GFPT": 213,
+     "TYSON": 442,
+     "PN": 186,
+     "CMT": 56,
+     "NON-MEMBERS": 1254
+    }
    },
    "MALAYSIA KL": {
     "total": 5083.0,
-    "sun": 373.0
+    "sun": 373.0,
+    "by": {
+     "CP": 101,
+     "CPP": 550,
+     "GFPT": 175,
+     "TYSON": 954,
+     "LT": 25,
+     "PN": 1150,
+     "SUN": 373,
+     "TFG": 48,
+     "NON-MEMBERS": 1707
+    }
    },
    "MALAYSIA SABAH": {
     "total": 3130.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "CPP": 148,
+     "GFPT": 144,
+     "LT": 71,
+     "PN": 425,
+     "F&F": 496,
+     "NON-MEMBERS": 1846
+    }
    },
    "HONG KONG": {
     "total": 1507.0,
-    "sun": 41.0
+    "sun": 41.0,
+    "by": {
+     "CP": 92,
+     "Betagro": 311,
+     "CPP": 44,
+     "TYSON": 75,
+     "SUN": 41,
+     "CMT": 376,
+     "NON-MEMBERS": 568
+    }
    },
    "S.KOREA": {
     "total": 4549.0,
-    "sun": 210.0
+    "sun": 210.0,
+    "by": {
+     "CP": 214,
+     "Betagro": 237,
+     "CPP": 211,
+     "GFPT": 92,
+     "TYSON": 22,
+     "LT": 369,
+     "SUN": 210,
+     "CMT": 258,
+     "TFG": 263,
+     "NON-MEMBERS": 2673
+    }
    },
    "BRUNEI": {
     "total": 328.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "NON-MEMBERS": 328
+    }
    },
    "CAMBODIA": {
     "total": 41.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "Betagro": 33,
+     "NON-MEMBERS": 8
+    }
    },
    "PHILIPPINES": {
     "total": 2020.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "CP": 18,
+     "Betagro": 39,
+     "TYSON": 631,
+     "PN": 75,
+     "CMT": 674,
+     "NON-MEMBERS": 583
+    }
    },
    "CHINA": {
     "total": 4152.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "CP": 183,
+     "Betagro": 999,
+     "PN": 1050,
+     "NON-MEMBERS": 1920
+    }
    },
    "EUROPE": {
     "total": 32462.0,
-    "sun": 344.0
+    "sun": 344.0,
+    "by": {
+     "CP": 4426,
+     "Betagro": 1691,
+     "CPP": 222,
+     "GFPT": 1012,
+     "TYSON": 2093,
+     "LT": 1402,
+     "PN": 632,
+     "SUN": 344,
+     "CMT": 2117,
+     "TFG": 462,
+     "NON-MEMBERS": 18061
+    }
    },
    "THE EUROPEAN UNION": {
     "total": 14945.0,
-    "sun": 303.0
+    "sun": 303.0,
+    "by": {
+     "CP": 1511,
+     "Betagro": 726,
+     "CPP": 174,
+     "GFPT": 193,
+     "TYSON": 877,
+     "LT": 995,
+     "PN": 248,
+     "SUN": 303,
+     "CMT": 607,
+     "TFG": 126,
+     "NON-MEMBERS": 9185
+    }
    },
    "BELGIUM": {
     "total": 271.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "CP": 109,
+     "Betagro": 72,
+     "NON-MEMBERS": 90
+    }
    },
    "GERMANY": {
     "total": 1506.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "CP": 331,
+     "Betagro": 102,
+     "LT": 85,
+     "NON-MEMBERS": 988
+    }
    },
    "FRANCE": {
     "total": 596.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "NON-MEMBERS": 596
+    }
    },
    "DENMARK": {
     "total": 893.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "NON-MEMBERS": 893
+    }
    },
    "IRELAND": {
     "total": 2035.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "CP": 976,
+     "Betagro": 20,
+     "GFPT": 175,
+     "TYSON": 60,
+     "PN": 232,
+     "NON-MEMBERS": 572
+    }
    },
    "OTHER EUROPE": {
     "total": 17517.0,
-    "sun": 41.0
+    "sun": 41.0,
+    "by": {
+     "CP": 2915,
+     "Betagro": 965,
+     "CPP": 48,
+     "GFPT": 819,
+     "TYSON": 1216,
+     "LT": 407,
+     "PN": 384,
+     "SUN": 41,
+     "CMT": 1510,
+     "TFG": 336,
+     "NON-MEMBERS": 8876
+    }
    },
    "UNITED KINGDOM": {
     "total": 16870.0,
-    "sun": 15.0
+    "sun": 15.0,
+    "by": {
+     "CP": 2915,
+     "Betagro": 965,
+     "CPP": 48,
+     "GFPT": 819,
+     "TYSON": 1216,
+     "LT": 407,
+     "PN": 384,
+     "SUN": 15,
+     "CMT": 1510,
+     "TFG": 264,
+     "NON-MEMBERS": 8327
+    }
    },
    "SWITZERLAND": {
     "total": 161.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "NON-MEMBERS": 161
+    }
    },
    "MACEDONIA": {
     "total": 475.0,
-    "sun": 26.0
+    "sun": 26.0,
+    "by": {
+     "SUN": 26,
+     "TFG": 72,
+     "NON-MEMBERS": 377
+    }
    },
    "MIDDLE EAST": {
     "total": 459.0,
-    "sun": 273.0
+    "sun": 273.0,
+    "by": {
+     "SUN": 273,
+     "CMT": 25,
+     "NON-MEMBERS": 161
+    }
    },
    "UAE": {
     "total": 431.0,
-    "sun": 273.0
+    "sun": 273.0,
+    "by": {
+     "SUN": 273,
+     "CMT": 25,
+     "NON-MEMBERS": 133
+    }
    },
    "QATAR": {
     "total": 28.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "NON-MEMBERS": 28
+    }
    },
    "AFRICA": {
     "total": 148.0,
-    "sun": 26.0
+    "sun": 26.0,
+    "by": {
+     "Betagro": 2,
+     "SUN": 26,
+     "NON-MEMBERS": 120
+    }
    },
    "S.AFRICA": {
     "total": 26.0,
-    "sun": 26.0
+    "sun": 26.0,
+    "by": {
+     "SUN": 26
+    }
    },
    "CANADA": {
     "total": 1466.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "CP": 110,
+     "Betagro": 145,
+     "TYSON": 18,
+     "CMT": 991,
+     "NON-MEMBERS": 202
+    }
    },
    "TOTAL": {
     "total": 101700.0,
-    "sun": 2660.0
+    "sun": 2660.0,
+    "by": {
+     "CP": 8661,
+     "Betagro": 5620,
+     "CPP": 2468,
+     "GFPT": 2719,
+     "GFN": 408,
+     "TYSON": 4712,
+     "LT": 3070,
+     "PN": 4042,
+     "SUN": 2660,
+     "CMT": 11110,
+     "TFG": 1989,
+     "F&F": 1032,
+     "NON-MEMBERS": 53209
+    }
    }
   },
   "7": {
    "ASIA": {
     "total": 66364.0,
-    "sun": 2076.0
+    "sun": 2076.0,
+    "by": {
+     "CP": 5377,
+     "Betagro": 3417,
+     "CPP": 1549,
+     "GFPT": 1748,
+     "GFN": 456,
+     "TYSON": 2470,
+     "LT": 1783,
+     "PN": 3368,
+     "SUN": 2076,
+     "CMT": 7339,
+     "TFG": 1429,
+     "F&F": 956,
+     "NON-MEMBERS": 34396
+    }
    },
    "JAPAN": {
     "total": 41889.0,
-    "sun": 1254.0
+    "sun": 1254.0,
+    "by": {
+     "CP": 3876,
+     "Betagro": 1768,
+     "CPP": 627,
+     "GFPT": 935,
+     "GFN": 456,
+     "TYSON": 510,
+     "LT": 1003,
+     "PN": 308,
+     "SUN": 1254,
+     "CMT": 5963,
+     "TFG": 997,
+     "F&F": 466,
+     "NON-MEMBERS": 23726
+    }
    },
    "SINGAPORE": {
     "total": 2917.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "CP": 418,
+     "Betagro": 170,
+     "GFPT": 181,
+     "TYSON": 527,
+     "PN": 210,
+     "CMT": 122,
+     "NON-MEMBERS": 1289
+    }
    },
    "MALAYSIA KL": {
     "total": 5502.0,
-    "sun": 540.0
+    "sun": 540.0,
+    "by": {
+     "CP": 95,
+     "Betagro": 17,
+     "CPP": 475,
+     "GFPT": 374,
+     "TYSON": 866,
+     "LT": 201,
+     "PN": 1150,
+     "SUN": 540,
+     "TFG": 96,
+     "F&F": 75,
+     "NON-MEMBERS": 1613
+    }
    },
    "HONG KONG": {
     "total": 1814.0,
-    "sun": 50.0
+    "sun": 50.0,
+    "by": {
+     "CP": 115,
+     "Betagro": 232,
+     "CPP": 39,
+     "TYSON": 183,
+     "LT": 24,
+     "SUN": 50,
+     "CMT": 455,
+     "TFG": 48,
+     "NON-MEMBERS": 668
+    }
    },
    "S.KOREA": {
     "total": 4219.0,
-    "sun": 232.0
+    "sun": 232.0,
+    "by": {
+     "CP": 121,
+     "Betagro": 257,
+     "CPP": 234,
+     "GFPT": 138,
+     "TYSON": 60,
+     "LT": 532,
+     "SUN": 232,
+     "CMT": 130,
+     "TFG": 288,
+     "F&F": 46,
+     "NON-MEMBERS": 2181
+    }
    },
    "BRUNEI": {
     "total": 319.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "NON-MEMBERS": 319
+    }
    },
    "PHILIPPINES": {
     "total": 2319.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "Betagro": 25,
+     "TYSON": 324,
+     "PN": 200,
+     "CMT": 669,
+     "NON-MEMBERS": 1101
+    }
    },
    "CHINA": {
     "total": 4643.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "CP": 752,
+     "Betagro": 948,
+     "PN": 975,
+     "NON-MEMBERS": 1968
+    }
    },
    "OTHERS": {
     "total": 18.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "TYSON": 18
+    }
    },
    "EUROPE": {
     "total": 35773.0,
-    "sun": 228.0
+    "sun": 228.0,
+    "by": {
+     "CP": 4662,
+     "Betagro": 1979,
+     "CPP": 223,
+     "GFPT": 955,
+     "TYSON": 2250,
+     "LT": 1083,
+     "PN": 828,
+     "SUN": 228,
+     "CMT": 2696,
+     "TFG": 882,
+     "NON-MEMBERS": 19987
+    }
    },
    "THE EUROPEAN UNION": {
     "total": 15711.0,
-    "sun": 202.0
+    "sun": 202.0,
+    "by": {
+     "CP": 1363,
+     "Betagro": 383,
+     "CPP": 198,
+     "GFPT": 197,
+     "TYSON": 839,
+     "LT": 612,
+     "PN": 377,
+     "SUN": 202,
+     "CMT": 612,
+     "TFG": 714,
+     "NON-MEMBERS": 10214
+    }
    },
    "BELGIUM": {
     "total": 113.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "CP": 34,
+     "NON-MEMBERS": 79
+    }
    },
    "GERMANY": {
     "total": 1732.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "CP": 193,
+     "Betagro": 24,
+     "CPP": 25,
+     "LT": 72,
+     "TFG": 48,
+     "NON-MEMBERS": 1370
+    }
    },
    "NETHERLANDS": {
     "total": 10328.0,
-    "sun": 202.0
+    "sun": 202.0,
+    "by": {
+     "CP": 50,
+     "Betagro": 333,
+     "CPP": 173,
+     "GFPT": 17,
+     "TYSON": 772,
+     "LT": 518,
+     "PN": 33,
+     "SUN": 202,
+     "CMT": 554,
+     "TFG": 666,
+     "NON-MEMBERS": 7010
+    }
    },
    "FRANCE": {
     "total": 703.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "Betagro": 19,
+     "PN": 138,
+     "NON-MEMBERS": 546
+    }
    },
    "DENMARK": {
     "total": 770.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "NON-MEMBERS": 770
+    }
    },
    "SWEDEN": {
     "total": 13.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "NON-MEMBERS": 13
+    }
    },
    "IRELAND": {
     "total": 1922.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "CP": 1025,
+     "Betagro": 7,
+     "GFPT": 180,
+     "TYSON": 67,
+     "LT": 22,
+     "PN": 206,
+     "NON-MEMBERS": 415
+    }
    },
    "OTHER EUROPE": {
     "total": 20062.0,
-    "sun": 26.0
+    "sun": 26.0,
+    "by": {
+     "CP": 3299,
+     "Betagro": 1596,
+     "CPP": 25,
+     "GFPT": 758,
+     "TYSON": 1411,
+     "LT": 471,
+     "PN": 451,
+     "SUN": 26,
+     "CMT": 2084,
+     "TFG": 168,
+     "NON-MEMBERS": 9773
+    }
    },
    "UNITED KINGDOM": {
     "total": 19619.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "CP": 3299,
+     "Betagro": 1596,
+     "GFPT": 758,
+     "TYSON": 1367,
+     "LT": 471,
+     "PN": 451,
+     "CMT": 2084,
+     "TFG": 96,
+     "NON-MEMBERS": 9497
+    }
    },
    "SWITZERLAND": {
     "total": 34.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "NON-MEMBERS": 34
+    }
    },
    "MACEDONIA": {
     "total": 365.0,
-    "sun": 26.0
+    "sun": 26.0,
+    "by": {
+     "CPP": 25,
+     "SUN": 26,
+     "TFG": 72,
+     "NON-MEMBERS": 242
+    }
    },
    "MIDDLE EAST": {
     "total": 1395.0,
-    "sun": 902.0
+    "sun": 902.0,
+    "by": {
+     "CP": 18,
+     "SUN": 902,
+     "NON-MEMBERS": 475
+    }
    },
    "UAE": {
     "total": 1350.0,
-    "sun": 902.0
+    "sun": 902.0,
+    "by": {
+     "CP": 18,
+     "SUN": 902,
+     "NON-MEMBERS": 430
+    }
    },
    "QATAR": {
     "total": 38.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "NON-MEMBERS": 38
+    }
    },
    "AFRICA": {
     "total": 57.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "Betagro": 3,
+     "GFPT": 17,
+     "NON-MEMBERS": 37
+    }
    },
    "CANADA": {
     "total": 1290.0,
-    "sun": 0
+    "sun": 0,
+    "by": {
+     "CP": 44,
+     "Betagro": 192,
+     "CMT": 697,
+     "NON-MEMBERS": 357
+    }
    },
    "TOTAL": {
     "total": 104897.0,
-    "sun": 3206.0
+    "sun": 3206.0,
+    "by": {
+     "CP": 10101,
+     "Betagro": 5591,
+     "CPP": 1772,
+     "GFPT": 2720,
+     "GFN": 456,
+     "TYSON": 4738,
+     "LT": 2866,
+     "PN": 4196,
+     "SUN": 3206,
+     "CMT": 10732,
+     "TFG": 2311,
+     "F&F": 956,
+     "NON-MEMBERS": 55252
+    }
    }
   }
  }

@@ -796,6 +796,14 @@ body{
     <div style="overflow-x:auto;margin-top:10px"><table id="tbl-pk-mkt" style="width:100%;border-collapse:collapse;font-family:'IBM Plex Sans Thai',sans-serif;font-size:12px"></table></div>
   </div>
 
+  <div class="card" style="margin-top:16px">
+    <div class="card-ttl">🔀 ใครส่งไปตลาดไหน — บริษัท × ตลาด</div>
+    <div class="card-sub">ตัน (ตัวเลขเล็ก = ส่วนแบ่งในตลาดนั้น) · เลือกเดือนที่มีรายงานแยกบริษัท · <b>แถวสีชมพู = เรา</b> · ช่องยิ่งเข้ม = ยิ่งเยอะเมื่อเทียบในคอลัมน์เดียวกัน</div>
+    <div class="yr-row" style="margin:10px 0 4px" id="pkm-btns"></div>
+    <div style="overflow-x:auto"><table id="tbl-pkm" style="width:100%;border-collapse:collapse;font-family:'IBM Plex Sans Thai',sans-serif;font-size:12px"></table></div>
+    <div style="font-size:11px;color:var(--muted);font-family:'IBM Plex Sans Thai',sans-serif;margin-top:8px;line-height:1.5" id="pkm-note"></div>
+  </div>
+
   <div style="margin-top:16px;background:rgba(37,99,168,.06);border-left:4px solid var(--blue);border-radius:0 8px 8px 0;padding:14px 18px;font-family:'IBM Plex Sans Thai',sans-serif;font-size:12.5px;color:var(--text);line-height:1.55" id="pk-summary"></div>
 
 </div></div>
@@ -1965,6 +1973,65 @@ var PK_MONO = ['ม.ค.','ก.พ.','มี.ค.','เม.ย.','พ.ค.','ม
 
 function _pkLastIdx(){ var l=-1; for(var i=0;i<12;i++){ if(PK.sun[i]!=null) l=i; } return l; }
 
+
+var PKM={"2":{"JAPAN":{"CP":3510,"Betagro":1759,"CPP":1059,"GFPT":764,"GFN":360,"TYSON":437,"LT":938,"PN":212,"SUN":376,"CMT":6677,"TFG":1124,"F&F":541,"NON-MEMBERS":23880},"THE EUROPEAN UNION":{"CP":979,"Betagro":680,"CPP":274,"GFPT":161,"TYSON":856,"LT":967,"PN":185,"SUN":48,"CMT":548,"TFG":901,"NON-MEMBERS":9754},"UNITED KINGDOM":{"CP":3012,"Betagro":1464,"CPP":24,"GFPT":662,"TYSON":830,"LT":374,"PN":527,"CMT":1723,"TFG":168,"NON-MEMBERS":8116},"MALAYSIA KL":{"CP":136,"CPP":300,"GFPT":150,"TYSON":630,"LT":127,"PN":2451,"SUN":540,"TFG":96,"F&F":25,"NON-MEMBERS":1816},"S.KOREA":{"CP":59,"Betagro":149,"CPP":187,"GFPT":184,"GFN":23,"TYSON":41,"LT":468,"SUN":23,"CMT":237,"TFG":139,"F&F":46,"NON-MEMBERS":2527},"CHINA":{"CP":235,"Betagro":662,"PN":650,"NON-MEMBERS":2280},"SINGAPORE":{"CP":532,"Betagro":143,"GFPT":162,"TYSON":280,"LT":8,"PN":146,"CMT":75,"NON-MEMBERS":1178},"HONG KONG":{"CP":55,"Betagro":258,"CPP":57,"GFPT":20,"TYSON":39,"LT":24,"SUN":16,"CMT":247,"NON-MEMBERS":513},"UAE":{"CPP":22,"CMT":51,"TFG":48,"NON-MEMBERS":1539},"_TOTAL":{"CP":8575,"Betagro":5381,"CPP":2098,"GFPT":2480,"GFN":383,"TYSON":3461,"LT":2930,"PN":5196,"SUN":1056,"CMT":10633,"TFG":2524,"F&F":935,"NON-MEMBERS":55029}},"4":{"JAPAN":{"CP":3850,"Betagro":1656,"CPP":772,"GFPT":946,"GFN":570,"TYSON":462,"LT":1010,"PN":401,"SUN":1093,"CMT":6950,"TFG":933,"F&F":381,"NON-MEMBERS":22622},"THE EUROPEAN UNION":{"CP":958,"Betagro":612,"CPP":324,"GFPT":244,"TYSON":607,"LT":698,"PN":262,"SUN":51,"CMT":508,"TFG":251,"NON-MEMBERS":8502},"UNITED KINGDOM":{"CP":2870,"Betagro":1375,"CPP":133,"GFPT":805,"TYSON":1214,"LT":535,"PN":556,"SUN":27,"CMT":1669,"TFG":699,"NON-MEMBERS":8698},"MALAYSIA KL":{"CP":74,"CPP":605,"GFPT":369,"TYSON":550,"LT":150,"PN":1250,"SUN":324,"TFG":72,"F&F":125,"NON-MEMBERS":2005},"S.KOREA":{"CP":234,"Betagro":172,"CPP":164,"GFPT":300,"TYSON":41,"LT":384,"SUN":47,"CMT":193,"TFG":261,"F&F":69,"NON-MEMBERS":2482},"CHINA":{"CP":403,"Betagro":707,"PN":675,"NON-MEMBERS":1560},"SINGAPORE":{"CP":550,"Betagro":134,"GFPT":183,"TYSON":289,"PN":194,"CMT":85,"NON-MEMBERS":1393},"HONG KONG":{"CP":60,"Betagro":237,"CPP":50,"GFPT":20,"TYSON":52,"SUN":52,"CMT":384,"NON-MEMBERS":707},"UAE":{"SUN":300,"TFG":48,"NON-MEMBERS":393},"_TOTAL":{"CP":9131,"Betagro":5170,"CPP":2148,"GFPT":2980,"GFN":570,"TYSON":3439,"LT":2848,"PN":3613,"SUN":2105,"CMT":10688,"TFG":2288,"F&F":823,"NON-MEMBERS":51308}},"5":{"JAPAN":{"CP":3000,"Betagro":2051,"CPP":1293,"GFPT":1083,"GFN":408,"TYSON":477,"LT":1203,"PN":524,"SUN":1393,"CMT":6613,"TFG":1216,"F&F":536,"NON-MEMBERS":23778},"THE EUROPEAN UNION":{"CP":1511,"Betagro":726,"CPP":174,"GFPT":193,"TYSON":877,"LT":995,"PN":248,"SUN":303,"CMT":607,"TFG":126,"NON-MEMBERS":9185},"UNITED KINGDOM":{"CP":2915,"Betagro":965,"CPP":48,"GFPT":819,"TYSON":1216,"LT":407,"PN":384,"SUN":15,"CMT":1510,"TFG":264,"NON-MEMBERS":8327},"MALAYSIA KL":{"CP":101,"CPP":550,"GFPT":175,"TYSON":954,"LT":25,"PN":1150,"SUN":373,"TFG":48,"NON-MEMBERS":1707},"S.KOREA":{"CP":214,"Betagro":237,"CPP":211,"GFPT":92,"TYSON":22,"LT":369,"SUN":210,"CMT":258,"TFG":263,"NON-MEMBERS":2673},"CHINA":{"CP":183,"Betagro":999,"PN":1050,"NON-MEMBERS":1920},"SINGAPORE":{"CP":517,"Betagro":112,"GFPT":213,"TYSON":442,"PN":186,"CMT":56,"NON-MEMBERS":1254},"HONG KONG":{"CP":92,"Betagro":311,"CPP":44,"TYSON":75,"SUN":41,"CMT":376,"NON-MEMBERS":568},"UAE":{"SUN":273,"CMT":25,"NON-MEMBERS":133},"_TOTAL":{"CP":8661,"Betagro":5620,"CPP":2468,"GFPT":2719,"GFN":408,"TYSON":4712,"LT":3070,"PN":4042,"SUN":2660,"CMT":11110,"TFG":1989,"F&F":1032,"NON-MEMBERS":53209}},"7":{"JAPAN":{"CP":3876,"Betagro":1768,"CPP":627,"GFPT":935,"GFN":456,"TYSON":510,"LT":1003,"PN":308,"SUN":1254,"CMT":5963,"TFG":997,"F&F":466,"NON-MEMBERS":23726},"THE EUROPEAN UNION":{"CP":1363,"Betagro":383,"CPP":198,"GFPT":197,"TYSON":839,"LT":612,"PN":377,"SUN":202,"CMT":612,"TFG":714,"NON-MEMBERS":10214},"UNITED KINGDOM":{"CP":3299,"Betagro":1596,"GFPT":758,"TYSON":1367,"LT":471,"PN":451,"CMT":2084,"TFG":96,"NON-MEMBERS":9497},"MALAYSIA KL":{"CP":95,"Betagro":17,"CPP":475,"GFPT":374,"TYSON":866,"LT":201,"PN":1150,"SUN":540,"TFG":96,"F&F":75,"NON-MEMBERS":1613},"S.KOREA":{"CP":121,"Betagro":257,"CPP":234,"GFPT":138,"TYSON":60,"LT":532,"SUN":232,"CMT":130,"TFG":288,"F&F":46,"NON-MEMBERS":2181},"CHINA":{"CP":752,"Betagro":948,"PN":975,"NON-MEMBERS":1968},"SINGAPORE":{"CP":418,"Betagro":170,"GFPT":181,"TYSON":527,"PN":210,"CMT":122,"NON-MEMBERS":1289},"HONG KONG":{"CP":115,"Betagro":232,"CPP":39,"TYSON":183,"LT":24,"SUN":50,"CMT":455,"TFG":48,"NON-MEMBERS":668},"UAE":{"CP":18,"SUN":902,"NON-MEMBERS":430},"_TOTAL":{"CP":10101,"Betagro":5591,"CPP":1772,"GFPT":2720,"GFN":456,"TYSON":4738,"LT":2866,"PN":4196,"SUN":3206,"CMT":10732,"TFG":2311,"F&F":956,"NON-MEMBERS":55252}}};
+var PKM_COLS=[["JAPAN","🇯🇵 ญี่ปุ่น"],["THE EUROPEAN UNION","🇪🇺 EU"],["UNITED KINGDOM","🇬🇧 UK"],["MALAYSIA KL","🇲🇾 มาเลเซีย"],["S.KOREA","🇰🇷 เกาหลีใต้"],["CHINA","🇨🇳 จีน"],["SINGAPORE","🇸🇬 สิงคโปร์"],["HONG KONG","🇭🇰 ฮ่องกง"],["UAE","🇦🇪 UAE"]];
+var _pkmMon = null;
+
+function setPkmMon(m){
+  _pkmMon = String(m);
+  PK.mkMonths.forEach(function(x){
+    var b=document.getElementById('pkm-'+x); if(b) b.classList.toggle('on', String(x)===_pkmMon);
+  });
+  var cell=PKM[_pkmMon]; if(!cell) return;
+  var tot=cell['_TOTAL']||{};
+  var names=Object.keys(tot).sort(function(a,b){return tot[b]-tot[a];});
+  var cols=PKM_COLS.filter(function(c){ return cell[c[0]]; });
+
+  // ยอดรวมของแต่ละตลาด (ใช้คิด % และความเข้มของสี)
+  var colTot={};
+  cols.forEach(function(c){
+    var sum=0, by=cell[c[0]];
+    Object.keys(by).forEach(function(n){ sum+=by[n]; });
+    colTot[c[0]]=sum;
+  });
+
+  var th='<thead><tr style="background:rgba(190,24,93,.07)">'
+       + '<th style="text-align:left;padding:7px 10px;font-size:11px;color:var(--navy);border-bottom:2px solid rgba(190,24,93,.2);position:sticky;left:0;background:#fdf2f8">บริษัท</th>';
+  cols.forEach(function(c){
+    th+='<th style="text-align:right;padding:7px 10px;font-size:11px;color:var(--navy);border-bottom:2px solid rgba(190,24,93,.2);white-space:nowrap">'+c[1]
+      +'<br><span style="font-weight:400;color:var(--muted);font-size:10px">'+Math.round(colTot[c[0]]).toLocaleString()+' ตัน</span></th>';
+  });
+  th+='<th style="text-align:right;padding:7px 10px;font-size:11px;color:var(--navy);border-bottom:2px solid rgba(190,24,93,.2)">รวมทุกตลาด</th></tr></thead><tbody>';
+
+  names.forEach(function(n){
+    var mine=(n==='SUN');
+    th+='<tr style="border-bottom:1px solid rgba(37,99,168,.08)'+(mine?';background:rgba(236,72,153,.10)':'')+'">'
+      + '<td style="padding:6px 10px;white-space:nowrap;position:sticky;left:0;background:'+(mine?'#fce7f3':'#fff')+';font-weight:'+(mine?'700':'500')+'">'
+      + (mine?'🏭 SUN (เรา)':n)+'</td>';
+    cols.forEach(function(c){
+      var v=(cell[c[0]]||{})[n]||0, t=colTot[c[0]]||0, pct=t?v/t*100:0;
+      var a=t?Math.min(v/t*1.6,0.55):0;                    // ความเข้มตามสัดส่วนในคอลัมน์
+      th+='<td style="padding:6px 10px;text-align:right;font-family:\'IBM Plex Sans\';background:rgba(37,99,168,'+a.toFixed(3)+')">'
+        + (v? Math.round(v).toLocaleString()+' <span style="color:var(--muted);font-size:10px">('+pct.toFixed(0)+'%)</span>' : '<span style="color:#cbd5e1">–</span>')
+        + '</td>';
+    });
+    th+='<td style="padding:6px 10px;text-align:right;font-family:\'IBM Plex Sans\';font-weight:600">'+Math.round(tot[n]||0).toLocaleString()+'</td></tr>';
+  });
+  document.getElementById('tbl-pkm').innerHTML=th+'</tbody>';
+
+  // หมายเหตุ: ตลาดที่เราครองส่วนแบ่งสูงสุด
+  var best=null;
+  cols.forEach(function(c){
+    var v=(cell[c[0]]||{})['SUN']||0, t=colTot[c[0]]||0;
+    if(v && t && (!best || v/t > best.p)) best={n:c[1], p:v/t, v:v};
+  });
+  var el=document.getElementById('pkm-note');
+  if(el) el.innerHTML='เดือน '+PK_MONO[_pkmMon-1]+' 69 · คอลัมน์ "รวมทุกตลาด" คือยอดทั้งเดือนของบริษัทนั้น (รวมตลาดที่ไม่ได้แยกคอลัมน์ไว้ด้วย) · '
+    + (best? 'ตลาดที่เรามีส่วนแบ่งสูงสุดเดือนนี้: <b>'+best.n+' '+(best.p*100).toFixed(1)+'%</b> ('+Math.round(best.v).toLocaleString()+' ตัน)' : '')
+    + ' · <b>NON-MEMBERS</b> เป็นก้อนรวมของผู้ส่งออกนอกกลุ่มหลายราย ไม่ใช่บริษัทเดียว';
+}
+
 function _iT11(){
   var last=_pkLastIdx();
   var lbl=MO.slice(0,last+1);
@@ -2032,6 +2099,13 @@ function _iT11(){
     + K('ไก่สด', PK.ytdRaw.sun.toLocaleString(),'ตัน','= '+(PK.ytdRaw.sun/ytdSun*100).toFixed(0)+'% ของยอดเรา · ส่วนแบ่งในตลาดไก่สดไทย <b>'+(PK.ytdRaw.sun/PK.ytdRaw.thai*100).toFixed(1)+'%</b>','#db2777')
     + K('ปรุงสุก', PK.ytdCooked.sun.toLocaleString(),'ตัน','= '+(PK.ytdCooked.sun/ytdSun*100).toFixed(0)+'% ของยอดเรา (ส่วนแบ่ง '+(PK.ytdCooked.sun/PK.ytdCooked.thai*100).toFixed(2)+'%)','#f472b6')
     + K('อันดับในตาราง', '#'+rank,'','จาก '+names.length+' กลุ่มที่รายงานแยกไว้','#64748b');
+
+  // ปุ่มเลือกเดือนของตาราง "บริษัท × ตลาด"
+  var bb=document.getElementById('pkm-btns');
+  if(bb) bb.innerHTML='<span class="yr-lbl">เดือน:</span>'+PK.mkMonths.map(function(m){
+      return '<button class="yr-btn" id="pkm-'+m+'" onclick="setPkmMon('+m+')">'+PK_MONO[m-1]+' 69</button>';
+    }).join('');
+  setPkmMon(PK.mkMonths[PK.mkMonths.length-1]);
 
   var sm=document.getElementById('pk-summary');
   if(sm){

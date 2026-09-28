@@ -97,7 +97,9 @@ def main():
         keep = {}
         for lab, r in rows.items():
             if r["total"] > 0 or r["by"].get("SUN"):
-                keep[lab] = {"total": r["total"], "sun": r["by"].get("SUN", 0)}
+                # เก็บครบทุกบริษัท ไม่ใช่แค่ SUN → ใช้ทำตาราง "ใครส่งไปตลาดไหน"
+                keep[lab] = {"total": r["total"], "sun": r["by"].get("SUN", 0),
+                             "by": {k: round(v) for k, v in r["by"].items() if v}}
         by_country[mon] = keep
         print(f"  Table 5.1 เดือน {mon}: {len(keep)} แถว · SUN รวม {keep.get('TOTAL',{}).get('sun',0):,.0f} ตัน")
     data["by_country"] = by_country
