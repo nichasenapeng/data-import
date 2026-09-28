@@ -54,7 +54,7 @@ body{
   background:rgba(255,255,255,.70);
   border-bottom:1px solid rgba(37,99,168,.15);
   padding:0 20px;
-  display:flex;overflow-x:auto;gap:0;
+  display:flex;flex-wrap:wrap;overflow-x:auto;gap:0;   /* 11 แท็บแล้ว — ให้ตัดบรรทัดแทนเลื่อนซ้ายขวา (แถบเลื่อนถูกซ่อน คนไม่รู้ว่าเลื่อนได้) */
   backdrop-filter:blur(14px);
   box-shadow:0 1px 6px rgba(26,58,92,.06);
 }
@@ -231,6 +231,7 @@ body{
   <button class="tab"    id="nav-t8" onclick="goTab('t8')">ในประเทศ vs ส่งออก</button>
   <button class="tab"    id="nav-t9" onclick="goTab('t9')">ราคาในประเทศ</button>
   <button class="tab"    id="nav-t10" onclick="goTab('t10')">ตลาดส่งออกไทย</button>
+  <button class="tab"    id="nav-t11" onclick="goTab('t11')">แยก packer</button>
 </div>
 
 <!-- TAB 1 -->
@@ -754,6 +755,51 @@ body{
 </div></div>
 
 <!-- TAB 10 : Thai export markets -->
+<div id="t11" class="sec"><div class="wrap">
+
+  <div style="background:rgba(190,24,93,.07);border:1px solid rgba(190,24,93,.2);border-radius:10px;padding:10px 16px;margin-bottom:16px;display:flex;align-items:flex-start;gap:10px;flex-wrap:wrap">
+    <span style="font-size:16px">🏭</span>
+    <div style="font-family:'IBM Plex Sans Thai',sans-serif;font-size:12px;color:var(--navy);line-height:1.6">
+      <strong>ที่มาข้อมูล:</strong> ตารางแยกรายบริษัทในรายงานสมาคมฯ (Table 4 = รายเดือนแยกบริษัท · Table 5.1 = ประเทศ × บริษัท) จากโฟลเดอร์ "ราคาแยก packer" — มี 4 งวด (ก.พ./เม.ย./พ.ค./ก.ค. 2569)<br>
+      <b style="color:#be185d">⚠ ตัวเลขในแท็บนี้เป็นคนละชุดกับแท็บ "ตลาดส่งออกไทย"</b> — แท็บนั้นใช้ Table 2 (ประมาณการศุลกากร) แท็บนี้ใช้ Table 4/5 (รวบรวมจากบริษัท) ตัวเลขรายประเทศต่างกันได้ถึง ~19% · <b>ทุก % ในหน้านี้คิดจากตารางเดียวกันเท่านั้น</b> อย่าเอาไปหารข้ามแท็บ
+    </div>
+  </div>
+
+  <div class="kpi-row kauto" id="kpi11"></div>
+
+  <div class="g2" style="margin-top:16px">
+    <div class="card" style="margin-bottom:0">
+      <div class="card-ttl">📦 ยอดส่งออกของเรา (SUN) รายเดือน</div>
+      <div class="card-sub">ตัน/เดือน · ม.ค.–ก.ค. 2569 · <span id="pk-mo-sub"></span></div>
+      <div class="leg"><div class="leg-i"><div class="leg-d" style="background:#ec4899"></div>ไก่สด</div><div class="leg-i"><div class="leg-d" style="background:#fbcfe8"></div>ปรุงสุก</div></div>
+      <div class="h240"><canvas id="c-pk-mo"></canvas></div>
+    </div>
+    <div class="card" style="margin-bottom:0">
+      <div class="card-ttl">📈 ส่วนแบ่งของเราในยอดส่งออกไก่ไทย</div>
+      <div class="card-sub">% ของยอดรวมทั้งประเทศในเดือนนั้น (Table 4) · <span id="pk-share-sub"></span></div>
+      <div class="leg"><div class="leg-i"><div class="leg-d" style="background:#be185d"></div>ส่วนแบ่ง SUN (%)</div></div>
+      <div class="h240"><canvas id="c-pk-share"></canvas></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <div class="card-ttl">🏭 เทียบกับผู้ส่งออกรายอื่น — ยอดรวม ม.ค.–ก.ค. 2569</div>
+    <div class="card-sub">ตัน · แท่งสีชมพู = เรา · <b>"NON-MEMBERS" เป็นก้อนรวมของผู้ส่งออกนอกกลุ่มหลายราย ไม่ใช่บริษัทเดียว</b></div>
+    <div class="h290"><canvas id="c-pk-comp"></canvas></div>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <div class="card-ttl">🌏 ยอดของเราแยกตลาด</div>
+    <div class="card-sub">ตัน · มีเฉพาะ 4 เดือนที่มีรายงานแยกบริษัท (ก.พ./เม.ย./พ.ค./ก.ค. 2569) · ตัวเลขในวงเล็บ = ส่วนแบ่งของเราในยอดไทยที่ส่งไปตลาดนั้น (Table 5)</div>
+    <div class="leg" id="leg-pk-mkt"></div>
+    <div class="h290"><canvas id="c-pk-mkt"></canvas></div>
+    <div style="overflow-x:auto;margin-top:10px"><table id="tbl-pk-mkt" style="width:100%;border-collapse:collapse;font-family:'IBM Plex Sans Thai',sans-serif;font-size:12px"></table></div>
+  </div>
+
+  <div style="margin-top:16px;background:rgba(37,99,168,.06);border-left:4px solid var(--blue);border-radius:0 8px 8px 0;padding:14px 18px;font-family:'IBM Plex Sans Thai',sans-serif;font-size:12.5px;color:var(--text);line-height:1.55" id="pk-summary"></div>
+
+</div></div>
+
 <div id="t10" class="sec"><div class="wrap">
 
   <div style="background:rgba(37,99,168,.07);border:1px solid rgba(37,99,168,.18);border-radius:10px;padding:10px 16px;margin-bottom:16px;display:flex;align-items:center;gap:10px;flex-wrap:wrap">
@@ -1099,7 +1145,7 @@ function buildHM(gridId,src,yrs){
 }
 
 // ── TAB INIT ──
-function _initTab(id){if(id==='t1')_iT1();else if(id==='t2')_iT2();else if(id==='t3')_iT3();else if(id==='t4')_iT4();else if(id==='t5')_iT5();else if(id==='t6')_iT6();else if(id==='t7')_iT7();else if(id==='t8')_iT8();else if(id==='t9')_iT9();else if(id==='t10')_iT10();}
+function _initTab(id){if(id==='t1')_iT1();else if(id==='t2')_iT2();else if(id==='t3')_iT3();else if(id==='t4')_iT4();else if(id==='t5')_iT5();else if(id==='t6')_iT6();else if(id==='t7')_iT7();else if(id==='t8')_iT8();else if(id==='t9')_iT9();else if(id==='t10')_iT10();else if(id==='t11')_iT11();}
 
 function _iT1(){
   var kd=[{n:'BRAZIL',a:ANN_BRA,c:'#3b82f6'},{n:'THAI',a:ANN_THAI,c:'#22c55e'},{n:'USA',a:ANN_USA,c:'#f59e0b'},{n:'OTHERS',a:ANN_OTH,c:'#ef4444'}];
@@ -1909,6 +1955,96 @@ function _exKpi(mk){
   el.innerHTML='<div class="kpi-lbl">'+info[1]+' '+info[2].split(' ')[0]+' (ถึง '+lastMo+' '+(parseInt(yy,10)+543-2500)+')</div>'
     + '<div class="kpi-val" style="color:'+info[3]+'">'+Math.round(tot).toLocaleString()+' <span class="kpi-unit">ตัน</span></div>'
     + '<div class="kpi-avg">'+(sc[0]>0?'ปรุงสุก '+share+'%':'ไก่สดล้วน')+chg+'</div>';
+}
+
+
+// ── TAB 11 : แยก packer (ข้อมูลจาก extract_packer.py → packer_data.json) ──
+var PK={"sun":[1352,1056,968,2105,2660,2695,3206,null,null,null,null,null],"thai":[103963,100681,91050,97111,101700,99492,104897,null,null,null,null,null],"sunRaw":[1294,1009,946,2042,2625,2638,3197,null,null,null,null,null],"sunCooked":[58,47,22,63,35,57,9,null,null,null,null,null],"ytd":{"CP":60141,"Betagro":37386,"CPP":14477,"GFPT":18174,"GFN":2925,"TYSON":28384,"LT":20316,"PN":32910,"SUN":14042,"CMT":75740,"TFG":15485,"F&F":5870,"NON-MEMBERS":373044},"ytdTotal":698894,"ytdRaw":{"sun":13751,"thai":289927},"ytdCooked":{"sun":291,"thai":408967},"mkMonths":[2,4,5,7],"markets":{"JAPAN":[[376,41637],[1093,41646],[1393,43575],[1254,41889]],"UAE":[[0,1660],[300,741],[273,431],[902,1350]],"MALAYSIA KL":[[540,6271],[324,5524],[373,5083],[540,5502]],"S.KOREA":[[23,4083],[47,4347],[210,4549],[232,4219]],"NETHERLANDS":[[0,0],[0,0],[0,0],[202,10328]],"HONG KONG":[[16,1229],[52,1562],[41,1507],[50,1814]],"SINGAPORE":[[0,2524],[0,2828],[0,2780],[0,2917]],"CHINA":[[0,3827],[0,3345],[0,4152],[0,4643]]}};
+var PK_TH = {"JAPAN": "🇯🇵 ญี่ปุ่น", "UAE": "🇦🇪 UAE", "MALAYSIA KL": "🇲🇾 มาเลเซีย KL", "S.KOREA": "🇰🇷 เกาหลีใต้", "NETHERLANDS": "🇳🇱 เนเธอร์แลนด์", "HONG KONG": "🇭🇰 ฮ่องกง", "SINGAPORE": "🇸🇬 สิงคโปร์", "CHINA": "🇨🇳 จีน"};
+var PK_MONO = ['ม.ค.','ก.พ.','มี.ค.','เม.ย.','พ.ค.','มิ.ย.','ก.ค.','ส.ค.','ก.ย.','ต.ค.','พ.ย.','ธ.ค.'];
+
+function _pkLastIdx(){ var l=-1; for(var i=0;i<12;i++){ if(PK.sun[i]!=null) l=i; } return l; }
+
+function _iT11(){
+  var last=_pkLastIdx();
+  var lbl=MO.slice(0,last+1);
+
+  // 1) ยอดของเรารายเดือน (สด/ปรุงสุก ซ้อนกันไม่ได้ใน mkBar → วางเคียงกัน)
+  mkBar('c-pk-mo', lbl, [
+    bds('ไก่สด', PK.sunRaw.slice(0,last+1), '#ec4899', '#db2777'),
+    bds('ปรุงสุก', PK.sunCooked.slice(0,last+1), '#fbcfe8', '#f9a8d4')]);
+  var e=document.getElementById('pk-mo-sub');
+  if(e) e.textContent='ล่าสุด '+PK_MONO[last]+' = '+PK.sun[last].toLocaleString()+' ตัน (โตจากต่ำสุด '
+      +Math.min.apply(null,PK.sun.filter(function(v){return v!=null;})).toLocaleString()+' ตัน)';
+
+  // 2) ส่วนแบ่งรายเดือน (คิดจาก Table 4 ชุดเดียวกัน)
+  var share=[];
+  for(var i=0;i<=last;i++) share.push(PK.thai[i] ? +(PK.sun[i]/PK.thai[i]*100).toFixed(2) : null);
+  mkLine('c-pk-share', lbl, [lds('ส่วนแบ่ง SUN (%)', share, '#be185d')]);
+  var e2=document.getElementById('pk-share-sub');
+  if(e2) e2.textContent=PK_MONO[0]+' '+share[0].toFixed(1)+'% → '+PK_MONO[last]+' '+share[last].toFixed(1)+'%';
+
+  // 3) เทียบบริษัท (ยอดรวม ม.ค.-ก.ค.)
+  var names=Object.keys(PK.ytd).sort(function(a,b){return PK.ytd[b]-PK.ytd[a];});
+  mkBar('c-pk-comp', names, [{label:'ม.ค.–ก.ค. (ตัน)', data:names.map(function(n){return PK.ytd[n];}),
+    backgroundColor:names.map(function(n){return n==='SUN'?'#ec4899':(n==='NON-MEMBERS'?'#cbd5e1':'#93c5fd');}),
+    borderColor:names.map(function(n){return n==='SUN'?'#be185d':(n==='NON-MEMBERS'?'#94a3b8':'#3b82f6');}),
+    borderWidth:0, borderRadius:3}]);
+
+  // 4) แยกตลาด (4 เดือน)
+  var mkKeys=Object.keys(PK.markets).filter(function(k){
+    return PK.markets[k].some(function(p){return p[0]>0;});   // โชว์เฉพาะตลาดที่เราเคยส่ง
+  });
+  var cols=['#fbcfe8','#f9a8d4','#f472b6','#be185d'];
+  var ds=PK.mkMonths.map(function(m,mi){
+    return bds(PK_MONO[m-1], mkKeys.map(function(k){return PK.markets[k][mi][0];}), cols[mi]||'#ec4899', cols[mi]||'#ec4899');
+  });
+  mkBar('c-pk-mkt', mkKeys.map(function(k){return (PK_TH[k]||k);}), ds);
+  var lg=document.getElementById('leg-pk-mkt');
+  if(lg) lg.innerHTML=ds.map(function(d){return '<div class="leg-i"><div class="leg-d" style="background:'+d.backgroundColor+'"></div>'+d.label+' 69</div>';}).join('');
+
+  // ตารางพร้อม % ส่วนแบ่ง
+  var t=document.getElementById('tbl-pk-mkt');
+  if(t){
+    var th='<thead><tr style="background:rgba(190,24,93,.07)"><th style="text-align:left;padding:7px 10px;font-size:11px;color:var(--navy);border-bottom:2px solid rgba(190,24,93,.2)">ตลาด</th>';
+    PK.mkMonths.forEach(function(m){th+='<th style="text-align:right;padding:7px 10px;font-size:11px;color:var(--navy);border-bottom:2px solid rgba(190,24,93,.2);white-space:nowrap">'+PK_MONO[m-1]+' 69</th>';});
+    th+='</tr></thead><tbody>';
+    mkKeys.forEach(function(k){
+      th+='<tr style="border-bottom:1px solid rgba(37,99,168,.08)"><td style="padding:6px 10px;white-space:nowrap">'+(PK_TH[k]||k)+'</td>';
+      PK.markets[k].forEach(function(p){
+        var pct=p[1]?(p[0]/p[1]*100):0;
+        th+='<td style="padding:6px 10px;text-align:right;font-family:\'IBM Plex Sans\'">'+(p[0]?p[0].toLocaleString():'–')
+          +(p[0]?' <span style="color:var(--muted);font-size:10px">('+pct.toFixed(1)+'%)</span>':'')+'</td>';
+      });
+      th+='</tr>';
+    });
+    t.innerHTML=th+'</tbody>';
+  }
+
+  // 5) KPI + สรุป
+  var ytdSun=PK.ytd['SUN'], ytdAll=PK.ytdTotal;
+  var rank=names.indexOf('SUN')+1;
+  var K=function(lbl,val,unit,note,color){return '<div class="kpi"><div class="kpi-lbl">'+lbl+'</div><div class="kpi-val" style="color:'+color+'">'+val+' <span class="kpi-unit">'+unit+'</span></div><div class="kpi-avg">'+note+'</div></div>';};
+  var k=document.getElementById('kpi11');
+  if(k) k.innerHTML=
+      K('ยอดของเรา ม.ค.–ก.ค. 69', ytdSun.toLocaleString(),'ตัน','คิดเป็น '+(ytdSun/ytdAll*100).toFixed(1)+'% ของไทยทั้งประเทศ','#be185d')
+    + K('เดือนล่าสุด ('+PK_MONO[last]+' 69)', PK.sun[last].toLocaleString(),'ตัน','ส่วนแบ่ง <span class="kpi-d up" style="display:inline">'+share[last].toFixed(1)+'%</span>','#ec4899')
+    + K('ไก่สด', PK.ytdRaw.sun.toLocaleString(),'ตัน','= '+(PK.ytdRaw.sun/ytdSun*100).toFixed(0)+'% ของยอดเรา · ส่วนแบ่งในตลาดไก่สดไทย <b>'+(PK.ytdRaw.sun/PK.ytdRaw.thai*100).toFixed(1)+'%</b>','#db2777')
+    + K('ปรุงสุก', PK.ytdCooked.sun.toLocaleString(),'ตัน','= '+(PK.ytdCooked.sun/ytdSun*100).toFixed(0)+'% ของยอดเรา (ส่วนแบ่ง '+(PK.ytdCooked.sun/PK.ytdCooked.thai*100).toFixed(2)+'%)','#f472b6')
+    + K('อันดับในตาราง', '#'+rank,'','จาก '+names.length+' กลุ่มที่รายงานแยกไว้','#64748b');
+
+  var sm=document.getElementById('pk-summary');
+  if(sm){
+    var jp=PK.markets['JAPAN'], jpi=PK.mkMonths.length-1;
+    sm.innerHTML='<b>อ่านยังไง:</b> ยอดของเราโตต่อเนื่องจาก <b>'+Math.min.apply(null,PK.sun.filter(function(v){return v!=null;})).toLocaleString()
+      +' ตัน</b> ขึ้นมา <b>'+PK.sun[last].toLocaleString()+' ตัน</b> ในเดือน'+PK_MONO[last]
+      +' ส่วนแบ่งขยับจาก '+share[0].toFixed(1)+'% เป็น '+share[last].toFixed(1)+'% · '
+      +'เกือบทั้งหมดเป็น<b>ไก่สด</b> ('+(PK.ytdRaw.sun/ytdSun*100).toFixed(0)+'%) ทำให้ส่วนแบ่งใน<b>ตลาดไก่สด</b>ของไทยสูงถึง <b>'
+      +(PK.ytdRaw.sun/PK.ytdRaw.thai*100).toFixed(1)+'%</b> ขณะที่ปรุงสุกแทบไม่มี · '
+      +'ตลาดใหญ่สุดของเราคือ<b>ญี่ปุ่น</b> ('+jp[jpi][0].toLocaleString()+' ตันในเดือน'+PK_MONO[PK.mkMonths[jpi]-1]+' = '
+      +(jp[jpi][0]/jp[jpi][1]*100).toFixed(1)+'% ของไทยที่ส่งไปญี่ปุ่น) รองลงมาคือ UAE และมาเลเซีย · '
+      +'<b>ส่วนแบ่งสูงสุดอยู่ที่มาเลเซีย KL</b> (เกือบ 10%) ทั้งที่ยอดไม่ใหญ่ — ตลาดที่เรามีน้ำหนักจริง';
+  }
 }
 
 function _iT10(){ EXM_MK.forEach(function(m){ setExY(m[0], EXM_Y[m[0]]); }); }
