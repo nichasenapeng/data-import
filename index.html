@@ -713,7 +713,7 @@ body{
   <div style="background:rgba(37,99,168,.07);border:1px solid rgba(37,99,168,.18);border-radius:10px;padding:10px 16px;margin-bottom:16px;display:flex;align-items:center;gap:10px;flex-wrap:wrap">
     <span style="font-size:16px">🐔</span>
     <div style="font-family:'IBM Plex Sans Thai',sans-serif;font-size:12px;color:var(--navy)">
-      <strong>ที่มาข้อมูล:</strong> รายงานภาวะตลาดไก่รายสัปดาห์ · สมาคมผู้ผลิตไก่เพื่อส่งออกไทย (โฟลเดอร์ Data Domestic) · ปี 2569 · รวมเป็นรายเดือน ม.ค.–ส.ค. (จากรายงานรายสัปดาห์) + คาดการณ์ ก.ย.–พ.ย. · หน่วยบาท/กก.
+      <strong>ที่มาข้อมูล:</strong> รายงานภาวะตลาดไก่รายสัปดาห์ · สมาคมผู้ผลิตไก่เพื่อส่งออกไทย (โฟลเดอร์ Data Domestic) · ปี 2569 · รวมเป็นรายเดือน ม.ค.–ก.ย. (จากรายงานรายสัปดาห์) + คาดการณ์ ต.ค.–พ.ย. · หน่วยบาท/กก.
     </div>
   </div>
 
@@ -721,7 +721,7 @@ body{
 
   <div class="card">
     <div class="card-ttl">ราคาต้นน้ำในประเทศ รายเดือน + คาดการณ์ (บาท/กก.)</div>
-    <div class="card-sub">ไก่มีชีวิต · ลูกไก่ · ไก่พันธุ์ปลด ตัวเมีย/ตัวผู้ · เส้นทึบ = จริง (ม.ค.–ส.ค.) · เส้นประ = คาดการณ์ (ก.ย.–พ.ย.) · <span style="color:#b91c1c">⚠ คาดการณ์ ไม่ใช่ราคาจริง</span></div>
+    <div class="card-sub">ไก่มีชีวิต · ลูกไก่ · ไก่พันธุ์ปลด ตัวเมีย/ตัวผู้ · เส้นทึบ = จริง (ม.ค.–ก.ย.) · เส้นประ = คาดการณ์ (ต.ค.–พ.ย.) · <span style="color:#b91c1c">⚠ คาดการณ์ ไม่ใช่ราคาจริง</span></div>
     <div class="leg">
       <div class="leg-i"><div class="leg-d" style="background:#2563a8"></div>ไก่มีชีวิต</div>
       <div class="leg-i"><div class="leg-d" style="background:#f59e0b"></div>ลูกไก่</div>
@@ -733,7 +733,7 @@ body{
 
   <div class="card">
     <div class="card-ttl">ราคาชิ้นส่วนในประเทศ รายเดือน + คาดการณ์ (บาท/กก.)</div>
-    <div class="card-sub">น่องติดสะโพก · เนื้อ BB · โครงเต็ม · เส้นทึบ = จริง (ม.ค.–ส.ค.) · เส้นประ = คาดการณ์ (ก.ย.–พ.ย.) · <span style="color:#b91c1c">⚠ คาดการณ์</span></div>
+    <div class="card-sub">น่องติดสะโพก · เนื้อ BB · โครงเต็ม · เส้นทึบ = จริง (ม.ค.–ก.ย.) · เส้นประ = คาดการณ์ (ต.ค.–พ.ย.) · <span style="color:#b91c1c">⚠ คาดการณ์</span></div>
     <div class="leg">
       <div class="leg-i"><div class="leg-d" style="background:#f59e0b"></div>น่องติดสะโพก</div>
       <div class="leg-i"><div class="leg-d" style="background:#2563a8"></div>เนื้อ BB</div>
@@ -1826,7 +1826,9 @@ function _iT8(){
     {date:'2026-08-05',kron:15,bb:73,leg:85,live:44,jp:3850,thb:33.20},
     {date:'2026-08-19',kron:15.5,bb:73,leg:85,live:44,jp:3800,thb:33.12},
     {date:'2026-08-26',kron:15,bb:75,leg:84,live:45,jp:3750,thb:32.72},
-    {date:'2026-09-02',kron:14,bb:75,leg:83,live:45,jp:3750,thb:33.32}
+    {date:'2026-09-02',kron:14,bb:75,leg:83,live:45,jp:3750,thb:33.32},
+    {date:'2026-09-09',kron:12.5,bb:76,leg:83,live:45,jp:3750,thb:32.86},
+    {date:'2026-09-16',kron:11.5,bb:76,leg:81,live:45,jp:3750,thb:33.26}
   ];
   var lbl=DP.map(function(r){var p=r.date.split('-');return parseInt(p[2],10)+' '+_M8[parseInt(p[1],10)-1];});
   mkLine('c-dom-parts',lbl,[
@@ -1846,7 +1848,7 @@ function _iT8(){
   if(pe)pe.innerHTML='<b>ส่วนต่างตลาดส่งออก:</b> ราคาส่งออกญี่ปุ่น (ไก่สด) สูงกว่าน่องติดสะโพกขายในประเทศเฉลี่ย <b>~'+prem+'%</b> · ล่าสุด (19 ส.ค.) ส่งออก '+le+' vs ในประเทศ '+last.leg+' บาท/กก. — ราคาชิ้นส่วนในประเทศขาขึ้นชัดตั้งแต่ มิ.ย. 2569';
   var k=document.getElementById('kpi8');
   if(k)k.innerHTML=''
-    +'<div class="kpi"><div class="kpi-lbl">น่องติดสะโพก (ล่าสุด 19 ส.ค.)</div><div class="kpi-val" style="color:#f59e0b">'+last.leg+' <span class="kpi-unit">บาท/กก.</span></div><div class="kpi-avg">ในประเทศ · ขาขึ้นตั้งแต่ มิ.ย.</div></div>'
+    +'<div class="kpi"><div class="kpi-lbl">น่องติดสะโพก (ล่าสุด '+(function(){var p=last.date.split('-');return parseInt(p[2],10)+' '+_M8[parseInt(p[1],10)-1];})()+')</div><div class="kpi-val" style="color:#f59e0b">'+last.leg+' <span class="kpi-unit">บาท/กก.</span></div><div class="kpi-avg">ในประเทศ · ขาขึ้นตั้งแต่ มิ.ย.</div></div>'
     +'<div class="kpi"><div class="kpi-lbl">ไก่เป็นหน้าฟาร์ม</div><div class="kpi-val" style="color:#06b6d4">'+last.live+' <span class="kpi-unit">บาท/กก.</span></div><div class="kpi-avg">ต้นทุนวัตถุดิบต้นน้ำ</div></div>'
     +'<div class="kpi"><div class="kpi-lbl">ส่งออกญี่ปุ่น (แปลงบาท)</div><div class="kpi-val" style="color:#c0392b">'+le+' <span class="kpi-unit">บาท/กก.</span></div><div class="kpi-d up">▲ สูงกว่าในประเทศ ~'+prem+'%</div></div>';
 }
@@ -1869,16 +1871,19 @@ function _iT9(){
     {d:'8 ก.ค.',chick:18.5,live:40,sf:33,sm:19,kron:11.5,bb:67,leg:78.5},
     {d:'5 ส.ค.',chick:19.5,live:44,sf:38,sm:20,kron:15,bb:73,leg:85},
     {d:'19 ส.ค.',chick:19.5,live:44,sf:39,sm:19,kron:15.5,bb:73,leg:85},
-    {d:'26 ส.ค.',chick:19.5,live:45,sf:37,sm:19,kron:15,bb:75,leg:84}
+    {d:'26 ส.ค.',chick:19.5,live:45,sf:37,sm:19,kron:15,bb:75,leg:84},
+    {d:'2 ก.ย.',chick:20.5,live:45,sf:24,sm:16,kron:14,bb:75,leg:83},
+    {d:'9 ก.ย.',chick:20.5,live:45,sf:26,sm:18,kron:12.5,bb:76,leg:83},
+    {d:'16 ก.ย.',chick:20.5,live:45,sf:27,sm:17,kron:11.5,bb:76,leg:81}
   ];
-  var MO9=['ม.ค.','ก.พ.','มี.ค.','เม.ย.','พ.ค.','มิ.ย.','ก.ค.','ส.ค.'];
+  var MO9=['ม.ค.','ก.พ.','มี.ค.','เม.ย.','พ.ค.','มิ.ย.','ก.ค.','ส.ค.','ก.ย.'];
   var agg={};
   RAW.forEach(function(r){var m=r.d.split(' ')[1];if(!agg[m])agg[m]={n:0,live:0,chick:0,sf:0,sm:0,kron:0,bb:0,leg:0};var a=agg[m];a.n++;a.live+=r.live;a.chick+=r.chick;a.sf+=r.sf;a.sm+=r.sm;a.kron+=r.kron;a.bb+=r.bb;a.leg+=r.leg;});
   function mavg(fld){return MO9.map(function(m){var a=agg[m];return a?Math.round(a[fld]/a.n*10)/10:null;});}
   var mLive=mavg('live'),mChick=mavg('chick'),mSf=mavg('sf'),mSm=mavg('sm'),mKron=mavg('kron'),mBb=mavg('bb'),mLeg=mavg('leg');
-  var FCL=['ก.ย.','ต.ค.','พ.ย.'], n=MO9.length, allL=MO9.concat(FCL);
-  var fLive=[45,45,44],fChick=[19.5,19,18.5],fSf=[36,34,33],fSm=[19,18,18],fLeg=[83,81,80],fBb=[73,72,71],fKron=[14,13,12];
-  function act(a){return a.concat([null,null,null]);}
+  var FCL=['ต.ค.','พ.ย.'], n=MO9.length, allL=MO9.concat(FCL);
+  var fLive=[45,44],fChick=[19.5,19],fSf=[26,25],fSm=[17,17],fLeg=[80,79],fBb=[75,74],fKron=[11,10.5];
+  function act(a){return a.concat(FCL.map(function(){return null;}));}
   function fcs(a,ff){var o=[];for(var i=0;i<n-1;i++)o.push(null);o.push(a[n-1]);return o.concat(ff);}
   mkLine('c-dm-live',allL,[
     lds('ไก่มีชีวิต',act(mLive),'#2563a8'),lds('ไก่มีชีวิต (คาด)',fcs(mLive,fLive),'#2563a8',true),
@@ -1891,17 +1896,17 @@ function _iT9(){
     lds('เนื้อ BB',act(mBb),'#2563a8'),lds('เนื้อ BB (คาด)',fcs(mBb,fBb),'#2563a8',true),
     lds('โครงเต็ม',act(mKron),'#8aa0b8'),lds('โครงเต็ม (คาด)',fcs(mKron,fKron),'#8aa0b8',true)
   ]);
-  var REG=[['เหนือบน',49],['เหนือล่าง',46.5],['อีสานบน',49],['อีสานล่าง',47.5],['ภาคกลาง',45.5],['ตะวันออก',47],['ตะวันตก',45.5],['ใต้บน',49],['ใต้ล่าง',47]];
+  var REG=[['เหนือบน',49],['เหนือล่าง',46.5],['อีสานบน',49],['อีสานล่าง',47.5],['ภาคกลาง',45.5],['ตะวันออก',47],['ตะวันตก',45.5],['ใต้บน',50],['ใต้ล่าง',51]];  // รายงาน 16 ก.ย. 69
   mkBar('c-dm-region',REG.map(function(r){return r[0];}),[
-    bds('ปัจจุบัน (26 ส.ค.)',REG.map(function(r){return r[1];}),'#7dd3fc','#2563a8'),
+    bds('ปัจจุบัน (16 ก.ย.)',REG.map(function(r){return r[1];}),'#7dd3fc','#2563a8'),
     bds('คาดการณ์ (พ.ย.)',REG.map(function(r){return Math.round(r[1]*0.975*2)/2;}),'#fbbf77','#f59e0b')
   ]);
   var k=document.getElementById('kpi9');
   if(k)k.innerHTML=''
-    +'<div class="kpi"><div class="kpi-lbl">ไก่มีชีวิต (ส.ค. เฉลี่ย)</div><div class="kpi-val" style="color:#2563a8">'+mLive[7]+' <span class="kpi-unit">บาท/กก.</span></div><div class="kpi-avg">คาด พ.ย. ~44 · ขาขึ้นแล้วทรงตัว</div></div>'
-    +'<div class="kpi"><div class="kpi-lbl">ลูกไก่</div><div class="kpi-val" style="color:#f59e0b">'+mChick[7]+' <span class="kpi-unit">บาท/ตัว</span></div><div class="kpi-avg">ต้นทุนต้นน้ำ · คาดอ่อนตัวตามอาหารสัตว์</div></div>'
-    +'<div class="kpi"><div class="kpi-lbl">น่องติดสะโพก (ส.ค. เฉลี่ย)</div><div class="kpi-val" style="color:#c0392b">'+mLeg[7]+' <span class="kpi-unit">บาท/กก.</span></div><div class="kpi-avg">คาด พ.ย. ~80 · ผ่านพีคแล้ว</div></div>'
-    +'<div class="kpi"><div class="kpi-lbl">ไก่พันธุ์ปลด (เมีย/ผู้)</div><div class="kpi-val" style="color:#16a34a">'+mSf[7]+' / '+mSm[7]+' <span class="kpi-unit">บาท/กก.</span></div><div class="kpi-avg">แม่ไก่ปลดระวาง</div></div>';
+    +'<div class="kpi"><div class="kpi-lbl">ไก่มีชีวิต ('+MO9[n-1]+' เฉลี่ย)</div><div class="kpi-val" style="color:#2563a8">'+mLive[n-1]+' <span class="kpi-unit">บาท/กก.</span></div><div class="kpi-avg">คาด พ.ย. ~'+fLive[fLive.length-1]+' · ขาขึ้นแล้วทรงตัว</div></div>'
+    +'<div class="kpi"><div class="kpi-lbl">ลูกไก่ ('+MO9[n-1]+')</div><div class="kpi-val" style="color:#f59e0b">'+mChick[n-1]+' <span class="kpi-unit">บาท/ตัว</span></div><div class="kpi-avg">ต้นทุนต้นน้ำ · ขยับขึ้นจาก 19.5 เป็น 20.5</div></div>'
+    +'<div class="kpi"><div class="kpi-lbl">น่องติดสะโพก ('+MO9[n-1]+' เฉลี่ย)</div><div class="kpi-val" style="color:#c0392b">'+mLeg[n-1]+' <span class="kpi-unit">บาท/กก.</span></div><div class="kpi-avg">คาด พ.ย. ~'+fLeg[fLeg.length-1]+' · ผ่านพีคแล้ว ชะลอลง</div></div>'
+    +'<div class="kpi"><div class="kpi-lbl">ไก่พันธุ์ปลด (เมีย/ผู้)</div><div class="kpi-val" style="color:#16a34a">'+mSf[n-1]+' / '+mSm[n-1]+' <span class="kpi-unit">บาท/กก.</span></div><div class="kpi-avg">แม่ไก่ปลดระวาง · ร่วงแรงจาก ส.ค.</div></div>';
 }
 
 // ── TAB 10 : ปริมาณส่งออกไก่ไทยแยกตลาด (สกัดจาก Table 2 ของรายงาน Packer ด้วย extract_export_markets.py) ──
