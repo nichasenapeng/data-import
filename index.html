@@ -239,7 +239,7 @@ body{
   <div class="kpi-row" id="kpi1"></div>
   <div class="card">
     <div class="card-ttl">ยอดรวมรายปี — Import Japan แยกตามประเทศ</div>
-    <div class="card-sub">MT / ปี · YoY comparison · *2026 = JAN–JUN</div>
+    <div class="card-sub">MT / ปี · YoY comparison · *2026 = เฉลี่ยเฉพาะเดือนที่มีข้อมูล</div>
     <div class="leg">
       <div class="leg-i"><div class="leg-d" style="background:#93c5fd"></div>Brazil</div>
       <div class="leg-i"><div class="leg-d" style="background:#86efac"></div>Thai</div>
@@ -1087,9 +1087,9 @@ var TQ_SRC={'2024':TQ24,'2025':TQ25,'2026':TQ26};
 var ST_TOT25=[165412,164934,157013,152405,155156,158611,155371,159860,164129,164307,156837,148032];
 var ST_IMP25=[139154,139214,131242,127432,128174,128818,124093,126707,130205,129858,121635,111656];
 var ST_DOM25=[26258,25720,25771,24973,26982,29793,31278,33153,33879,34449,35202,36376];
-var ST_TOT26=[149029,151172,152466,149596,158346,161546,165659,null,null,null,null,null];  // ก.ค. จากไฟล์ MAFF 4010a
-var ST_IMP26=[112209,114113,114637,113247,122234,126318,null,null,null,null,null,null];
-var ST_DOM26=[36820,37059,37829,36349,36112,35228,null,null,null,null,null,null];
+var ST_TOT26=[149029,151172,152466,149596,158346,162941,165659,null,null,null,null,null];  // มิ.ย.-ก.ค. จากไฟล์ MAFF 4010a (มิ.ย. ถูก revise 161,546→162,941)
+var ST_IMP26=[112209,114113,114637,113247,122234,127047,131660,null,null,null,null,null];  // สต็อกนำเข้า (輸入品在庫) จาก 4010a
+var ST_DOM26=[36820,37059,37829,36349,36112,35894,33999,null,null,null,null,null];  // สต็อกในประเทศ (国産品在庫) จาก 4010a
 var ST_SRC={'Total':{'2025':ST_TOT25,'2026':ST_TOT26},'Import':{'2025':ST_IMP25,'2026':ST_IMP26},'Domestic':{'2025':ST_DOM25,'2026':ST_DOM26}};
 
 // ── CHART HELPERS ──
@@ -1235,7 +1235,7 @@ function _iT4(){
 }
 function _iT5(){
   function av(a){var f=a.filter(function(v){return v!=null;});return Math.round(f.reduce(function(a,b){return a+b;},0)/f.length);}
-  mkBar('c-st-ann',['2025 (เฉลี่ย)','2026 (JAN–JUN เฉลี่ย)'],[bds('Total Stock',[av(ST_TOT25),av(ST_TOT26)],'#93c5fd','#3b82f6'),bds('Stock Import',[av(ST_IMP25),av(ST_IMP26)],'#86efac','#22c55e'),bds('Domestic',[av(ST_DOM25),av(ST_DOM26)],'#fde68a','#f59e0b')]);
+  mkBar('c-st-ann',['2025 (เฉลี่ย)','2026 ('+MO[0]+'–'+MO[ST_TOT26.filter(function(v){return v!=null;}).length-1]+' เฉลี่ย)'],[bds('Total Stock',[av(ST_TOT25),av(ST_TOT26)],'#93c5fd','#3b82f6'),bds('Stock Import',[av(ST_IMP25),av(ST_IMP26)],'#86efac','#22c55e'),bds('Domestic',[av(ST_DOM25),av(ST_DOM26)],'#fde68a','#f59e0b')]);
   _hm5src=ST_SRC;
   buildHM('hm5-grid',ST_SRC['Total'],['2025','2026']);
   var _la=11;for(var _j=0;_j<12;_j++){if(ST_TOT26[_j]!=null)_la=_j;}
